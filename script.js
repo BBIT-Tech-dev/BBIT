@@ -340,6 +340,22 @@ function startCountdown() {
   }, 1000);
 }
 
+// --- Mobile Sidebar Toggle ---
+function toggleMobileSidebar() {
+  const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (sidebar && overlay) {
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    if (sidebar.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+}
+
 // --- Initialize Page ---
 window.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('bjee-quiz-container')) {
@@ -349,3 +365,4 @@ window.addEventListener('DOMContentLoaded', () => {
     startCountdown();
   }
 });
+

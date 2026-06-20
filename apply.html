@@ -31,9 +31,34 @@
           <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
         </ul>
       </nav>
-      <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+      <div class="header-right-group">
+        <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="toggleMobileSidebar()">☰</button>
+      </div>
     </div>
   </header>
+
+  <!-- Mobile Sidebar Navigation -->
+  <div id="mobile-sidebar" class="mobile-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🍌</span> BBIT
+      </a>
+      <button class="sidebar-close" onclick="toggleMobileSidebar()">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html" onclick="toggleMobileSidebar()">Home</a></li>
+        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy Dept</a></li>
+        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar Science</a></li>
+        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
+        <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
+        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li style="margin-top: 20px;" class="active"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
 
   <!-- Subpage Hero -->
   <section class="subpage-hero">
