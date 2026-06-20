@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty & Staff | BBIT</title>
+  <meta name="description" content="Meet the brilliant minds of the Banana Boy Institute of Technology, featuring HOD 4 Dimensional Sir and the legendary Banana Boy, Siddhi Sai.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Orbs and Grid -->
+  <div class="bg-grid"></div>
+  <div class="orb orb-yellow" style="top: 15%; left: 10%;"></div>
+  <div class="orb orb-cyan" style="bottom: 15%; right: 5%;"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="bbit-logo">
+        <span class="logo-icon">🍌</span> BBIT<span>.edu</span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html" id="nav-home">Home</a></li>
+          <li><a href="bio-energy.html" id="nav-bio">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html" id="nav-kabutar">Kabutar Science</a></li>
+          <li class="active"><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
+          <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
+          <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+        </ul>
+      </nav>
+      <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+    </div>
+  </header>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="hero-tag">Academic Leadership</div>
+      <h2>Faculty & Scholars</h2>
+      <p>Guided by researchers who exist across multiple dimensions and possess intellectual capacities transcending historical physicists.</p>
+    </div>
+  </section>
+
+  <!-- Faculty Directory -->
+  <section id="faculty-directory">
+    <div class="container">
+      <div class="faculty-grid">
+        <!-- Faculty 1: 4 Dimensional Sir -->
+        <div class="faculty-card sir" onclick="openFacultyModal('sir')" style="cursor: pointer;">
+          <div class="faculty-avatar-container">
+            <div class="faculty-badge">Head of All Departments</div>
+            <div class="faculty-avatar" id="avatar-inner-emoji">🧑‍🏫</div>
+          </div>
+          <h3>4 Dimensional Sir</h3>
+          <h4>Dean of Academics, Director of Teleportation, and HOD of Everything</h4>
+          <p>
+            A mythical figure in the world of quantum science. He grades BEE exam answer sheets in complex coordinates, dropping real-number scores directly into black holes. He conducts physical chemistry, teleportation, and bio-energy lectures across three parallel timelines simultaneously.
+          </p>
+          <p class="chancellor-quote" style="font-size: 0.9rem;">
+            "Newton and Einstein were bound by the 3D dimensions of mass. True brilliance lies in flowing beyond the atomic cage."
+          </p>
+        </div>
+
+        <!-- Faculty 2: Siddhi Sai -->
+        <div class="faculty-card student" onclick="openFacultyModal('sai')" style="cursor: pointer;">
+          <div class="faculty-avatar-container">
+            <div class="faculty-badge">The Legendary Banana Boy</div>
+            <div class="faculty-avatar">⚡</div>
+          </div>
+          <h3>Siddhi Sai</h3>
+          <h4>Senior Research Fellow & HOD's Favorite Student</h4>
+          <p>
+            The legendary **Banana Boy** himself! Siddhi Sai is the star scholar of BBIT and the only human in history to secure a rank of exactly \(\sqrt{-1}\) on the BEE Advanced. He proved that human bio-energy flows along slip-space aura lines completely independently of molecular weight.
+          </p>
+          <ul class="student-achievements">
+            <li>Formulated Siddhi Sai's Slip-Space Curvature Formula.</li>
+            <li>First human to hover 12cm off the ground using bio-energy flow.</li>
+            <li>Allowed by 4D Sir to hand-grate the ginger for departmental tea.</li>
+            <li>Solved the BEE Exam in negative three hours, scoring \(i\) points.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Disciples Section -->
+      <div class="section-header" style="margin-top: 80px; margin-bottom: 40px;">
+        <h3>The Devoted Disciples</h3>
+        <p>The Outer Circle: Students of 4D Sir who, though not formally enrolled in BBIT, have dedicated their lives, sanity, and math books to his teachings.</p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: 60px;">
+        <!-- Student 1: Lohit -->
+        <div class="card" onclick="openFacultyModal('lohit')" style="cursor: pointer; border-color: var(--color-bio);">
+          <div class="card-icon">🧪</div>
+          <h3>Lohit</h3>
+          <p><strong>Chemistry Extract Master</strong></p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">
+            A brilliant student whose absolute mastery of chemistry stems entirely from extracting knowledge from NCERT textbooks.
+          </p>
+          <ul class="card-list">
+            <li>NCERT Text Extract</li>
+            <li>Inorganic Aura Sync</li>
+            <li>Ginger Tea Helper-in-Training</li>
+          </ul>
+        </div>
+
+        <!-- Student 2: Mazin -->
+        <div class="card" onclick="openFacultyModal('mazin')" style="cursor: pointer; border-color: var(--color-quantum);">
+          <div class="card-icon">📈</div>
+          <h3>Mazin</h3>
+          <p><strong>The 10k Math Legend</strong></p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">
+            Holds near-devotional respect for 4D Sir's math genius. Famous for solving 10,000 equations per chapter.
+          </p>
+          <ul class="card-list">
+            <li>10,000 Questions/Chapter</li>
+            <li>Calculus Fanaticism</li>
+            <li>Unparalleled Devotion</li>
+          </ul>
+        </div>
+
+        <!-- Student 3: Varun -->
+        <div class="card" onclick="openFacultyModal('varun')" style="cursor: pointer; border-color: var(--color-banana);">
+          <div class="card-icon">🌀</div>
+          <h3>Varun</h3>
+          <p><strong>N-Dimensional Bio-Energy Seeker</strong></p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">
+            Gave up physics to understand bio-energy. Experiencer of complex, transcendent multi-dimensional emotions.
+          </p>
+          <ul class="card-list">
+            <li>Physics Renegade</li>
+            <li>N-Dimensional Emotion Sensor</li>
+            <li>Admissions Hopeful</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Space-Time Locator Portal -->
+      <div class="chancellor-locator-container" id="locator">
+        <div class="chancellor-split">
+          <div class="chancellor-visual">
+            <div class="avatar-rings avatar-ring-1"></div>
+            <div class="avatar-rings avatar-ring-2"></div>
+            <div class="quantum-avatar-frame">
+              <div class="avatar-inner" id="locator-emoji">🧑‍🏫</div>
+            </div>
+          </div>
+          <div class="chancellor-info">
+            <span class="faculty-badge" style="color: var(--color-quantum); border-color: var(--color-quantum); background: rgba(0, 240, 255, 0.08); align-self: flex-start;">Real-Time Status</span>
+            <h3>4 Dimensional Sir Locator</h3>
+            <p>
+              Since 4 Dimensional Sir exists in superposition, use this console to calibrate your observation state and collapse his wave function into a specific location.
+            </p>
+            
+            <div class="dimensional-portal">
+              <h4><span class="logo-icon">📡</span> Space-Time Coordinate Output</h4>
+              <div class="portal-status">
+                <div class="status-badge badge-dimension">Dimension: <span id="current-dimension">4D (T-1)</span></div>
+                <div class="status-badge badge-position">State: <span id="current-state">Lecture Hall 4B</span></div>
+              </div>
+              <div class="portal-btns">
+                <button class="portal-btn active" id="btn-portal-lecture" onclick="setChancellorState('Lecture Hall 4B (Grading i-Ranks)', '4D (Temporal)', '🧑‍🏫')">Lecture Hall 4B</button>
+                <button class="portal-btn" id="btn-portal-chai" onclick="setChancellorState('Local Chai Tapri (Newton Disagrees)', '3D (Aura-Chai)', '☕')">Chai Tapri</button>
+                <button class="portal-btn" id="btn-portal-super" onclick="setChancellorState('N-Dimensional Superposition (14 Classes)', 'N-Dimensional', '🌀')">Superposition</button>
+                <button class="portal-btn" id="btn-portal-void" onclick="setChancellorState('Dholakpur Laddu Shop (Aura Charging)', 'Bio-Energetic', '🍘')">Laddu Shop</button>
+                <button class="portal-btn" id="btn-portal-alcohol" onclick="setChancellorState('Dholakpur Alcohol Shop (Liquid Bio-Resonance Calibration)', 'Ethanol-Aura', '🍾')">Alcohol Shop</button>
+                <button class="portal-btn" id="btn-portal-smoke" onclick="setChancellorState('Dholakpur Cigarette Shop (Quantum Smoke Rings)', 'Nicotine-Grid', '🚬')">Cigarette Shop</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h4>🍌 BBIT</h4>
+        <p>
+          Banana Boy Institute of Technology is the premier research university in Dholakpur, pioneering advanced quantum engineering, human bio-energy dynamics, and multi-dimensional pigeon science.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html">Kabutar Science</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="apply.html">Apply Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Research Links</h5>
+        <ul>
+          <li><a href="bio-energy.html#proofs">Bio-Energy Proofs</a></li>
+          <li><a href="faculty.html#locator">Sir Locator Portal</a></li>
+          <li><a href="canteen.html">BBIT Canteen Menu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBIT. Located in Dholakpur. Headed by 4 Dimensional Sir. Website hosted for free using <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Faculty Introduction Modal -->
+  <div id="faculty-modal" class="modal-overlay" style="display: none;" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modal-body-content">
+        <!-- Content will be injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions Application | BBIT</title>
+  <meta name="description" content="Official admissions application portal for BBIT Dholakpur. Applications and qualification requirements launch on 21 June 2026.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Background Orbs and Grid -->
+  <div class="bg-grid"></div>
+  <div class="orb orb-cyan" style="top: 20%; left: 5%;"></div>
+  <div class="orb orb-yellow" style="bottom: 10%; right: 5%;"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="bbit-logo">
+        <span class="logo-icon">🍌</span> BBIT<span>.edu</span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html" id="nav-home">Home</a></li>
+          <li><a href="bio-energy.html" id="nav-bio">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html" id="nav-kabutar">Kabutar Science</a></li>
+          <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
+          <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
+          <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+        </ul>
+      </nav>
+      <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+    </div>
+  </header>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="hero-tag">Portal Status: Pending</div>
+      <h2>Admissions Application</h2>
+      <p>Official registration for BEE 2026 admissions. Applications open and qualification metrics will be revealed on 21 June 2026.</p>
+    </div>
+  </section>
+
+  <!-- Application Content -->
+  <section id="apply-content">
+    <div class="container" style="max-width: 800px;">
+      
+      <!-- Countdown Clock -->
+      <div class="stat-glow-box" style="margin-bottom: 50px; border-color: var(--color-banana); box-shadow: var(--shadow-neon-yellow);">
+        <div id="countdown-timer" style="font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; color: var(--color-banana); text-shadow: 0 0 10px var(--color-banana-glow);">00h : 00m : 00s</div>
+        <div class="stat-glow-label">Until Applications & Qualifications Launch (21 June 2026)</div>
+      </div>
+
+      <!-- Locked Info Card -->
+      <div class="card" style="margin-bottom: 40px; border-color: var(--glass-border);">
+        <h3 style="font-family: var(--font-heading); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.5rem;">🔒</span> Application Window Closed
+        </h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">
+          The online application portal is currently locked. The official **BEE Advanced qualification matrix** (detailing required bio-energy flow velocity thresholds, NCERT Xtract Chemistry score thresholds, and minimum mentor feet-touching respect quotients) will be fully calculated and revealed on **21 June 2026**.
+        </p>
+        
+        <!-- Email Alert Form -->
+        <div class="dimensional-portal" style="background: var(--bg-secondary);">
+          <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">🔔 Get a Space-Time Launch Alert</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Enter your email to receive an instant aura ping the moment the Dholakpur portal unlocks.</p>
+          <div style="display: flex; gap: 10px;">
+            <input type="email" placeholder="student@dholakpur.edu" style="flex-grow: 1; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: var(--text-main); padding: 12px; border-radius: var(--border-radius-md); outline: none;">
+            <button class="cta-btn" onclick="alert('Aura ping registered! Check your third-eye inbox on 21 June.')">Notify Me</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview Locked Form -->
+      <div class="calculator-card" style="opacity: 0.4; pointer-events: none; border-color: var(--glass-border); box-shadow: none;">
+        <h3 class="calc-title"><span class="logo-icon">📝</span> Application Form Preview</h3>
+        
+        <div class="form-group">
+          <label>Full Legal Name (General Coordinates)</label>
+          <input type="text" placeholder="Disabled until 21 June" disabled style="width: 100%; background: var(--bg-secondary); border: 1px solid var(--glass-border); padding: 12px; border-radius: var(--border-radius-md);">
+        </div>
+
+        <div class="form-group">
+          <label>Desired Department of Research</label>
+          <select disabled>
+            <option>Department of Human Bio-Energy Flow</option>
+            <option>Department of Kabutar Science</option>
+            <option>Quantum Teleportation Division</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>NCERT Xtract Chemistry Score (Required for Lohit's Lab)</label>
+          <input type="number" placeholder="Disabled" disabled style="width: 100%; background: var(--bg-secondary); border: 1px solid var(--glass-border); padding: 12px; border-radius: var(--border-radius-md);">
+        </div>
+
+        <div class="form-group">
+          <label>Mentors' Feet Touched Count (Required for Bio-Energy Induction)</label>
+          <input type="number" placeholder="Disabled" disabled style="width: 100%; background: var(--bg-secondary); border: 1px solid var(--glass-border); padding: 12px; border-radius: var(--border-radius-md);">
+        </div>
+
+        <button class="cta-btn" style="width: 100%; background: var(--bg-tertiary); color: var(--text-muted); cursor: not-allowed;" disabled>Portal Locked</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h4>🍌 BBIT</h4>
+        <p>
+          Banana Boy Institute of Technology is the premier research university in Dholakpur, pioneering advanced quantum engineering, human bio-energy dynamics, and multi-dimensional pigeon science.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html">Kabutar Science</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="apply.html">Apply Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Research Links</h5>
+        <ul>
+          <li><a href="bio-energy.html#proofs">Bio-Energy Proofs</a></li>
+          <li><a href="faculty.html#locator">Sir Locator Portal</a></li>
+          <li><a href="canteen.html">BBIT Canteen Menu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBIT. Located in Dholakpur. Headed by 4 Dimensional Sir. Website hosted for free using <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

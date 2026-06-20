@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEE Admissions & Cutoffs | BBIT</title>
+  <meta name="description" content="Official BEE Mains & Advanced admissions page. Understand the imaginary rank cutoff criteria and attempt the BEE entrance quiz.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Background Orbs and Grid -->
+  <div class="bg-grid"></div>
+  <div class="orb orb-cyan" style="top: 10%; left: 5%;"></div>
+  <div class="orb orb-yellow" style="bottom: 10%; right: 5%;"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="bbit-logo">
+        <span class="logo-icon">🍌</span> BBIT<span>.edu</span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html" id="nav-home">Home</a></li>
+          <li><a href="bio-energy.html" id="nav-bio">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html" id="nav-kabutar">Kabutar Science</a></li>
+          <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
+          <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
+          <li class="active"><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+        </ul>
+      </nav>
+      <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+    </div>
+  </header>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="hero-tag">Admissions 2026</div>
+      <h2>BEE Entrance Portal</h2>
+      <p>Home of the Banana Entrance Examination (BEE) Mains & Advanced. We test your molecular mechanics and human bio-energy fields.</p>
+    </div>
+  </section>
+
+  <!-- BEE Exam & Details -->
+  <section id="bee-content">
+    <div class="container">
+      <div class="bjee-info-grid">
+        <!-- Stats and info -->
+        <div class="bjee-details">
+          <span class="bjee-badge">Cutoff & Rules</span>
+          <h3>The Cutoff: The Imaginary Rank \(\sqrt{-1}\)</h3>
+          <p>
+            The BEE is famous for having the most counter-intuitive selection process in the universe. In the general category, candidates must secure a rank of exactly **\(\sqrt{-1}\)** (represented as the imaginary unit \(i\)).
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
+            ⚠️ **Important Notice**: If you secure a real number rank (like Rank 1, Rank 2, or Rank 10), you are <strong>instantly rejected</strong>. Real ranks show that your brain is locked within the 3rd dimension. To join BBIT, your consciousness must occupy complex space, yielding an imaginary rank of \(i\) or a complex rank of \(a + bi\).
+          </p>
+          
+          <div class="bjee-stats">
+            <div class="stat-item" id="stat-acceptance">
+              <div class="stat-value">\(i\)</div>
+              <div class="stat-label">General Category Cutoff</div>
+            </div>
+            <div class="stat-item" id="stat-duration">
+              <div class="stat-value">72 Hrs</div>
+              <div class="stat-label">Exam Duration</div>
+            </div>
+            <div class="stat-item" id="stat-marks">
+              <div class="stat-value">&infin;</div>
+              <div class="stat-label">Maximum Marks</div>
+            </div>
+            <div class="stat-item" id="stat-fee">
+              <div class="stat-value">12 Bananas</div>
+              <div class="stat-label">Application Fee</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Quiz Box -->
+        <div class="quiz-box" id="bjee-quiz-container">
+          <div class="quiz-header">
+            <span class="quiz-title">BEE Mock Test (Admissions Portal)</span>
+            <span class="quiz-progress" id="quiz-progress-text">Question 1 of 4</span>
+          </div>
+          
+          <div class="quiz-body">
+            <div id="quiz-question-view">
+              <p class="question-text" id="question-text-el">
+                Loading question...
+              </p>
+              <div class="options-container" id="options-container-el">
+                <!-- Buttons will be generated dynamically -->
+              </div>
+            </div>
+            
+            <div id="quiz-result-view" class="quiz-result-view" style="display: none;">
+              <div class="result-emoji" id="result-emoji-el">⚡</div>
+              <div class="result-score" id="result-score-el">100% Bio-Energy</div>
+              <p class="result-text" id="result-text-el">
+                Calculating...
+              </p>
+              <button class="cta-btn" id="btn-retry-quiz" onclick="resetQuiz()">Re-attempt BEE</button>
+            </div>
+          </div>
+
+          <div class="quiz-footer" id="quiz-footer-el">
+            <button class="cta-btn" id="btn-next-question" onclick="nextQuestion()" disabled>Lock Answer & Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Syllabus details -->
+      <div class="section-header" style="margin-top: 80px; margin-bottom: 40px;">
+        <h3>BEE Mains & Advanced Syllabus</h3>
+        <p>Ensure your studies cover the following areas as verified by HOD 4 Dimensional Sir.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">⚛️</div>
+          <h3>Molecular Mechanics</h3>
+          <p>Analyzing how molecules function. You must calculate proton spin rates and electron energy transitions without classical approximation templates.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌀</div>
+          <h3>Aura Translocation</h3>
+          <p>Calculating teleportation pathways. Solving the mathematical equations required to fold biological aura coordinates across space-time vectors.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3>Complex Imaginary Calculus</h3>
+          <p>Finding limits and derivatives where variables exist entirely in imaginary planes, ensuring you can calculate your admission rank of \(\sqrt{-1}\).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h4>🍌 BBIT</h4>
+        <p>
+          Banana Boy Institute of Technology is the premier research university in Dholakpur, pioneering advanced quantum engineering, human bio-energy dynamics, and multi-dimensional pigeon science.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html">Kabutar Science</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="apply.html">Apply Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Research Links</h5>
+        <ul>
+          <li><a href="bio-energy.html#proofs">Bio-Energy Proofs</a></li>
+          <li><a href="faculty.html#locator">Sir Locator Portal</a></li>
+          <li><a href="canteen.html">BBIT Canteen Menu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBIT. Located in Dholakpur. Headed by 4 Dimensional Sir. Website hosted for free using <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
