@@ -419,7 +419,52 @@ window.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('jealousy-feed')) {
     initJealousyFeed();
   }
+  // Dholakpur Standard Time (IST) — global heartbeat clock
+  initDholakpurClock();
 });
+
+// --- Dholakpur Standard Time (IST) Clock ---
+// Always shows India Standard Time (Asia/Kolkata) regardless of the visitor's
+// own timezone. This is the master clock the BEE exam-date system runs on.
+function getISTParts() {
+  // Intl with an explicit timeZone gives correct IST anywhere on Earth.
+  const fmt = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Kolkata',
+    weekday: 'short', day: '2-digit', month: 'short',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+  });
+  const parts = {};
+  fmt.formatToParts(new Date()).forEach(p => { parts[p.type] = p.value; });
+  return parts;
+}
+
+function initDholakpurClock() {
+  const footer = document.querySelector('.footer-bottom');
+  if (!footer) return;
+  if (document.getElementById('dholakpur-clock')) return;
+
+  const clock = document.createElement('div');
+  clock.id = 'dholakpur-clock';
+  clock.style.cssText =
+    'margin-top:14px; display:inline-flex; align-items:center; gap:10px; ' +
+    'padding:7px 16px; background:rgba(0,240,255,0.06); ' +
+    'border:1px solid rgba(0,240,255,0.25); border-radius:30px; ' +
+    'font-family:monospace; font-size:0.82rem; color:var(--color-quantum); ' +
+    'text-shadow:0 0 8px var(--color-quantum-glow);';
+  footer.appendChild(clock);
+
+  function tick() {
+    const p = getISTParts();
+    clock.innerHTML =
+      '<span style="font-size:0.95rem;">🕐</span>' +
+      '<span>Dholakpur Standard Time (IST): <strong>' +
+      p.weekday + ', ' + p.day + ' ' + p.month + ' · ' +
+      p.hour + ':' + p.minute + ':' + p.second +
+      '</strong></span>';
+  }
+  tick();
+  setInterval(tick, 1000);
+}
 
 // --- Quantum Synthesizer Sound Engine (Web Audio API) ---
 class QuantumAudio {
