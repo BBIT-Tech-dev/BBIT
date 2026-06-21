@@ -76,7 +76,42 @@
   <!-- Application Content -->
   <section id="apply-content">
     <div class="container" style="max-width: 800px;">
-      
+
+      <!-- Account bar (logged in) -->
+      <div id="apply-account-bar" style="display:none; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--border-radius-lg); padding:14px 20px; margin-bottom:24px;">
+        <div style="font-size:0.9rem;">👤 <strong id="apply-acct-name" style="color:#fff;">—</strong> <span id="apply-acct-id" style="color:var(--color-quantum); font-family:monospace; font-size:0.8rem;"></span></div>
+        <div style="display:flex; gap:10px;">
+          <a href="dashboard.html" class="cta-btn" style="padding:8px 16px; font-size:0.82rem; background:rgba(0,240,255,0.1); border:1px solid var(--color-quantum); color:var(--color-quantum);">📊 Dashboard</a>
+          <button class="cta-btn" id="apply-signout" style="padding:8px 16px; font-size:0.82rem; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:#fff;">Sign Out</button>
+        </div>
+      </div>
+
+      <!-- Auth gate (logged out) -->
+      <div id="apply-auth-panel" class="calculator-card" style="display:none; border-color: var(--color-quantum); box-shadow: var(--shadow-neon-blue); border:1px solid var(--glass-border); padding:30px; border-radius:var(--border-radius-lg); max-width:480px; margin:0 auto 40px auto;">
+        <h3 class="calc-title" style="color: var(--color-quantum); font-family:var(--font-heading); margin-bottom:8px;">🔐 Enrol as a Disciple to Apply</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">BEE 2026 applications require a Disciple Profile. Create one (or sign in) — your status and admit card sync across all your devices.</p>
+        <div class="form-group">
+          <label for="ap-auth-name">Disciple Name (sign-up only)</label>
+          <input type="text" id="ap-auth-name" placeholder="e.g. Varun Kumar" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
+        </div>
+        <div class="form-group">
+          <label for="ap-auth-email">Email</label>
+          <input type="email" id="ap-auth-email" placeholder="you@dholakpur.4d" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
+        </div>
+        <div class="form-group">
+          <label for="ap-auth-pass">Password</label>
+          <input type="password" id="ap-auth-pass" placeholder="At least 6 characters" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
+        </div>
+        <div style="display:flex; gap:12px; margin-top:8px;">
+          <button class="cta-btn" id="ap-btn-signup" style="flex:1; padding:12px;">Create Profile</button>
+          <button class="cta-btn" id="ap-btn-signin" style="flex:1; padding:12px; background:rgba(0,240,255,0.1); border:1px solid var(--color-quantum); color:var(--color-quantum);">Sign In</button>
+        </div>
+        <p id="ap-auth-msg" style="margin-top:14px; font-size:0.85rem; color:var(--color-banana); display:none; line-height:1.5;"></p>
+      </div>
+
+      <!-- Everything below the gate -->
+      <div id="apply-gated" style="display:none;">
+
       <!-- Portal Active Status -->
       <div class="stat-glow-box" style="margin-bottom: 50px; border-color: var(--color-bio); box-shadow: var(--shadow-neon-green);">
         <div id="countdown-timer" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-bio); text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);">● PORTAL UNLOCKED & ACTIVE</div>
@@ -248,6 +283,7 @@
         </div>
       </div>
 
+      </div><!-- /apply-gated -->
     </div>
   </section>
 
@@ -287,6 +323,137 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="bbit-backend.js"></script>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const $ = id => document.getElementById(id);
+
+      function setGated(loggedIn, profile) {
+        $('apply-auth-panel').style.display = loggedIn ? 'none' : 'block';
+        $('apply-account-bar').style.display = loggedIn ? 'flex' : 'none';
+        $('apply-gated').style.display = loggedIn ? 'block' : 'none';
+        if (loggedIn && profile) {
+          $('apply-acct-name').textContent = profile.display_name || 'Disciple';
+          $('apply-acct-id').textContent = profile.disciple_id || '';
+        }
+      }
+      function authMsg(t) { const m = $('ap-auth-msg'); m.style.display = 'block'; m.textContent = t; }
+
+      async function refreshAuth() {
+        const user = await BBIT.getUser();
+        if (!user) { setGated(false); return; }
+        const p = await BBIT.getProfile();
+        setGated(true, p);
+      }
+
+      $('ap-btn-signup').addEventListener('click', async () => {
+        try { await BBIT.signUp($('ap-auth-email').value.trim(), $('ap-auth-pass').value, $('ap-auth-name').value.trim()); await refreshAuth(); }
+        catch (e) { authMsg('⚠️ ' + e.message); }
+      });
+      $('ap-btn-signin').addEventListener('click', async () => {
+        try { await BBIT.signIn($('ap-auth-email').value.trim(), $('ap-auth-pass').value); await refreshAuth(); }
+        catch (e) { authMsg('⚠️ ' + e.message); }
+      });
+      $('apply-signout').addEventListener('click', async () => { await BBIT.signOut(); location.reload(); });
+
+      // ---- Override the application submit with the rigged, account-backed flow ----
+      const rejectionComments = [
+        "Your application packet was intercepted mid-flight by a hungry Dholakpur pigeon and partially digested. The 4th dimension requires a clean re-entanglement. Submit again.",
+        "HOD 4 Dimensional Sir glanced at your file for 0.3 seconds, muttered 'interesting', and walked toward the chai tapri. Your wavefunction has NOT yet collapsed. Try once more.",
+        "Bio-energy resonance inconclusive — your aura briefly overlapped with C.C.'s, which our sensors flagged as 'too much effort'. Re-submit to decouple."
+      ];
+
+      window.submitBbitApplication = async function (event) {
+        event.preventDefault();
+        const name = ($('app-name').value || '').trim();
+        const roll = ($('app-roll').value || '').trim();
+        const deptEl = $('app-dept');
+        const deptText = deptEl.options[deptEl.selectedIndex].text;
+        const chemScore = parseFloat($('app-chem').value);
+        const feetTouched = parseInt($('app-feet').value);
+        if (!name || !roll || isNaN(chemScore) || isNaN(feetTouched)) {
+          alert('🌌 Coordinate Error: Candidate credentials must be fully filled to collapse wavefunction.');
+          return;
+        }
+        if (!$('app-check-newton').checked || !$('app-check-banana').checked || !$('app-check-failure').checked) {
+          alert('⚠️ Loyalty Check Failed: affirm all BBIT postulates to proceed.');
+          return;
+        }
+
+        const formCard = $('application-form-card');
+        const formHtml = formCard.innerHTML;
+        formCard.style.pointerEvents = 'none';
+        formCard.innerHTML = '<div style="text-align:center; padding:40px 20px;"><div style="border:4px solid rgba(255,255,255,0.1); border-top:4px solid var(--color-quantum); border-radius:50%; width:50px; height:50px; margin:0 auto 20px; animation:spin 1s linear infinite;"></div><h4 style="font-family:var(--font-heading); color:#fff; margin-bottom:10px;">Entangling Application Coordinates…</h4><p style="color:var(--text-muted); font-style:italic;">Querying HOD 4 Dimensional Sir\'s Hilbert space…</p></div>';
+        if (!$('spinner-style-override')) {
+          const st = document.createElement('style'); st.id = 'spinner-style-override';
+          st.innerHTML = '@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}';
+          document.head.appendChild(st);
+        }
+
+        let result;
+        try { result = await BBIT.applyForBEE({ dept: deptText }); }
+        catch (e) {
+          formCard.innerHTML = formHtml; formCard.style.pointerEvents = 'auto';
+          alert('Backend error: ' + e.message); return;
+        }
+
+        await new Promise(r => setTimeout(r, 1600));
+        formCard.innerHTML = formHtml; formCard.style.pointerEvents = 'auto'; formCard.style.display = 'none';
+        const lockCard = $('locked-info-card'); if (lockCard) lockCard.style.display = 'none';
+
+        let seed = 0;
+        for (let i = 0; i < name.length; i++) seed += name.charCodeAt(i);
+        for (let i = 0; i < roll.length; i++) seed += roll.charCodeAt(i);
+
+        $('res-student-name').textContent = name;
+        $('res-roll').textContent = roll;
+        $('res-major').textContent = deptText;
+        $('res-chem').textContent = chemScore.toFixed(2) + ' %ile';
+        $('res-feet').textContent = feetTouched + ' Taps';
+
+        const badge = $('app-status-badge');
+        const comment = $('app-status-comment');
+        const cert = $('quantum-certificate-card');
+        const oldReveal = $('exam-reveal'); if (oldReveal) oldReveal.remove();
+
+        if (result.accepted) {
+          const profile = result.profile;
+          const examLabel = BBIT.formatExamLabel(new Date(profile.exam_date_ist));
+          $('res-rank').textContent = 'almost √-1';
+          badge.textContent = 'ADMITTED ✅ (Bio-Energy Confirmed)';
+          badge.style.color = 'var(--color-bio)'; badge.style.borderColor = 'var(--color-bio)';
+          badge.style.background = 'rgba(57,255,20,0.05)';
+          comment.textContent = 'Congratulations, ' + (profile.display_name || name) + '! After ' + result.tries + ' attempt(s), your bio-energy wavefunction has collapsed into the ADMITTED state. Your BEE 2026 examination has been scheduled.';
+          if (cert) cert.style.borderColor = 'var(--color-bio)';
+          const reveal = document.createElement('div');
+          reveal.id = 'exam-reveal';
+          reveal.style.cssText = 'margin:25px 0; padding:22px; background:rgba(57,255,20,0.07); border:1px solid var(--color-bio); border-radius:var(--border-radius-md); text-align:center;';
+          reveal.innerHTML = '<div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:8px;">🎟️ Your BEE 2026 Examination</div>' +
+            '<div style="font-family:var(--font-heading); font-size:1.4rem; color:var(--color-bio); text-shadow:0 0 12px rgba(57,255,20,0.4);">' + examLabel + '</div>' +
+            '<div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px;">Centre: Lecture Hall 4B (4th Dimension), Dholakpur</div>' +
+            '<a href="dashboard.html" class="cta-btn" style="display:inline-block; margin-top:16px; padding:10px 22px; font-size:0.9rem;">📊 View Admit Card & Countdown →</a>';
+          comment.parentNode.insertBefore(reveal, comment.nextSibling);
+          if (window.quantumAudio) window.quantumAudio.playChime && window.quantumAudio.playChime(523.25, 1046.5, 0.3);
+        } else {
+          $('res-rank').textContent = (1 + (seed % 100)) + ' + ' + (2 + (seed % 20)) + 'i';
+          const c = rejectionComments[(result.tries - 1) % rejectionComments.length];
+          badge.textContent = 'RE-ENTANGLEMENT REQUIRED · Attempt ' + result.tries;
+          badge.style.color = 'var(--color-banana)'; badge.style.borderColor = 'var(--color-banana)';
+          badge.style.background = 'rgba(255,235,59,0.05)';
+          comment.textContent = c;
+          if (cert) cert.style.borderColor = 'var(--color-banana)';
+          if (window.quantumAudio && window.quantumAudio.playCollapse) window.quantumAudio.playCollapse();
+        }
+
+        const rc = $('app-result-container');
+        rc.style.display = 'block';
+        rc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+
+      BBIT.ready.then(refreshAuth).catch(e => authMsg('Backend error: ' + e.message));
+    })();
+  </script>
 </body>
 </html>

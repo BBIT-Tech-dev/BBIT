@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disciple Dashboard | BBIT</title>
+  <meta name="description" content="Your personal BBIT Disciple Dashboard — view your admission status, BEE 2026 admit card, and live exam countdown in Dholakpur Standard Time (IST).">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="orb orb-yellow" style="top: 12%; left: 8%;"></div>
+  <div class="orb orb-cyan" style="bottom: 18%; right: 6%;"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="bbit-logo"><span class="logo-icon">🍌</span> BBIT</a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html">Kabutar Science</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="canteen.html">BBIT Canteen</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
+        </ul>
+      </nav>
+      <div class="header-right-group">
+        <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="toggleMobileSidebar()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar -->
+  <div id="mobile-sidebar" class="mobile-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><span class="logo-icon">🍌</span> BBIT</a>
+      <button class="sidebar-close" onclick="toggleMobileSidebar()">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html" onclick="toggleMobileSidebar()">Home</a></li>
+        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy Dept</a></li>
+        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar Science</a></li>
+        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
+        <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
+        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
+        <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display:block; text-align:center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- Hero -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="hero-tag" style="background: rgba(0,240,255,0.08); border-color: var(--color-quantum); color: var(--color-quantum);">Disciple Console</div>
+      <h2>Your Disciple Dashboard</h2>
+      <p>Your personal node in the 4-dimensional admissions matrix. Status, admit card, and live BEE countdown — synced to your account on any device.</p>
+    </div>
+  </section>
+
+  <section id="dash-content">
+    <div class="container" style="max-width: 860px;">
+
+      <!-- AUTH PANEL (shown when logged out) -->
+      <div id="auth-panel" class="calculator-card" style="display:none; border-color: var(--color-quantum); box-shadow: var(--shadow-neon-blue); border:1px solid var(--glass-border); padding:30px; border-radius:var(--border-radius-lg); max-width:480px; margin:0 auto;">
+        <h3 class="calc-title" style="color: var(--color-quantum); font-family:var(--font-heading); margin-bottom:8px;">🔐 Disciple Sign-In</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">Create a Disciple Profile or sign in to view your admission status. Your account follows you across devices.</p>
+        <div class="form-group">
+          <label for="auth-name" id="auth-name-label">Disciple Name (sign-up only)</label>
+          <input type="text" id="auth-name" placeholder="e.g. Varun Kumar" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
+        </div>
+        <div class="form-group">
+          <label for="auth-email">Email</label>
+          <input type="email" id="auth-email" placeholder="you@dholakpur.4d" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
+        </div>
+        <div class="form-group">
+          <label for="auth-pass">Password</label>
+          <input type="password" id="auth-pass" placeholder="At least 6 characters" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
+        </div>
+        <div style="display:flex; gap:12px; margin-top:8px;">
+          <button class="cta-btn" id="btn-signup" style="flex:1; padding:12px;">Create Profile</button>
+          <button class="cta-btn" id="btn-signin" style="flex:1; padding:12px; background:rgba(0,240,255,0.1); border:1px solid var(--color-quantum); color:var(--color-quantum);">Sign In</button>
+        </div>
+        <p id="auth-msg" style="margin-top:14px; font-size:0.85rem; color:var(--color-banana); display:none; line-height:1.5;"></p>
+      </div>
+
+      <!-- DASHBOARD (shown when logged in) -->
+      <div id="dash-panel" style="display:none;">
+        <!-- Account bar -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--border-radius-lg); padding:16px 22px; margin-bottom:24px;">
+          <div>
+            <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted);">Logged in as</div>
+            <div style="font-size:1.15rem; font-family:var(--font-heading); color:#fff;" id="dash-name">—</div>
+            <div style="font-size:0.78rem; color:var(--color-quantum); font-family:monospace;" id="dash-id">—</div>
+          </div>
+          <button class="cta-btn" id="btn-signout" style="background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:#fff; padding:10px 18px; font-size:0.85rem;">Sign Out</button>
+        </div>
+
+        <!-- Status stat row -->
+        <div class="bjee-stats" style="grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); text-align:center; margin-bottom:24px;">
+          <div class="stat-item">
+            <div class="stat-value" id="dash-status" style="font-size:1.5rem;">—</div>
+            <div class="stat-label">Admission Status</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="dash-tries">0</div>
+            <div class="stat-label">Application Attempts</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="dash-sir" style="color:var(--color-banana);">2%</div>
+            <div class="stat-label">Sir's Opinion of You</div>
+          </div>
+        </div>
+
+        <!-- ACCEPTED view: admit card + countdown -->
+        <div id="accepted-view" style="display:none;">
+          <div class="section-header" style="text-align:left; margin-bottom:18px;">
+            <h3>🎟️ Your BEE 2026 Admit Card</h3>
+            <p style="font-size:0.92rem;">Generated upon wavefunction collapse into the ADMITTED state. Download it and share your destiny.</p>
+          </div>
+          <div style="background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--border-radius-lg); padding:18px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+            <canvas id="admit-canvas" width="900" height="560" style="width:100%; max-width:900px; height:auto; border-radius:var(--border-radius-md);"></canvas>
+            <div style="margin-top:16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+              <button class="cta-btn" id="btn-download" style="padding:12px 24px;">⬇️ Download Admit Card</button>
+            </div>
+          </div>
+
+          <!-- Countdown -->
+          <div class="stat-glow-box" style="margin-top:30px; border-color:var(--color-bio); box-shadow:var(--shadow-neon-green);">
+            <div class="stat-glow-label" style="margin-bottom:8px;">Time until your BEE 4D Examination</div>
+            <div id="countdown" style="font-family:var(--font-heading); font-size:2rem; color:var(--color-bio); text-shadow:0 0 12px rgba(57,255,20,0.5);">—</div>
+            <div id="exam-when" style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">—</div>
+          </div>
+        </div>
+
+        <!-- PENDING/REJECTED view -->
+        <div id="pending-view" style="display:none;">
+          <div class="card" style="text-align:center; padding:40px 24px; border-color:var(--color-banana);">
+            <div style="font-size:2.6rem; margin-bottom:12px;">⏳</div>
+            <h3 id="pending-title" style="font-family:var(--font-heading); margin-bottom:10px;">Application Pending</h3>
+            <p id="pending-text" style="color:var(--text-muted); max-width:520px; margin:0 auto 22px auto; line-height:1.55;">You have not yet collapsed into the ADMITTED state. The 4th dimension is still deliberating.</p>
+            <a href="apply.html" class="cta-btn" style="padding:12px 26px;">📝 Go to BEE Application</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="dash-loading" style="text-align:center; padding:60px 20px; color:var(--text-muted);">Calibrating your bio-energy session…</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h4>🍌 BBIT</h4>
+        <p>Banana Boy Institute of Technology is the premier research university in Dholakpur, pioneering advanced quantum engineering, human bio-energy dynamics, and multi-dimensional pigeon science.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="apply.html">Apply Now</a></li>
+          <li><a href="dashboard.html">Disciple Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Research Links</h5>
+        <ul>
+          <li><a href="cc-mythology.html">The Mythology of C.C.</a></li>
+          <li><a href="bio-energy.html#proofs">Bio-Energy Proofs</a></li>
+          <li><a href="canteen.html">BBIT Canteen Menu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBIT. Located in Dholakpur. Headed by 4 Dimensional Sir. Website hosted for free using <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script src="bbit-backend.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      const $ = id => document.getElementById(id);
+      let countdownTimer = null;
+
+      function showMsg(t, color) {
+        const m = $('auth-msg');
+        m.style.display = 'block';
+        m.style.color = color || 'var(--color-banana)';
+        m.textContent = t;
+      }
+
+      async function refresh() {
+        const user = await BBIT.getUser();
+        $('dash-loading').style.display = 'none';
+        if (!user) {
+          $('auth-panel').style.display = 'block';
+          $('dash-panel').style.display = 'none';
+          return;
+        }
+        const p = await BBIT.getProfile();
+        $('auth-panel').style.display = 'none';
+        $('dash-panel').style.display = 'block';
+        $('dash-name').textContent = p.display_name || 'Disciple';
+        $('dash-id').textContent = p.disciple_id || '—';
+        $('dash-tries').textContent = p.application_tries || 0;
+
+        if (p.status === 'accepted' && p.exam_date_ist) {
+          $('dash-status').textContent = 'ADMITTED ✅';
+          $('dash-status').style.color = 'var(--color-bio)';
+          $('accepted-view').style.display = 'block';
+          $('pending-view').style.display = 'none';
+          drawAdmit(p);
+          startCountdown(new Date(p.exam_date_ist));
+        } else {
+          $('accepted-view').style.display = 'none';
+          $('pending-view').style.display = 'block';
+          if (p.status === 'rejected') {
+            $('dash-status').textContent = 'UNDER REVIEW';
+            $('dash-status').style.color = 'var(--color-banana)';
+            $('pending-title').textContent = 'Application Under 4D Review';
+            $('pending-text').textContent = 'Your last application did not collapse into the ADMITTED state. 4D Sir is deliberating across timelines. Re-apply — the wavefunction tends to favour the persistent.';
+          } else {
+            $('dash-status').textContent = 'NOT APPLIED';
+            $('dash-status').style.color = 'var(--text-muted)';
+          }
+        }
+      }
+
+      function startCountdown(target) {
+        if (countdownTimer) clearInterval(countdownTimer);
+        $('exam-when').textContent = 'Exam date: ' + BBIT.formatExamLabel(target);
+        function tick() {
+          const diff = target.getTime() - Date.now();
+          if (diff <= 0) {
+            $('countdown').textContent = '⚡ EXAM WINDOW OPEN';
+            $('exam-when').textContent = 'Report to Lecture Hall 4B (4th Dimension) immediately.';
+            clearInterval(countdownTimer);
+            return;
+          }
+          const d = Math.floor(diff / 86400000);
+          const h = Math.floor((diff % 86400000) / 3600000);
+          const m = Math.floor((diff % 3600000) / 60000);
+          const s = Math.floor((diff % 60000) / 1000);
+          $('countdown').textContent = `${d}d ${h}h ${m}m ${s}s`;
+        }
+        tick();
+        countdownTimer = setInterval(tick, 1000);
+      }
+
+      // ---- Admit card on canvas (shareable image) ----
+      function drawAdmit(p) {
+        const c = $('admit-canvas');
+        const x = c.getContext('2d');
+        const W = c.width, H = c.height;
+        // bg
+        const g = x.createLinearGradient(0, 0, W, H);
+        g.addColorStop(0, '#0a0f1e'); g.addColorStop(1, '#10182f');
+        x.fillStyle = g; x.fillRect(0, 0, W, H);
+        // border
+        x.strokeStyle = 'rgba(57,255,20,0.6)'; x.lineWidth = 3;
+        x.strokeRect(18, 18, W - 36, H - 36);
+        x.strokeStyle = 'rgba(57,255,20,0.15)'; x.lineWidth = 1;
+        x.strokeRect(30, 30, W - 60, H - 60);
+        // header
+        x.textAlign = 'center';
+        x.fillStyle = '#ffcc00';
+        x.font = 'bold 40px Outfit, sans-serif';
+        x.fillText('🍌 BANANA BOY INSTITUTE OF TECHNOLOGY', W / 2, 90);
+        x.fillStyle = '#9fb0c8';
+        x.font = '18px Outfit, sans-serif';
+        x.fillText('BEE 2026 · OFFICIAL ADMIT CARD · DHOLAKPUR JURISDICTION', W / 2, 122);
+        x.strokeStyle = 'rgba(255,255,255,0.12)';
+        x.beginPath(); x.moveTo(60, 145); x.lineTo(W - 60, 145); x.stroke();
+        // status
+        x.fillStyle = '#39ff14';
+        x.font = 'bold 30px Outfit, sans-serif';
+        x.fillText('✅ ADMITTED — BIO-ENERGY CONFIRMED', W / 2, 195);
+        // details (left aligned block)
+        x.textAlign = 'left';
+        const lx = 80; let ly = 260; const lh = 52;
+        const rows = [
+          ['Disciple', p.display_name || 'Disciple'],
+          ['Disciple ID', p.disciple_id || '—'],
+          ['Exam', BBIT.formatExamLabel(new Date(p.exam_date_ist))],
+          ['Centre', 'Lecture Hall 4B (4th Dimension), Dholakpur'],
+          ['Computed Rank', 'almost √-1 (mortal-adjusted)']
+        ];
+        rows.forEach(r => {
+          x.fillStyle = '#6f7f99'; x.font = '17px Outfit, sans-serif';
+          x.fillText(r[0].toUpperCase(), lx, ly);
+          x.fillStyle = '#ffffff'; x.font = 'bold 23px Outfit, sans-serif';
+          x.fillText(r[1], lx, ly + 26);
+          ly += lh;
+        });
+        // signatures
+        x.textAlign = 'center';
+        x.fillStyle = '#ffcc00'; x.font = 'italic 24px Outfit, sans-serif';
+        x.fillText('Siddhi Sai', W * 0.3, H - 70);
+        x.fillStyle = '#00f0ff';
+        x.fillText('4D Sir', W * 0.7, H - 70);
+        x.fillStyle = '#6f7f99'; x.font = '13px Outfit, sans-serif';
+        x.fillText('Banana Boy Chancellor', W * 0.3, H - 48);
+        x.fillText('HOD & Dean of the Multiverse', W * 0.7, H - 48);
+      }
+
+      $('btn-download').addEventListener('click', () => {
+        const url = $('admit-canvas').toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = url; a.download = 'BBIT-Admit-Card.png'; a.click();
+      });
+
+      // ---- Auth handlers ----
+      $('btn-signup').addEventListener('click', async () => {
+        try {
+          await BBIT.signUp($('auth-email').value.trim(), $('auth-pass').value, $('auth-name').value.trim());
+          await refresh();
+        } catch (e) { showMsg('⚠️ ' + e.message); }
+      });
+      $('btn-signin').addEventListener('click', async () => {
+        try {
+          await BBIT.signIn($('auth-email').value.trim(), $('auth-pass').value);
+          await refresh();
+        } catch (e) { showMsg('⚠️ ' + e.message); }
+      });
+      $('btn-signout').addEventListener('click', async () => { await BBIT.signOut(); location.reload(); });
+
+      BBIT.ready.then(refresh).catch(e => {
+        $('dash-loading').textContent = 'Backend error: ' + e.message;
+      });
+    })();
+  </script>
+</body>
+</html>
