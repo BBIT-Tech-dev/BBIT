@@ -29,6 +29,8 @@
           <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
           <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
           <li class="active"><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -54,6 +56,8 @@
         <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
         <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
         <li class="active"><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
     </nav>
@@ -137,6 +141,125 @@
         </div>
       </div>
 
+      <!-- 4D Sir Grade Card Generator Section -->
+      <div class="grade-card-section" style="margin-top: 50px; background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 30px; border-radius: var(--border-radius-lg); box-shadow: 0 10px 30px rgba(0,0,0,0.35); position: relative; z-index: 10;">
+        <div class="section-header" style="text-align: left; margin-bottom: 28px;">
+          <span class="bjee-badge" style="background: rgba(0, 240, 255, 0.1); color: var(--color-quantum); border-color: rgba(0, 240, 255, 0.2); font-size: 0.8rem; padding: 4px 10px; border-radius: 4px;">Academics Portal</span>
+          <h3 style="margin-top: 10px; font-family: var(--font-heading); font-size: 1.6rem; color: #fff;">BEE Transcendent Grade Card Generator</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin-top: 5px;">
+            HOD 4 Dimensional Sir does not issue real integer grades. Enter your enrollment details to collapse the academic coordinate superposition and resolve your scores.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+          <!-- Left: Input Form -->
+          <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 20px;">
+            <div>
+              <label style="font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 6px; font-weight: 500;">Candidate Name</label>
+              <input type="text" id="grade-name" placeholder="e.g. Varun Kumar" style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: #fff; padding: 12px; border-radius: var(--border-radius-md); outline: none; font-size: 0.95rem; font-family: var(--font-body);">
+            </div>
+            <div>
+              <label style="font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 6px; font-weight: 500;">BEE Registration Roll Number</label>
+              <input type="text" id="grade-roll" placeholder="e.g. BBIT/2026/IMAG-007" style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: #fff; padding: 12px; border-radius: var(--border-radius-md); outline: none; font-size: 0.95rem; font-family: var(--font-body);">
+            </div>
+            <div>
+              <label style="font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 6px; font-weight: 500;">BEE Specialization Major</label>
+              <select id="grade-major" class="simulator-select" style="margin-top: 0; width: 100%;">
+                <option value="pigeon-routing">Advanced Avian Pigeon Routing (KS)</option>
+                <option value="NCERT-extract">Inorganic NCERT Extract Samosa Theory</option>
+                <option value="bio-energy">Human Bio-Energy Foot-Induction Dynamics</option>
+                <option value="tesseract">Multi-Timeline Tesseract Calibration</option>
+                <option value="chancellor-tea">Ginger-Grating Connoisseurship & Tea Science</option>
+              </select>
+            </div>
+            <button onclick="generateQuantumGradeSheet()" class="cta-btn" style="width: 100%; padding: 14px; background: rgba(0, 240, 255, 0.15); border: 1px solid var(--color-quantum); color: var(--color-quantum); box-shadow: var(--shadow-neon-blue); font-size: 1rem; border-radius: var(--border-radius-md); cursor: pointer; font-weight: 600; font-family: var(--font-heading); transition: var(--transition-smooth);">
+              ⚡ Resolve Wavefunction & Generate Grade Card
+            </button>
+          </div>
+
+          <!-- Right: Interactive Live Certificate Preview -->
+          <div style="flex: 1.2; min-width: 320px; display: flex; justify-content: center; width: 100%;">
+            <div id="quantum-certificate-card" class="certificate-card" style="display: none; width: 100%; background: radial-gradient(circle at center, rgba(16, 24, 48, 0.95), rgba(8, 12, 24, 0.98)); border: 2px dashed rgba(0, 240, 255, 0.35); padding: 30px; border-radius: var(--border-radius-md); box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative; overflow: hidden; font-family: 'Outfit', sans-serif;">
+              <!-- Watermark -->
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-25deg); opacity: 0.03; font-size: 7rem; pointer-events: none; font-weight: bold; color: var(--color-quantum);">BBIT</div>
+              
+              <!-- Border Accent -->
+              <div style="position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1px solid rgba(0, 240, 255, 0.1); pointer-events: none;"></div>
+
+              <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid rgba(0, 240, 255, 0.15); padding-bottom: 12px;">
+                <h4 style="font-family: var(--font-heading); letter-spacing: 2px; color: var(--color-quantum); font-size: 1.25rem; margin-bottom: 2px; text-transform: uppercase;">Banana Boy Institute of Technology</h4>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Admissions Board &bull; Dholakpur Local Jurisdiction</div>
+              </div>
+
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-banana); font-weight: 600; margin-bottom: 10px;">TRANSCENDENT QUANTUM GRADE SHEET</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                  This document officially verifies that the multi-timeline wavefunction coordinates of the candidate listed below have collapsed onto HOD 4 Dimensional Sir's academic ledger:
+                </p>
+              </div>
+
+              <!-- Student Profile Block -->
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 0.85rem; margin-bottom: 20px; padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: var(--border-radius-md);">
+                <div>
+                  <span style="color: var(--text-muted); display: block; font-size: 0.7rem; text-transform: uppercase;">Candidate Name</span>
+                  <strong id="cert-student-name" style="color: #fff;">Varun Kumar</strong>
+                </div>
+                <div>
+                  <span style="color: var(--text-muted); display: block; font-size: 0.7rem; text-transform: uppercase;">Roll Number</span>
+                  <strong id="cert-roll" style="color: #fff; font-family: monospace;">BBIT/2026/IMAG-007</strong>
+                </div>
+                <div style="grid-column: span 2;">
+                  <span style="color: var(--text-muted); display: block; font-size: 0.7rem; text-transform: uppercase;">Specialized Major Area</span>
+                  <strong id="cert-major" style="color: var(--color-quantum);">Avian Pigeon Routing</strong>
+                </div>
+              </div>
+
+              <!-- Grades Table -->
+              <div style="margin-bottom: 24px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                  <thead>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);">
+                      <th style="padding: 8px 4px; font-weight: 500;">Subject Component</th>
+                      <th style="padding: 8px 4px; font-weight: 500; text-align: right;">Quantum Score</th>
+                      <th style="padding: 8px 4px; font-weight: 500; text-align: right;">HOD Evaluation</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cert-grades-body">
+                    <!-- Dynamic Rows -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Comments and Signatures -->
+              <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px;">
+                <div style="max-width: 60%; line-height: 1.4; text-align: left;">
+                  <span style="color: var(--text-muted); display: block; font-size: 0.7rem; text-transform: uppercase;">HOD Direct Assessment Comments</span>
+                  <span id="cert-comments" style="font-style: italic; color: var(--color-banana);">"Showed exemplary Guru-Disciple respect resonance; student's physical brain was observed tunneling through the canteen firewall."</span>
+                </div>
+                <div style="text-align: right; min-width: 100px;">
+                  <div style="font-family: 'Brush Script MT', cursive, sans-serif; font-size: 1.4rem; color: var(--color-quantum); text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); margin-bottom: 2px;">4D Sir</div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted); border-top: 1px solid rgba(255, 255, 255, 0.2); display: inline-block; padding-top: 2px; text-transform: uppercase;">HOD, All Departments</div>
+                </div>
+              </div>
+              <div class="cert-actions" style="margin-top: 24px; border-top: 1px dashed rgba(255, 255, 255, 0.1); padding-top: 15px; display: flex; gap: 12px; justify-content: center;">
+                <button onclick="window.print()" class="cta-btn" style="background: rgba(0, 240, 255, 0.15); border: 1px solid var(--color-quantum); color: var(--color-quantum); box-shadow: none; font-size: 0.85rem; padding: 8px 16px;">🖨️ Print Transcendent Certificate</button>
+              </div>
+            </div>
+
+            <!-- Pre-generate helper message card -->
+            <div id="quantum-certificate-placeholder" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); border: 2px dashed var(--glass-border); padding: 50px 20px; border-radius: var(--border-radius-md); text-align: center;">
+              <div style="font-size: 3.5rem; margin-bottom: 15px; filter: drop-shadow(var(--shadow-neon-blue));">📜</div>
+              <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 8px;">Grade Card Pending Wavefunction Collapse</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 280px; line-height: 1.4;">
+                Please input candidate details and click the button to collapse the academic coordinate superposition and resolve your scores.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
       <!-- Syllabus details -->
       <div class="section-header" style="margin-top: 80px; margin-bottom: 40px;">
         <h3>BEE Mains & Advanced Syllabus</h3>
@@ -179,6 +302,8 @@
           <li><a href="kabutar-science.html">Kabutar Science</a></li>
           <li><a href="faculty.html">Faculty & Disciples</a></li>
           <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
           <li><a href="apply.html">Apply Now</a></li>
         </ul>
       </div>

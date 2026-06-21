@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBIT Quantum Postulates & Molecular Fields | BBIT</title>
+  <meta name="description" content="Mathematically rigorous formulation of BBIT Quantum Mechanics postulates, QCD subatomic quark fields, atomic spin-orbit coupling, and molecular LCAO orbital bonds.">
+  <link rel="stylesheet" href="style.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Background Orbs and Grid -->
+  <div class="bg-grid"></div>
+  <div class="orb orb-cyan" style="top: 15%; right: 10%;"></div>
+  <div class="orb orb-yellow" style="bottom: 10%; left: 5%;"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="bbit-logo">
+        <span class="logo-icon">🍌</span> BBIT
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html" id="nav-home">Home</a></li>
+          <li><a href="bio-energy.html" id="nav-bio">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html" id="nav-kabutar">Kabutar Science</a></li>
+          <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
+          <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
+          <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li class="active"><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
+        </ul>
+      </nav>
+      <div class="header-right-group">
+        <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="toggleMobileSidebar()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Navigation -->
+  <div id="mobile-sidebar" class="mobile-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🍌</span> BBIT
+      </a>
+      <button class="sidebar-close" onclick="toggleMobileSidebar()">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html" onclick="toggleMobileSidebar()">Home</a></li>
+        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy Dept</a></li>
+        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar Science</a></li>
+        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
+        <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
+        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li class="active"><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
+        <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="hero-tag">Formal Mathematical Framework</div>
+      <h2>BBIT Quantum Theory & Subatomic Field Postulates</h2>
+      <p>The mathematical formulation of subatomic quarks, hydrogenic orbitals, molecular LCAO bonding, and 4D Sir's non-unitary operators in the BBIT quantum fields.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section>
+    <div class="container" style="max-width: 900px;">
+      
+      <!-- Introduction -->
+      <div class="card" style="margin-bottom: 45px; border-color: var(--color-quantum);">
+        <h3>🌌 Rigorous Quantum Mechanics at BBIT</h3>
+        <p>
+          Classical mechanics fails to describe the coordinate systems of Dholakpur. To establish the mathematical framework for BBIT physics, we formulate subatomic particle fields, atomic electron probability densities, and molecular bonding orbitals using exact solutions to the Dirac, Schrödinger, and QCD gauge equations, integrated with HOD 4 Dimensional Sir's multi-dimensional operators.
+        </p>
+      </div>
+
+      <!-- Section 1: The Five Postulates -->
+      <div class="math-block-container">
+        <h3>1. The Five Postulates of BBIT Quantum Mechanics</h3>
+        <p class="math-explanation">
+          We define the fundamental axioms of our quantum state space, mapping physical properties to linear operators in a complex Hilbert space.
+        </p>
+
+        <h4>Postulate I: The State Vector</h4>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          The physical state of a subatomic particle system is completely represented by a normalized state vector \(|\Psi(t)\rangle\) in a complex Hilbert space \(\mathcal{H}\), whose density matrix \(\rho\) describes pure and mixed coordinate superposition states:
+        </p>
+        <div class="math-block">
+          $$\rho = \sum_i p_i |\psi_i\rangle\langle\psi_i|, \quad \text{Tr}(\rho) = 1, \quad \langle\Psi|\Psi\rangle = 1$$
+        </div>
+
+        <h4>Postulate II: Self-Adjoint Observables</h4>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          Every physically measurable coordinate (observable) corresponds to a self-adjoint (Hermitian) operator \(\hat{A}\) acting on \(\mathcal{H}\), satisfying:
+        </p>
+        <div class="math-block">
+          $$\hat{A} = \hat{A}^\dagger, \quad \langle\hat{A}\rangle = \text{Tr}(\rho \hat{A})$$
+        </div>
+
+        <h4>Postulate III: Eigenvalue Measurement & Wavefunction Collapse</h4>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          Measuring an observable \(\hat{A}\) projects the wavefunction onto the eigenvector subspace corresponding to eigenvalue \(a_n\). Under HOD 4D Sir's supervision, the non-unitary hyper-dimensional operator \(\hat{\mathcal{S}}_{\text{4D}}\) collapses the superposition:
+        </p>
+        <div class="math-block">
+          $$\hat{P}_n = |a_n\rangle\langle a_n|, \quad |\Psi_{\text{collapsed}}\rangle = \frac{\hat{\mathcal{S}}_{\text{4D}} \hat{P}_n |\Psi\rangle}{\sqrt{\langle\Psi| \hat{P}_n \hat{\mathcal{S}}^{\dagger}_{\text{4D}} \hat{\mathcal{S}}_{\text{4D}} \hat{P}_n |\Psi\rangle}}$$
+        </div>
+
+        <h4>Postulate IV: Probability Densities</h4>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          The probability \(P(a_n)\) of measuring eigenvalue \(a_n\) for system state \(\rho\) is given by the Born Rule projection:
+        </p>
+        <div class="math-block">
+          $$P(a_n) = \text{Tr}(\rho \hat{P}_n) = \langle\Psi| \hat{P}_n |\Psi\rangle$$
+        </div>
+
+        <h4>Postulate V: Time Evolution (Schrödinger Equation)</h4>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          Between measurements, the time evolution of the state vector is governed by the time-dependent Schrödinger equation with the BBIT field Hamiltonian \(\hat{H}_{\text{BBIT}}\):
+        </p>
+        <div class="math-block">
+          $$i\hbar \frac{\partial}{\partial t} |\Psi(t)\rangle = \hat{H}_{\text{BBIT}} |\Psi(t)\rangle, \quad \hat{H}_{\text{BBIT}} = \hat{H}_{\text{atomic}} + \hat{V}_{\text{4D\_aura}}$$
+        </div>
+      </div>
+
+      <!-- Section 2: Subatomic Fields (QCD) -->
+      <div class="math-block-container">
+        <h3>2. Subatomic Particles & Gauge Fields (QCD)</h3>
+        <p class="math-explanation">
+          Inside protons and neutrons, quarks are bound by gluons carrying color charge. We formulate this using the gauge group \(SU(3)_c\) of Quantum Chromodynamics.
+        </p>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          The QCD Lagrangian describing quarks \(\psi_q\) and gluon field strength tensors \(G_{\mu\nu}^a\) is:
+        </p>
+        <div class="math-block">
+          $$\mathcal{L}_{\text{QCD}} = \sum_{q} \bar{\psi}_{q,i} \left( i \gamma^\mu (D_\mu)_{ij} - m_q \delta_{ij} \right) \psi_{q,j} - \frac{1}{4} G_{\mu\nu}^a G^{a,\mu\nu}$$
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          Where the gauge covariant derivative \(D_\mu\) and gluon tensor \(G_{\mu\nu}^a\) are defined with \(SU(3)\) generators \(t^a\) and structure constants \(f^{abc}\):
+        </p>
+        <div class="math-block">
+          $$D_\mu = \partial_\mu - i g_s t^a A_\mu^a, \quad G_{\mu\nu}^a = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a + g_s f^{abc} A_\mu^b A_\nu^c$$
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          4 Dimensional Sir's aura manipulates the color coupling constant \(g_s\), causing quarks to undergo asymptotic freedom and align spins at long range without color confinement blockades.
+        </p>
+      </div>
+
+      <!-- Section 3: Atomic Hydrogenic Orbitals -->
+      <div class="math-block-container">
+        <h3>3. Hydrogenic Wavefunctions & Spin-Orbit Coupling</h3>
+        <p class="math-explanation">
+          At the atomic level, electron configurations are solved using the radial and angular components of the Coulomb potential, corrected for relativistic fine structures.
+        </p>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          The exact wavefunction \(\Psi_{n,l,m_l}(r, \theta, \phi)\) for a hydrogenic atom is:
+        </p>
+        <div class="math-block">
+          $$\Psi_{n,l,m_l}(r, \theta, \phi) = R_{n,l}(r) Y_l^{m_l}(\theta, \phi)$$
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          Where \(R_{n,l}(r)\) is the radial solution containing associated Laguerre polynomials \(L_{n-l-1}^{2l+1}\), and \(Y_l^{m_l}(\theta, \phi)\) are the Spherical Harmonics:
+        </p>
+        <div class="math-block">
+          $$R_{n,l}(r) = -\sqrt{\left(\frac{2Z}{n a_0}\right)^3 \frac{(n-l-1)!}{2n[(n+l)!]^3}} e^{-\rho/2} \rho^l L_{n-l-1}^{2l+1}(\rho), \quad Y_l^{m_l}(\theta, \phi) = P_l^{m_l}(\cos\theta) e^{i m_l \phi}$$
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          The relativistic spin-orbit coupling Hamiltonian \(\hat{H}_{\text{SO}}\) describing the interaction between electron orbital momentum \(\vec{L}\) and spin angular momentum \(\vec{S}\) is:
+        </p>
+        <div class="math-block">
+          $$\hat{H}_{\text{SO}} = \xi(r) \vec{L} \cdot \vec{S} = \frac{1}{2 m_e^2 c^2} \left( \frac{1}{r} \frac{\partial V}{\partial r} \right) \frac{1}{2} \left( \hat{J}^2 - \hat{L}^2 - \hat{S}^2 \right)$$
+        </div>
+      </div>
+
+      <!-- Section 4: Molecular LCAO Bonding -->
+      <div class="math-block-container">
+        <h3>4. Molecular Orbitals & LCAO Approximation</h3>
+        <p class="math-explanation">
+          When atoms combine into molecules, their wavefunctions superimpose. We model this using the Linear Combination of Atomic Orbitals (LCAO) method.
+        </p>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          For a diatomic molecule, we construct bonding (symmetric) and antibonding (antisymmetric) molecular orbitals \(\Psi_{\pm}\) from atomic orbitals \(\psi_A\) and \(\psi_B\):
+        </p>
+        <div class="math-block">
+          $$\Psi_{\text{bonding}} = \frac{1}{\sqrt{2 + 2S}} (\psi_A + \psi_B), \quad \Psi_{\text{antibonding}} = \frac{1}{\sqrt{2 - 2S}} (\psi_A - \psi_B)$$
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          Where \(S\) is the overlap integral representing the volume density share between nuclei \(A\) and \(B\):
+        </p>
+        <div class="math-block">
+          $$S = \int \psi_A^*(\vec{r}) \psi_B(\vec{r}) d^3r$$
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          The inter-nuclear potential energy profile \(V(r)\) is modeled by the Morse potential containing dissociation energy \(D_e\) and equilibrium bond distance \(r_e\):
+        </p>
+        <div class="math-block">
+          $$V(r) = D_e \left( 1 - e^{-a(r - r_e)} \right)^2$$
+        </div>
+      </div>
+
+      <!-- Section 5: Macroscopic Bio-Energy Coupling -->
+      <div class="math-block-container" style="margin-bottom: 50px;">
+        <h3>5. Macro-Quantum Bio-Energy Coupling</h3>
+        <p class="math-explanation">
+          Finally, we show the coupling link between the micro-quantum wavefunctions and macroscopic bio-energy flow density currents.
+        </p>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          The bio-energy current density field \(\vec{J}_{\text{bio}}\) couples to the quantum probability current vector \(\vec{J}_{\text{prob}}\) through HOD 4D Sir's respect scaling parameter \(\gamma_{\text{respect}}\):
+        </p>
+        <div class="math-block">
+          $$\vec{J}_{\text{bio}} = \gamma_{\text{respect}} \cdot \vec{J}_{\text{prob}} = \gamma_{\text{respect}} \frac{\hbar}{m_e} \text{Im} \left( \Psi^* \nabla \Psi \right)$$
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 12px;">
+          This implies that when students express maximum respect quotient, the macroscopic bio-energy currents (\(\vec{J}_{\text{bio}}\)) align perfectly with electron currents, collapsing atomic chaos and enabling matter-independent teleportation pathways.
+        </p>
+      </div>
+
+      <!-- BBIT Research Paper Generator -->
+      <div class="math-block-container" style="margin-bottom: 50px; border-color: var(--color-banana);">
+        <h3>🗞️ BBIT Research Paper Abstract Generator</h3>
+        <p class="math-explanation">
+          Enter any topic — samosa, cricket, Netflix, anything — and BBIT will generate a rigorous academic research paper abstract connecting it to bio-energy flow dynamics, 4th dimensional mechanics, and avian routing protocols.
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
+          <input type="text" id="paper-topic-input" placeholder="e.g., samosa, Minecraft, gravity..." style="flex: 1; min-width: 200px; padding: 12px 18px; background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: var(--border-radius-md); color: var(--text-main); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: var(--transition-smooth);" onfocus="this.style.borderColor='var(--color-banana)'" onblur="this.style.borderColor='var(--glass-border)'">
+          <button class="cta-btn" onclick="generateResearchPaper()" style="padding: 12px 22px; font-size: 0.95rem; white-space: nowrap;">Generate Paper</button>
+        </div>
+        <div id="paper-output" style="display: none; background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border); border-radius: var(--border-radius-md); padding: 24px; line-height: 1.7;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 6px;">📄 BBIT Research Publication</div>
+          <h4 id="paper-title" style="color: var(--color-quantum); font-family: var(--font-heading); margin-bottom: 10px; font-size: 1.1rem; line-height: 1.4;"></h4>
+          <p id="paper-authors" style="font-size: 0.82rem; color: var(--color-banana); margin-bottom: 15px; font-style: italic;"></p>
+          <p id="paper-abstract" style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 15px; text-align: justify;"></p>
+          <p id="paper-journal" style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 10px;"></p>
+        </div>
+      </div>
+
+      <!-- Interactive Quantum Physics Lab -->
+      <div class="math-block-container" style="margin-bottom: 50px; border-color: var(--color-bio);">
+        <h3>🧪 Interactive BBIT Quantum Physics Lab</h3>
+        <p class="math-explanation">
+          Experiment with physical constants and watch mathematical field equations resolve dynamically under Dholakpur field conditions.
+        </p>
+
+        <!-- Calculator 1: QCD Confinement and Asymptotic Freedom -->
+        <div class="calculator-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 20px; border-radius: var(--border-radius-md); margin-bottom: 24px;">
+          <h4 style="color: var(--color-quantum); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-size: 1.1rem;">
+            🌀 QCD Quark Force & Confinement Potential
+          </h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+            Computes the Cornell Potential \(V(r) = -\frac{4}{3}\frac{\alpha_s}{r} + k r\). Observe how pull force \(F(r)\) behaves at close distances (asymptotic freedom) versus long range (color confinement string tension).
+          </p>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.8rem; color: var(--text-main); display: block; margin-bottom: 6px;">Quark Separation (r / fm)</label>
+              <input type="range" id="qcd-r" min="10" max="250" value="50" oninput="calcQCD()" style="width: 100%; height: 6px; background: var(--bg-tertiary); outline: none; border-radius: 3px; border: 1px solid var(--glass-border);">
+              <span style="font-size: 0.8rem; color: var(--color-banana); font-family: monospace;" id="lbl-qcd-r">0.50 fm</span>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.8rem; color: var(--text-main); display: block; margin-bottom: 6px;">Strong Coupling (\(\alpha_s\))</label>
+              <input type="range" id="qcd-alpha" min="10" max="150" value="30" oninput="calcQCD()" style="width: 100%; height: 6px; background: var(--bg-tertiary); outline: none; border-radius: 3px; border: 1px solid var(--glass-border);">
+              <span style="font-size: 0.8rem; color: var(--color-banana); font-family: monospace;" id="lbl-qcd-alpha">0.30</span>
+            </div>
+          </div>
+          <div style="background: var(--bg-tertiary); padding: 12px; border-radius: var(--border-radius-sm); border: 1px solid var(--glass-border); font-family: monospace; font-size: 0.85rem; line-height: 1.6;">
+            <div>Coulomb Term: <span id="qcd-coulomb" style="color: var(--color-quantum); font-weight: bold;">-0.80 GeV</span></div>
+            <div>String Confinement Term: <span id="qcd-string" style="color: var(--color-bio); font-weight: bold;">0.50 GeV</span></div>
+            <div>Total Potential V(r): <span id="qcd-total" style="color: var(--color-banana); font-weight: bold;">-0.30 GeV</span></div>
+            <div>Net Confinement Force F(r): <span id="qcd-force" style="color: #ff2860; font-weight: bold;">1.12 GeV/fm</span></div>
+          </div>
+        </div>
+
+        <!-- Calculator 2: Zeeman Splitting Energy -->
+        <div class="calculator-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 20px; border-radius: var(--border-radius-md); margin-bottom: 24px;">
+          <h4 style="color: var(--color-quantum); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-size: 1.1rem;">
+            🧲 Zeeman Effect Degeneracy Splitting
+          </h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+            Calculates energy level shifts \(\Delta E = m_j g_J \mu_B B\) under external magnetic fields. Watch how state degeneracy splits into distinct energy sublevels.
+          </p>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.8rem; color: var(--text-main); display: block; margin-bottom: 6px;">Magnetic Field (B / Tesla)</label>
+              <input type="range" id="zeeman-b" min="0" max="150" value="50" oninput="calcZeeman()" style="width: 100%; height: 6px; background: var(--bg-tertiary); outline: none; border-radius: 3px; border: 1px solid var(--glass-border);">
+              <span style="font-size: 0.8rem; color: var(--color-banana); font-family: monospace;" id="lbl-zeeman-b">5.0 T</span>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.8rem; color: var(--text-main); display: block; margin-bottom: 6px;">Landé g-factor (\(g_J\))</label>
+              <select id="zeeman-g" onchange="calcZeeman()" class="simulator-select" style="margin-top: 0; padding: 6px; font-size: 0.85rem; height: 32px;">
+                <option value="2.0">2.00 (Pure Electron Spin)</option>
+                <option value="1.0">1.00 (Pure Orbital)</option>
+                <option value="1.33">1.33 (D_3/2 mixed state)</option>
+              </select>
+            </div>
+          </div>
+          <div style="background: var(--bg-tertiary); padding: 12px; border-radius: var(--border-radius-sm); border: 1px solid var(--glass-border); font-family: monospace; font-size: 0.85rem; line-height: 1.6;">
+            <div>Bohr Magneton \(\mu_B\): <span style="color: var(--text-muted);">5.788 \(\times\) 10\(^{-5}\) eV/T</span></div>
+            <div>Spin-Up shift (\(m_j = +1/2\)): <span id="zeeman-up" style="color: var(--color-bio); font-weight: bold;">+0.14 meV</span></div>
+            <div>Spin-Down shift (\(m_j = -1/2\)): <span id="zeeman-down" style="color: #ff2860; font-weight: bold;">-0.14 meV</span></div>
+            <div>Sublevel Energy Gap \(\Delta E\): <span id="zeeman-gap" style="color: var(--color-quantum); font-weight: bold;">0.29 meV</span></div>
+          </div>
+        </div>
+
+        <!-- Calculator 3: Molecular Morse Potential & Overlap -->
+        <div class="calculator-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 20px; border-radius: var(--border-radius-md);">
+          <h4 style="color: var(--color-quantum); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-size: 1.1rem;">
+            🧬 Molecular Morse Potential & Overlap Integrals
+          </h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+            Computes the overlap integral \(S(R) = e^{-R/a_0}(1 + \frac{R}{a_0} + \frac{R^2}{3 a_0^2})\) and Morse Potential energy \(V(R) = D_e(1 - e^{-a(R - R_e)})^2 - D_e\) to evaluate bond stability.
+          </p>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.8rem; color: var(--text-main); display: block; margin-bottom: 6px;">Inter-nuclear separation (R / \(a_0\))</label>
+              <input type="range" id="morse-r" min="10" max="60" value="20" oninput="calcMorse()" style="width: 100%; height: 6px; background: var(--bg-tertiary); outline: none; border-radius: 3px; border: 1px solid var(--glass-border);">
+              <span style="font-size: 0.8rem; color: var(--color-banana); font-family: monospace;" id="lbl-morse-r">2.0 a_0</span>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.8rem; color: var(--text-main); display: block; margin-bottom: 6px;">Morse Potential Well Depth (\(D_e\))</label>
+              <input type="range" id="morse-de" min="10" max="100" value="45" oninput="calcMorse()" style="width: 100%; height: 6px; background: var(--bg-tertiary); outline: none; border-radius: 3px; border: 1px solid var(--glass-border);">
+              <span style="font-size: 0.8rem; color: var(--color-banana); font-family: monospace;" id="lbl-morse-de">4.5 eV</span>
+            </div>
+          </div>
+          <div style="background: var(--bg-tertiary); padding: 12px; border-radius: var(--border-radius-sm); border: 1px solid var(--glass-border); font-family: monospace; font-size: 0.85rem; line-height: 1.6;">
+            <div>Hydrogenic Overlap Integral S(R): <span id="morse-overlap" style="color: var(--color-bio); font-weight: bold;">0.59 (Strong)</span></div>
+            <div>Potential Energy V(R): <span id="morse-pot" style="color: var(--color-quantum); font-weight: bold;">-4.50 eV (Bond Stable)</span></div>
+            <div>Diatomic State: <span id="morse-state" style="color: var(--color-banana); font-weight: bold;">Equilibrium Bound</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h4>🍌 BBIT</h4>
+        <p>
+          Banana Boy Institute of Technology is the premier research university in Dholakpur, pioneering advanced quantum engineering, human bio-energy dynamics, and multi-dimensional pigeon science.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html">Kabutar Science</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Research Links</h5>
+        <ul>
+          <li><a href="bio-energy.html#proofs">Bio-Energy Proofs</a></li>
+          <li><a href="faculty.html#locator">Sir Locator Portal</a></li>
+          <li><a href="canteen.html">BBIT Canteen Menu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBIT. Located in Dholakpur. Headed by 4 Dimensional Sir. Website hosted for free using <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    function calcQCD() {
+      const r = parseFloat(document.getElementById('qcd-r').value) / 100.0; // 0.1 to 2.5 fm
+      const alpha = parseFloat(document.getElementById('qcd-alpha').value) / 100.0; // 0.1 to 1.5
+      
+      document.getElementById('lbl-qcd-r').textContent = r.toFixed(2) + ' fm';
+      document.getElementById('lbl-qcd-alpha').textContent = alpha.toFixed(2);
+      
+      // Potential components
+      const k = 1.0; // String tension in GeV/fm
+      const coulomb = - (4.0 / 3.0) * (alpha * 0.1973) / r; // GeV*fm conversion
+      const stringVal = k * r;
+      const total = coulomb + stringVal;
+      
+      // Force: F(r) = 4/3 * alpha * hbar*c / r^2 + k
+      const force = (4.0 / 3.0) * (alpha * 0.1973) / (r * r) + k;
+      
+      document.getElementById('qcd-coulomb').textContent = coulomb.toFixed(3) + ' GeV';
+      document.getElementById('qcd-string').textContent = stringVal.toFixed(3) + ' GeV';
+      document.getElementById('qcd-total').textContent = total.toFixed(3) + ' GeV';
+      document.getElementById('qcd-force').textContent = force.toFixed(3) + ' GeV/fm';
+    }
+
+    function calcZeeman() {
+      const b = parseFloat(document.getElementById('zeeman-b').value) / 10.0; // 0 to 15.0 Tesla
+      const g = parseFloat(document.getElementById('zeeman-g').value);
+      
+      document.getElementById('lbl-zeeman-b').textContent = b.toFixed(1) + ' T';
+      
+      const uB = 5.7883818e-5; // eV / T
+      const deltaE = 0.5 * g * uB * b * 1000.0; // in meV
+      
+      const up = deltaE;
+      const down = -deltaE;
+      const gap = 2.0 * deltaE;
+      
+      document.getElementById('zeeman-up').textContent = '+' + up.toFixed(3) + ' meV';
+      document.getElementById('zeeman-down').textContent = down.toFixed(3) + ' meV';
+      document.getElementById('zeeman-gap').textContent = gap.toFixed(3) + ' meV';
+    }
+
+    function calcMorse() {
+      const r = parseFloat(document.getElementById('morse-r').value) / 10.0; // 1.0 to 6.0 a_0
+      const de = parseFloat(document.getElementById('morse-de').value) / 10.0; // 1.0 to 10.0 eV
+      
+      document.getElementById('lbl-morse-r').textContent = r.toFixed(1) + ' a_0';
+      document.getElementById('lbl-morse-de').textContent = de.toFixed(1) + ' eV';
+      
+      // Overlap S(R) = e^-R (1 + R + R^2/3)
+      const overlap = Math.exp(-r) * (1.0 + r + (r * r) / 3.0);
+      
+      // Morse: V(R) = De * ( (1 - e^-a(R - Re))^2 - 1 ) where Re = 2.0, a = 1.2
+      const re = 2.0;
+      const a = 1.2;
+      const expTerm = Math.exp(-a * (r - re));
+      const morseVal = de * (Math.pow(1 - expTerm, 2) - 1.0);
+      
+      let stateName = "Stable Covalent Bond";
+      if (r > 4.5) {
+        stateName = "Dissociated Atoms";
+      } else if (r < 1.4) {
+        stateName = "Nucleonic Coulomb Repulsion";
+      } else if (Math.abs(r - re) < 0.25) {
+        stateName = "Equilibrium Bound State";
+      }
+      
+      document.getElementById('morse-overlap').textContent = overlap.toFixed(3) + (overlap > 0.4 ? ' (Strong)' : (overlap > 0.1 ? ' (Medium)' : ' (Negligible)'));
+      document.getElementById('morse-pot').textContent = morseVal.toFixed(3) + ' eV';
+      document.getElementById('morse-state').textContent = stateName;
+      
+      const lbl = document.getElementById('morse-state');
+      if (stateName.includes("Stable") || stateName.includes("Equilibrium")) {
+        lbl.style.color = "var(--color-bio)";
+      } else if (stateName.includes("Repulsion")) {
+        lbl.style.color = "#ff2860";
+      } else {
+        lbl.style.color = "var(--color-banana)";
+      }
+    }
+
+    // Run initial calculations
+    window.addEventListener('DOMContentLoaded', () => {
+      calcQCD();
+      calcZeeman();
+      calcMorse();
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

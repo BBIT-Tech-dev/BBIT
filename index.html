@@ -28,6 +28,8 @@
           <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
           <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
           <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -53,6 +55,8 @@
         <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
         <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
         <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
     </nav>
@@ -73,7 +77,28 @@
       </p>
       <div class="hero-btns">
         <a href="bee.html" class="cta-btn" id="hero-cta-quiz">Attempt BEE 2026</a>
-        <a href="bio-energy.html" class="secondary-btn" id="hero-cta-sim">Explore Bio-Energy</a>
+        <a href="simulator.html" class="secondary-btn" id="hero-cta-sim" style="border-color: var(--color-quantum); color: var(--color-quantum); box-shadow: var(--shadow-neon-blue);">Run 4D Simulator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dholakpur Breaking News Ticker -->
+  <section id="news-ticker-section" style="padding: 0; background: rgba(255, 204, 0, 0.06); border-top: 1px solid rgba(255, 204, 0, 0.15); border-bottom: 1px solid rgba(255, 204, 0, 0.15); overflow: hidden; position: relative; z-index: 10;">
+    <div style="display: flex; align-items: center; height: 46px;">
+      <div style="background: linear-gradient(135deg, var(--color-banana), #ffb700); color: var(--text-dark); font-family: var(--font-heading); font-weight: 700; font-size: 0.75rem; padding: 0 16px; height: 100%; display: flex; align-items: center; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; z-index: 2; flex-shrink: 0;">📡 DHOLAKPUR LIVE</div>
+      <div class="ticker-wrap">
+        <div class="ticker-content" id="ticker-content">
+          <span class="ticker-item">BREAKING: 4D Sir spotted simultaneously at 7 chai tapris. Physicists baffled.</span>
+          <span class="ticker-item">URGENT: Carrier pigeon delivers PhD thesis 3 days before it was written. Timeline integrity compromised.</span>
+          <span class="ticker-item">LIVE: Siddhi Sai hovering 12cm off canteen floor. NCERT unable to explain.</span>
+          <span class="ticker-item">UPDATE: Mazin solves 10,000th calculus problem. Reaches spiritual enlightenment. Still not HOD's favorite.</span>
+          <span class="ticker-item">ALERT: Lohit balances chemical equation by staring at it. Bunsen burners across campus ignite in solidarity.</span>
+          <span class="ticker-item">FLASH: C.C. performs midnight ritual in Lecture Hall 4B. Holographic 4D Sir appears briefly, says "not impressed", vanishes.</span>
+          <span class="ticker-item">EXCLUSIVE: Newton's ghost files formal complaint against BBIT. Case dismissed — filed in 3D court, has no jurisdiction.</span>
+          <span class="ticker-item">DEVELOPING: Student caught using a ruler in Bio-Energy lab. Banned from Dholakpur for "linear thinking".</span>
+          <span class="ticker-item">JUST IN: Canteen samosa found to contain infinite potato. Health inspector trapped in 4th dimension trying to measure it.</span>
+          <span class="ticker-item">CONFIRMED: BEE 2026 exam answer key leaked. All answers are imaginary numbers. Nobody can verify.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -147,6 +172,39 @@
     </div>
   </section>
 
+  <!-- BBIT Campus Placement Cell -->
+  <section id="placement-cell" style="background: var(--bg-secondary); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <div class="section-header" style="margin-bottom: 30px;">
+        <h2>🎰 BBIT Campus Placement Cell</h2>
+        <p>Our placement record is unrivaled in any dimension. Click to discover your campus placement offer.</p>
+      </div>
+      
+      <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--border-radius-lg); padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+          <div>
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Company</div>
+            <div class="slot-window"><div class="slot-reel" id="slot-company"><span>—</span></div></div>
+          </div>
+          <div>
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Role</div>
+            <div class="slot-window"><div class="slot-reel" id="slot-role"><span>—</span></div></div>
+          </div>
+          <div>
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">CTC Package</div>
+            <div class="slot-window"><div class="slot-reel" id="slot-ctc"><span>—</span></div></div>
+          </div>
+        </div>
+        
+        <button class="cta-btn" id="btn-spin-placement" onclick="spinPlacement()" style="font-size: 1.05rem; padding: 14px 30px;">🎰 Reveal My Campus Offer</button>
+        
+        <div id="placement-comment" style="margin-top: 20px; display: none; padding: 15px; background: rgba(0,0,0,0.3); border: 1px dashed var(--glass-border); border-radius: var(--border-radius-md);">
+          <p id="placement-comment-text" style="color: var(--color-banana); font-style: italic; font-size: 0.9rem; line-height: 1.5;"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Call to action -->
   <section id="cta" style="text-align: center;">
     <div class="container">
@@ -175,6 +233,8 @@
           <li><a href="kabutar-science.html">Kabutar Science</a></li>
           <li><a href="faculty.html">Faculty & Disciples</a></li>
           <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
           <li><a href="apply.html">Apply Now</a></li>
         </ul>
       </div>
@@ -192,5 +252,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

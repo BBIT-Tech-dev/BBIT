@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4D Sir & Molecular Bio-Energy Simulator | BBIT</title>
+  <meta name="description" content="Interactive multi-dimensional simulator. Visualize how HOD 4 Dimensional Sir exists in space-time superposition and influences the bio-energy spins of proton-electron molecules.">
+  <link rel="stylesheet" href="style.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Background Orbs and Grid -->
+  <div class="bg-grid"></div>
+  <div class="orb orb-cyan" style="top: 20%; left: 10%;"></div>
+  <div class="orb orb-yellow" style="bottom: 15%; right: 10%;"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="bbit-logo">
+        <span class="logo-icon">🍌</span> BBIT
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html" id="nav-home">Home</a></li>
+          <li><a href="bio-energy.html" id="nav-bio">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html" id="nav-kabutar">Kabutar Science</a></li>
+          <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
+          <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
+          <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li class="active"><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
+        </ul>
+      </nav>
+      <div class="header-right-group">
+        <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="toggleMobileSidebar()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Navigation -->
+  <div id="mobile-sidebar" class="mobile-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🍌</span> BBIT
+      </a>
+      <button class="sidebar-close" onclick="toggleMobileSidebar()">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html" onclick="toggleMobileSidebar()">Home</a></li>
+        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy Dept</a></li>
+        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar Science</a></li>
+        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
+        <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
+        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li class="active"><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
+        <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="hero-tag">Superposition Sandbox</div>
+      <h2>4D Space-Time & Molecular Bio-Energy Simulator</h2>
+      <p>Calibrate your spatial parameters to observe HOD 4 Dimensional Sir's multi-timeline wavefunction collapse and its dynamic alignment of molecular bio-energy spins.</p>
+    </div>
+  </section>
+
+  <!-- Simulator Main Area -->
+  <section style="padding-top: 40px;">
+    <div class="container">
+      <div class="simulator-grid">
+        
+        <!-- Left Column: Visualization Canvas -->
+        <div class="canvas-panel">
+          <div class="canvas-header">
+            <span class="canvas-title">🌀 Observation Screen: Temporal Superposition Grid</span>
+            <span class="canvas-status" id="simulation-status">Active</span>
+          </div>
+          <div class="canvas-container">
+            <canvas id="simulator-canvas"></canvas>
+          </div>
+          <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            💡 **Visualization Key**: The cyan grid represents the rotating 4D tesseract. The glowing **🧑‍🏫** icons are superimposed instances of **4 Dimensional Sir** along the W-axis. The red nodes are molecular protons, and orbiting cyan sparks are electrons. Green lines trace active human bio-energy currents.
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Sliders & Panels -->
+        <div class="controls-panel">
+          
+          <!-- Slider Card -->
+          <div class="control-card">
+            <h3><span class="logo-icon">🎛️</span> Calibration Console</h3>
+            
+            <!-- Scale Selection Tabs -->
+            <div class="scale-tabs" style="display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid var(--glass-border); padding-bottom: 16px;">
+              <button id="tab-subatomic" class="scale-tab-btn" onclick="changeScaleMode('subatomic')">🌀 Subatomic</button>
+              <button id="tab-atomic" class="scale-tab-btn active" onclick="changeScaleMode('atomic')">⚛️ Atomic</button>
+              <button id="tab-molecular" class="scale-tab-btn" onclick="changeScaleMode('molecular')">🧬 Molecular</button>
+            </div>
+
+            <!-- Subatomic Context Controls -->
+            <div id="subatomic-controls" style="display: none;">
+              <!-- Baryon Dropdown -->
+              <div class="slider-group">
+                <div class="slider-info">
+                  <span class="slider-label">🎨 Select Subatomic Baryon</span>
+                </div>
+                <select id="select-baryon" class="simulator-select" onchange="changeBaryonState(this.value)">
+                  <option value="proton">Proton (uud Quark Complex)</option>
+                  <option value="neutron">Neutron (udd Quark Complex)</option>
+                  <option value="pion">Pion (u-anti-d Valence Pair)</option>
+                </select>
+              </div>
+              <!-- Color Coupling Constant slider -->
+              <div class="slider-group">
+                <div class="slider-info">
+                  <span class="slider-label">⛓️ Color Coupling Constant (g_s)</span>
+                  <span class="slider-value" id="val-coupling">1.00</span>
+                </div>
+                <input type="range" id="slider-coupling" class="slider-input quantum-slider" min="10" max="250" value="100">
+              </div>
+            </div>
+
+            <!-- Atomic Context Controls -->
+            <div id="atomic-controls" style="display: block;">
+              <!-- Orbital Selection Dropdown -->
+              <div class="slider-group">
+                <div class="slider-info">
+                  <span class="slider-label">⚛️ Select Atomic Orbital State</span>
+                </div>
+                <select id="select-orbital" class="simulator-select" onchange="changeOrbitalState(this.value)">
+                  <option value="1s">1s (Spherical Ground State)</option>
+                  <option value="2p">2p_z (Polar Dumbbell State)</option>
+                  <option value="3d">3d_xy (Quadrupole Cloverleaf)</option>
+                  <option value="5d">5d (Banana-Aura Superposition State)</option>
+                </select>
+              </div>
+
+              <!-- Quantum Numbers Display Grid -->
+              <div class="quantum-numbers-grid" style="display: flex; gap: 10px; margin-bottom: 20px; background: var(--bg-tertiary); padding: 10px; border-radius: var(--border-radius-md); border: 1px solid var(--glass-border); text-align: center;">
+                <div style="flex: 1;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Principal (n)</div>
+                  <div id="qnum-n" style="font-family: var(--font-heading); font-weight: 700; color: var(--color-quantum);">1</div>
+                </div>
+                <div style="flex: 1; border-left: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border);">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Azimuthal (l)</div>
+                  <div id="qnum-l" style="font-family: var(--font-heading); font-weight: 700; color: var(--color-quantum);">0</div>
+                </div>
+                <div style="flex: 1;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Magnetic (m)</div>
+                  <div id="qnum-m" style="font-family: var(--font-heading); font-weight: 700; color: var(--color-quantum);">0</div>
+                </div>
+              </div>
+
+              <!-- Zeeman Splitting Slider -->
+              <div class="slider-group">
+                <div class="slider-info">
+                  <span class="slider-label">🧲 Zeeman Effect Magnetic Field (B)</span>
+                  <span class="slider-value" id="val-magnetic">0.00 T</span>
+                </div>
+                <input type="range" id="slider-magnetic" class="slider-input quantum-slider" min="0" max="100" value="0">
+              </div>
+            </div>
+
+            <!-- Molecular Context Controls -->
+            <div id="molecular-controls" style="display: none;">
+              <!-- Diatomic State Dropdown -->
+              <div class="slider-group">
+                <div class="slider-info">
+                  <span class="slider-label">🧬 Diatomic LCAO Molecular State</span>
+                </div>
+                <select id="select-molecular" class="simulator-select" onchange="changeMolecularState(this.value)">
+                  <option value="bonding">σ_1s (Symmetric Bonding Orbital)</option>
+                  <option value="antibonding">σ*_1s (Anti-symmetric Antibonding Orbital)</option>
+                </select>
+              </div>
+              <!-- Inter-nuclear separation distance -->
+              <div class="slider-group">
+                <div class="slider-info">
+                  <span class="slider-label">📏 Inter-nuclear Distance (R / a_0)</span>
+                  <span class="slider-value" id="val-distance">2.00 a_0</span>
+                </div>
+                <input type="range" id="slider-distance" class="slider-input bio-slider" min="10" max="50" value="20">
+              </div>
+            </div>
+
+            <!-- Slider 1: Superposition Coherence -->
+            <div class="slider-group">
+              <div class="slider-info">
+                <span class="slider-label">🧬 Superposition Coherence (Psi)</span>
+                <span class="slider-value" id="val-coherence">7 Timelines</span>
+              </div>
+              <input type="range" id="slider-coherence" class="slider-input quantum-slider" min="1" max="14" value="7">
+            </div>
+
+            <!-- Slider 2: W-Axis Dimension Shift -->
+            <div class="slider-group">
+              <div class="slider-info">
+                <span class="slider-label">🌌 W-Dimension Translation (Offset)</span>
+                <span class="slider-value" id="val-offset">0.00 w</span>
+              </div>
+              <input type="range" id="slider-offset" class="slider-input quantum-slider" min="-100" max="100" value="0">
+            </div>
+
+            <!-- Slider 3: Respect Resonance (Guru-Disciple Induction) -->
+            <div class="slider-group">
+              <div class="slider-info">
+                <span class="slider-label">🦶 Aura Respect Coefficient (Respect)</span>
+                <span class="slider-value" id="val-respect">10%</span>
+              </div>
+              <input type="range" id="slider-respect" class="slider-input bio-slider" min="0" max="100" value="10">
+            </div>
+
+            <!-- Slider 4: System Temperature -->
+            <div class="slider-group">
+              <div class="slider-info">
+                <span class="slider-label" id="label-temperature">🌡️ System Temperature / Thermal Noise</span>
+                <span class="slider-value" id="val-temperature">300 K</span>
+              </div>
+              <input type="range" id="slider-temperature" class="slider-input" min="0" max="600" value="300">
+            </div>
+
+            <!-- Interactive Actions Group -->
+            <div class="btn-group-row">
+              <button id="btn-collapse" class="simulator-btn" onclick="triggerCollapse()">💥 Collapse Wavefunction</button>
+              <button id="btn-superimpose" class="simulator-btn active" onclick="triggerSuperimpose()">🌀 Superimpose Sir</button>
+              <button id="btn-pigeons" class="simulator-btn" onclick="togglePigeonEntanglement()">🐦 Avian Link</button>
+            </div>
+
+            <!-- Extra Controls (Auto-Rotate & Audio Toggles) -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--glass-border); font-size: 0.85rem; color: var(--text-muted);">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                <input type="checkbox" id="check-autorotate" checked style="accent-color: var(--color-quantum); cursor: pointer;">
+                🔄 Auto-Rotate Camera
+              </label>
+              <button id="btn-audio" onclick="toggleAudio()" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; transition: var(--transition-smooth);" title="Toggle Quantum Synthesizer Sound">
+                🔇 Sound Off
+              </button>
+            </div>
+          </div>
+
+          <!-- Diagnostics Dashboard -->
+          <div class="control-card" style="padding: 24px;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 16px; padding-bottom: 8px;"><span class="logo-icon">📊</span> Space-Time Diagnostics</h3>
+            
+            <div class="diagnostics-panel">
+              <div class="diag-item">
+                <div class="diag-label">Bio-Energy Velocity (v_flow)</div>
+                <div class="diag-value" id="diag-velocity">i * c * 0.10</div>
+              </div>
+              <div class="diag-item">
+                <div class="diag-label">Molecule Alignment</div>
+                <div class="diag-value" id="diag-alignment">10.0%</div>
+              </div>
+              <div class="diag-item">
+                <div class="diag-label">BEE Calculated Rank</div>
+                <div class="diag-value" id="diag-rank">i</div>
+              </div>
+              <div class="diag-item">
+                <div class="diag-label">Superposition Entropy</div>
+                <div class="diag-value" id="diag-entropy">0.90 J/K</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hacky Terminal Card -->
+          <div class="console-card">
+            <div class="console-header">
+              <span class="console-title">💚 BBIT Quantum Debug Console</span>
+              <span>Online</span>
+            </div>
+            <div class="console-feed" id="console-feed-log">
+              <div class="console-line system">[SYSTEM] Observation matrix calibrated to Dholakpur local spacetime.</div>
+              <div class="console-line system">[SYSTEM] Molecule independent bio-energy vector fields operational.</div>
+              <div class="console-line">[LOG] 4D Sir detected superimposing over Tea Tapri and Lecture Hall 4B.</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Math Explanation Section -->
+  <section id="proofs" style="background: var(--bg-secondary); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 60px 0;">
+    <div class="container">
+      <div class="math-block-container" style="margin: 0;">
+        <h3>Influence on Proton-Electron Molecules</h3>
+        <p class="math-explanation" style="max-width: 750px;">
+          As detailed in **Theorem 8 (Guru-Disciple Respect Induction Resonance)**, when student respect quotient (\(\gamma_{\text{respect}}\)) increases, bio-energy induction aligns the quantum spin coordinates of molecules. The orbits collapse from chaotic 3D spheres into perfectly coherent 2D arrays, proving that 4D Sir's consciousness controls atomic matter.
+        </p>
+        <div class="math-block" style="margin-bottom: 0; font-size: 1.15rem;">
+          $$\vec{J}_{\text{induction}} = \gamma_{\text{respect}} \left( \vec{r}_{\text{hand}} - \vec{r}_{\text{mentor\_feet}} \right) \cdot \exp \left( \Theta_{\text{4D\_Sir}} - \Theta_{\text{student}} \right)$$
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h4>🍌 BBIT</h4>
+        <p>
+          Banana Boy Institute of Technology is the premier research university in Dholakpur, pioneering advanced quantum engineering, human bio-energy dynamics, and multi-dimensional pigeon science.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html">Kabutar Science</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Research Links</h5>
+        <ul>
+          <li><a href="bio-energy.html#proofs">Bio-Energy Proofs</a></li>
+          <li><a href="faculty.html#locator">Sir Locator Portal</a></li>
+          <li><a href="canteen.html">BBIT Canteen Menu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBIT. Located in Dholakpur. Headed by 4 Dimensional Sir. Website hosted for free using <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

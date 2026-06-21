@@ -28,6 +28,8 @@
           <li class="active"><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
           <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
           <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -53,6 +55,8 @@
         <li class="active"><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
         <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
         <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
     </nav>
@@ -114,7 +118,7 @@
         <p>The Outer Circle: Students of 4D Sir who, though not formally enrolled in BBIT, have dedicated their lives, sanity, and math books to his teachings.</p>
       </div>
 
-      <div class="grid-3" style="margin-bottom: 60px;">
+      <div class="grid-4" style="margin-bottom: 60px;">
         <!-- Student 1: Lohit -->
         <div class="card" onclick="openFacultyModal('lohit')" style="cursor: pointer; border-color: var(--color-bio);">
           <div class="card-icon">🧪</div>
@@ -159,6 +163,21 @@
             <li>Admissions Hopeful</li>
           </ul>
         </div>
+
+        <!-- Student 4: C.C. -->
+        <div class="card" onclick="openFacultyModal('cc')" style="cursor: pointer; border-color: var(--color-quantum);">
+          <div class="card-icon">📚</div>
+          <h3>C.C.</h3>
+          <p><strong>Rankers Books Specialist</strong></p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">
+            4D Sir's most devoted disciple. Spends all day memorizing rankers prep books and conducting complex rituals for 4D Sir's attention.
+          </p>
+          <ul class="card-list">
+            <li>Rankers Prep Specialist</li>
+            <li>Extreme Daily Rituals</li>
+            <li>Eternal Envy of Banana Boy</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Space-Time Locator Portal -->
@@ -175,7 +194,7 @@
             <span class="faculty-badge" style="color: var(--color-quantum); border-color: var(--color-quantum); background: rgba(0, 240, 255, 0.08); align-self: flex-start;">Real-Time Status</span>
             <h3>4 Dimensional Sir Locator</h3>
             <p>
-              Since 4 Dimensional Sir exists in superposition, use this console to calibrate your observation state and collapse his wave function into a specific location.
+              Since 4 Dimensional Sir exists in superposition, use this console to calibrate your observation state and collapse his wave function. For full multi-timeline rendering and molecular alignment simulation, launch the <a href="simulator.html" style="color: var(--color-quantum); text-decoration: underline; font-weight: 600; text-shadow: 0 0 10px var(--color-quantum-glow);">Live 4D Simulator Portal</a>.
             </p>
             
             <div class="dimensional-portal">
@@ -196,6 +215,50 @@
           </div>
         </div>
       </div>
+
+      <!-- 4D Sir Attendance Paradox -->
+      <div style="margin-top: 60px;">
+        <div class="section-header" style="text-align: left; margin-bottom: 25px;">
+          <span class="bjee-badge" style="background: rgba(0, 240, 255, 0.1); color: var(--color-quantum); border-color: rgba(0, 240, 255, 0.2); font-size: 0.8rem; padding: 4px 10px; border-radius: 4px;">Quantum Attendance</span>
+          <h3 style="margin-top: 10px;">🧑‍🏫 4D Sir's Attendance Paradox</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; margin-top: 5px;">
+            4D Sir is simultaneously marked present in all classrooms below. Click a room to "observe" him — but he'll vanish from everywhere else.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center; margin-bottom: 15px;">
+          <div style="font-size: 0.82rem; color: var(--text-muted);">Observations today: <strong id="observe-count" style="color: var(--color-quantum);">0</strong></div>
+          <div style="font-size: 0.82rem; color: var(--text-muted);">Sir escaped: <strong id="escape-count" style="color: var(--color-banana);">0</strong> times</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted);">Current state: <strong id="superposition-state" style="color: var(--color-bio);">Superposition (all rooms)</strong></div>
+        </div>
+
+        <div class="classroom-grid" id="classroom-grid">
+          <!-- Generated by JS -->
+        </div>
+        <div id="attendance-msg" style="margin-top: 15px; padding: 12px; background: rgba(0,0,0,0.3); border: 1px dashed var(--glass-border); border-radius: var(--border-radius-md); font-size: 0.88rem; color: var(--text-muted); display: none; text-align: center;"></div>
+      </div>
+
+      <!-- C.C.'s Jealousy Live Feed -->
+      <div style="margin-top: 60px;">
+        <div class="section-header" style="text-align: left; margin-bottom: 20px;">
+          <span class="bjee-badge" style="background: rgba(255, 204, 0, 0.1); color: var(--color-banana); border-color: rgba(255, 204, 0, 0.2); font-size: 0.8rem; padding: 4px 10px; border-radius: 4px;">Live Internal Feed</span>
+          <h3 style="margin-top: 10px;">💬 C.C.'s Internal Monologue — Live</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; margin-top: 5px;">
+            Real-time transcript of C.C.'s thoughts as he watches Siddhi Sai remain HOD's undisputed favorite.
+          </p>
+        </div>
+
+        <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--border-radius-lg); padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative; overflow: hidden;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+            <span style="font-size: 0.85rem; color: var(--color-banana); font-family: var(--font-heading);">📚 C.C.'s Brain (Unfiltered)</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">🔴 LIVE</span>
+          </div>
+          <div class="jealousy-feed" id="jealousy-feed">
+            <!-- Lines appear via JS -->
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -216,6 +279,8 @@
           <li><a href="kabutar-science.html">Kabutar Science</a></li>
           <li><a href="faculty.html">Faculty & Disciples</a></li>
           <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
           <li><a href="apply.html">Apply Now</a></li>
         </ul>
       </div>

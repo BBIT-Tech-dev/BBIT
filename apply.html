@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admissions Application | BBIT</title>
-  <meta name="description" content="Official admissions application portal for BBIT Dholakpur. Applications and qualification requirements launch on 21 June 2026.">
+  <meta name="description" content="Official admissions application portal for BBIT Dholakpur. Submit your candidate coordinates and verify your bio-energy credentials for BEE 2026.">
   <link rel="stylesheet" href="style.css">
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
@@ -29,6 +29,8 @@
           <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
           <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
           <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -54,6 +56,8 @@
         <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
         <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
         <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
         <li style="margin-top: 20px;" class="active"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
     </nav>
@@ -63,9 +67,9 @@
   <!-- Subpage Hero -->
   <section class="subpage-hero">
     <div class="container">
-      <div class="hero-tag">Portal Status: Pending</div>
-      <h2>Admissions Application</h2>
-      <p>Official registration for BEE 2026 admissions. Applications open and qualification metrics will be revealed on 21 June 2026.</p>
+      <div class="hero-tag" style="background: rgba(57, 255, 20, 0.1); color: var(--color-bio); border-color: rgba(57, 255, 20, 0.3);">Portal Status: Active</div>
+      <h1>Admissions Application</h1>
+      <p>Official registration portal for BEE 2026 admissions. Submit your coordinates and verify your bio-energy credentials below.</p>
     </div>
   </section>
 
@@ -73,61 +77,175 @@
   <section id="apply-content">
     <div class="container" style="max-width: 800px;">
       
-      <!-- Countdown Clock -->
-      <div class="stat-glow-box" style="margin-bottom: 50px; border-color: var(--color-banana); box-shadow: var(--shadow-neon-yellow);">
-        <div id="countdown-timer" style="font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; color: var(--color-banana); text-shadow: 0 0 10px var(--color-banana-glow);">00h : 00m : 00s</div>
-        <div class="stat-glow-label">Until Applications & Qualifications Launch (21 June 2026)</div>
+      <!-- Portal Active Status -->
+      <div class="stat-glow-box" style="margin-bottom: 50px; border-color: var(--color-bio); box-shadow: var(--shadow-neon-green);">
+        <div id="countdown-timer" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-bio); text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);">● PORTAL UNLOCKED & ACTIVE</div>
+        <div class="stat-glow-label" id="countdown-label">BEE 2026 Admissions are open. Wavefunction collapse active.</div>
       </div>
 
-      <!-- Locked Info Card -->
-      <div class="card" style="margin-bottom: 40px; border-color: var(--glass-border);">
-        <h3 style="font-family: var(--font-heading); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 1.5rem;">🔒</span> Application Window Closed
+      <!-- Decrypted Qualification Card -->
+      <div class="card" id="locked-info-card" style="margin-bottom: 40px; border-color: var(--glass-border);">
+        <h3 style="font-family: var(--font-heading); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--color-banana);">
+          <span style="font-size: 1.5rem;">🔓</span> Decrypted Admission Matrix (BEE 2026)
         </h3>
         <p style="color: var(--text-muted); margin-bottom: 20px;">
-          The online application portal is currently locked. The official **BEE Advanced qualification matrix** (detailing required bio-energy flow velocity thresholds, NCERT Xtract Chemistry score thresholds, and minimum mentor feet-touching respect quotients) will be fully calculated and revealed on **21 June 2026**.
+          Siddhi Sai's cloud pigeon cluster has completed the multi-timeline bio-energy resonance calibration. The minimum coordinate thresholds required to secure admission to BBIT's incoming batch are:
         </p>
-        
-        <!-- Email Alert Form -->
-        <div class="dimensional-portal" style="background: var(--bg-secondary);">
-          <h4 style="font-family: var(--font-heading); margin-bottom: 10px;">🔔 Get a Space-Time Launch Alert</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Enter your email to receive an instant aura ping the moment the Dholakpur portal unlocks.</p>
-          <div style="display: flex; gap: 10px;">
-            <input type="email" placeholder="student@dholakpur.edu" style="flex-grow: 1; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: var(--text-main); padding: 12px; border-radius: var(--border-radius-md); outline: none;">
-            <button class="cta-btn" onclick="alert('Aura ping registered! Check your third-eye inbox on 21 June.')">Notify Me</button>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px;">
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 15px; border-radius: var(--border-radius-md); text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Bio-Energy Flow</div>
+            <div style="font-size: 1.4rem; font-weight: bold; color: var(--color-bio); margin-top: 5px;">&ge; 14.7 m/s</div>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 15px; border-radius: var(--border-radius-md); text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Chemistry Score</div>
+            <div style="font-size: 1.4rem; font-weight: bold; color: var(--color-quantum); margin-top: 5px;">&ge; 90.00 %ile</div>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 15px; border-radius: var(--border-radius-md); text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Mentors' Feet Touched</div>
+            <div style="font-size: 1.4rem; font-weight: bold; color: var(--color-banana); margin-top: 5px;">&ge; 108 Taps</div>
           </div>
         </div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; font-style: italic;">
+          *Note: Securing a real Rank on the BEE Entrance Exam remains ground for immediate disqualification. Real ranks imply a three-dimensional brain coordinate limitation. Make sure your answers are in complex superposition.
+        </p>
       </div>
 
-      <!-- Preview Locked Form -->
-      <div class="calculator-card" style="opacity: 0.4; pointer-events: none; border-color: var(--glass-border); box-shadow: none;">
-        <h3 class="calc-title"><span class="logo-icon">📝</span> Application Form Preview</h3>
+      <!-- Application Form -->
+      <div class="calculator-card" id="application-form-card" style="border-color: var(--glass-border); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);">
+        <h3 class="calc-title" id="form-title" style="color: var(--color-bio); text-shadow: var(--shadow-neon-green);"><span class="logo-icon">📝</span> Official Application Portal (BEE 2026)</h3>
         
-        <div class="form-group">
-          <label>Full Legal Name (General Coordinates)</label>
-          <input type="text" placeholder="Disabled until 21 June" disabled style="width: 100%; background: var(--bg-secondary); border: 1px solid var(--glass-border); padding: 12px; border-radius: var(--border-radius-md);">
-        </div>
+        <form id="bbit-apply-form" onsubmit="submitBbitApplication(event)">
+          <div class="form-group">
+            <label for="app-name">Full Legal Name (General Coordinates)</label>
+            <input type="text" id="app-name" placeholder="e.g. Varun Kumar" required style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: #fff; padding: 12px; border-radius: var(--border-radius-md); outline: none; font-size: 0.95rem; font-family: var(--font-body);">
+          </div>
 
-        <div class="form-group">
-          <label>Desired Department of Research</label>
-          <select disabled>
-            <option>Department of Human Bio-Energy Flow</option>
-            <option>Department of Kabutar Science</option>
-            <option>Quantum Teleportation Division</option>
-          </select>
-        </div>
+          <div class="form-group">
+            <label for="app-roll">Dholakpur Spacetime Coordinates (BEE Roll Number)</label>
+            <input type="text" id="app-roll" placeholder="e.g. BBIT/2026/IMAG-007" required style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: #fff; padding: 12px; border-radius: var(--border-radius-md); outline: none; font-size: 0.95rem; font-family: var(--font-body);">
+          </div>
 
-        <div class="form-group">
-          <label>NCERT Xtract Chemistry Score (Required for Lohit's Lab)</label>
-          <input type="number" placeholder="Disabled" disabled style="width: 100%; background: var(--bg-secondary); border: 1px solid var(--glass-border); padding: 12px; border-radius: var(--border-radius-md);">
-        </div>
+          <div class="form-group">
+            <label for="app-dept">Desired Department of Research</label>
+            <select id="app-dept" class="simulator-select" style="margin-top: 0; width: 100%; height: auto; padding: 12px; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: #fff; border-radius: var(--border-radius-md); outline: none; font-size: 0.95rem; font-family: var(--font-body);">
+              <option value="bio-energy">Department of Human Bio-Energy Flow</option>
+              <option value="kabutar-science">Department of Kabutar Science (KS)</option>
+              <option value="quantum">Quantum Teleportation & Superposition Division</option>
+              <option value="samosa">Inorganic NCERT Samosa Theory & Ginger Grating</option>
+            </select>
+          </div>
 
-        <div class="form-group">
-          <label>Mentors' Feet Touched Count (Required for Bio-Energy Induction)</label>
-          <input type="number" placeholder="Disabled" disabled style="width: 100%; background: var(--bg-secondary); border: 1px solid var(--glass-border); padding: 12px; border-radius: var(--border-radius-md);">
-        </div>
+          <div class="form-group">
+            <label for="app-chem">NCERT Xtract Chemistry Score (0 - 100 %ile)</label>
+            <input type="number" id="app-chem" min="0" max="100" step="0.01" placeholder="e.g. 99.99" required style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: #fff; padding: 12px; border-radius: var(--border-radius-md); outline: none; font-size: 0.95rem; font-family: var(--font-body);">
+          </div>
 
-        <button class="cta-btn" style="width: 100%; background: var(--bg-tertiary); color: var(--text-muted); cursor: not-allowed;" disabled>Portal Locked</button>
+          <div class="form-group">
+            <label for="app-feet">Mentors' Feet Touched Count (Required FTRQ)</label>
+            <input type="number" id="app-feet" min="0" placeholder="e.g. 108" required style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--glass-border); color: #fff; padding: 12px; border-radius: var(--border-radius-md); outline: none; font-size: 0.95rem; font-family: var(--font-body);">
+          </div>
+
+          <!-- Absolute Loyalty Checkboxes -->
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+            <label style="font-size: 0.75rem; color: var(--color-banana); margin-bottom: 5px; text-transform: uppercase;">Aura & Postulate Alignment Affirmations</label>
+            
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; text-transform: none; letter-spacing: 0;">
+              <input type="checkbox" id="app-check-newton" required style="margin-top: 3px;">
+              <span>I swear to never mention Isaac Newton, linear gravity, or classical physics equations in the presence of HOD 4 Dimensional Sir.</span>
+            </label>
+
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; text-transform: none; letter-spacing: 0;">
+              <input type="checkbox" id="app-check-banana" required style="margin-top: 3px;">
+              <span>I acknowledge that Siddhi Sai is the ultimate Banana Boy and that human bio-energy flows independently of atomic mass.</span>
+            </label>
+
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; text-transform: none; letter-spacing: 0;">
+              <input type="checkbox" id="app-check-failure" required style="margin-top: 3px;">
+              <span>I accept that if I fail the admissions criteria, my molecules may be retrocausally scattered into timeline T-3.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="cta-btn" style="width: 100%; margin-top: 10px; font-size: 1.05rem; padding: 14px; background: rgba(57, 255, 20, 0.15); border: 1px solid var(--color-bio); color: var(--color-bio); box-shadow: var(--shadow-neon-green);">
+            ⚡ Submit Application via Bio-Energy Entanglement
+          </button>
+        </form>
+      </div>
+
+      <!-- Application Result Output (Initially Hidden) -->
+      <div id="app-result-container" style="display: none; margin-top: 30px;">
+        <div id="quantum-certificate-card" class="certificate-card" style="width: 100%; background: radial-gradient(circle at center, rgba(16, 24, 48, 0.95), rgba(8, 12, 24, 0.98)); border: 2px dashed var(--color-bio); padding: 40px; border-radius: var(--border-radius-lg); box-shadow: 0 10px 30px rgba(0,0,0,0.6); position: relative; overflow: hidden; font-family: 'Outfit', sans-serif;">
+          <!-- Watermark -->
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-25deg); opacity: 0.03; font-size: 7rem; pointer-events: none; font-weight: bold; color: var(--color-bio);">BBIT ADMIT</div>
+          
+          <!-- Border Accent -->
+          <div style="position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1px solid rgba(57, 255, 20, 0.1); pointer-events: none;"></div>
+
+          <div style="text-align: center; margin-bottom: 25px; border-bottom: 2px solid rgba(57, 255, 20, 0.15); padding-bottom: 15px;">
+            <h4 style="font-family: var(--font-heading); letter-spacing: 2px; color: var(--color-banana); font-size: 1.35rem; margin-bottom: 2px; text-transform: uppercase;">Banana Boy Institute of Technology</h4>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Admissions Board &bull; Dholakpur Local Jurisdiction</div>
+          </div>
+
+          <div style="text-align: center; margin-bottom: 25px;">
+            <div id="app-status-badge" style="display: inline-block; font-family: var(--font-heading); font-size: 1.25rem; color: var(--color-bio); font-weight: 700; margin-bottom: 12px; padding: 6px 18px; border: 1px solid var(--color-bio); border-radius: 4px; background: rgba(57, 255, 20, 0.05);">STATUS RESOLVED</div>
+            <p id="app-status-comment" style="font-size: 0.95rem; color: var(--text-main); line-height: 1.5; margin: 10px auto; max-width: 600px;">
+              Resolving applicant wavefunction coordinates...
+            </p>
+          </div>
+
+          <!-- Decrypted Details Table -->
+          <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--glass-border); border-radius: var(--border-radius-md); padding: 20px; margin-bottom: 25px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 10px 4px; color: var(--text-muted);">Candidate Identity</td>
+                  <td id="res-student-name" style="padding: 10px 4px; text-align: right; font-weight: bold; color: #fff;">—</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 10px 4px; color: var(--text-muted);">BEE Roll Number</td>
+                  <td id="res-roll" style="padding: 10px 4px; text-align: right; font-family: monospace; color: var(--color-quantum); font-weight: bold;">—</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 10px 4px; color: var(--text-muted);">Assigned Department</td>
+                  <td id="res-major" style="padding: 10px 4px; text-align: right; color: var(--color-banana);">—</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 10px 4px; color: var(--text-muted);">Chemistry Score Matrix</td>
+                  <td id="res-chem" style="padding: 10px 4px; text-align: right; font-family: monospace; color: #fff;">—</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 10px 4px; color: var(--text-muted);">Respect Quotient (FTRQ)</td>
+                  <td id="res-feet" style="padding: 10px 4px; text-align: right; font-family: monospace; color: #fff;">—</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 10px 4px; color: var(--text-muted);">Computed BEE Rank</td>
+                  <td id="res-rank" style="padding: 10px 4px; text-align: right; font-family: monospace; color: var(--color-quantum); font-weight: bold;">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Signatures -->
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 20px;">
+            <div style="text-align: center; width: 45%;">
+              <div style="font-family: 'Great Vibes', cursive, sans-serif; font-size: 1.4rem; color: var(--color-banana); font-style: italic; opacity: 0.8;">Siddhi Sai</div>
+              <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px; margin-top: 5px;">Siddhi Sai<br>(Banana Boy Chancellor)</div>
+            </div>
+            <div style="text-align: center; width: 45%;">
+              <div style="font-family: 'Great Vibes', cursive, sans-serif; font-size: 1.4rem; color: var(--color-quantum); font-style: italic; opacity: 0.8; transform: rotate(-2deg); display: inline-block;">4D Sir</div>
+              <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px; margin-top: 5px;">4 Dimensional Sir<br>(HOD & Dean of Multiverse)</div>
+            </div>
+          </div>
+
+          <!-- Certificate Action Buttons -->
+          <div class="cert-actions" style="margin-top: 35px; display: flex; gap: 15px; justify-content: center;">
+            <button class="cta-btn" onclick="window.print()" style="padding: 12px 25px; font-size: 0.95rem; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--color-quantum); color: var(--color-quantum); box-shadow: var(--shadow-neon-blue); cursor: pointer;">
+              🖨️ Print Transcendent Admission Letter
+            </button>
+            <button class="cta-btn" onclick="resetBbitApplicationForm()" style="padding: 12px 25px; font-size: 0.95rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; cursor: pointer;">
+              🔄 Re-Submit Application
+            </button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -150,6 +268,8 @@
           <li><a href="kabutar-science.html">Kabutar Science</a></li>
           <li><a href="faculty.html">Faculty & Disciples</a></li>
           <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
           <li><a href="apply.html">Apply Now</a></li>
         </ul>
       </div>

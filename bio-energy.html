@@ -29,6 +29,8 @@
           <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
           <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
           <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -54,6 +56,8 @@
         <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
         <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
         <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
     </nav>
@@ -97,6 +101,9 @@
         <p class="math-explanation">
           Below are the core field equations formulated at BBIT proving that human bio-energy currents are mathematically decoupled from atomic mass, establishing a brilliance index that transcends classic relativity constants.
         </p>
+        <div style="text-align: center; margin-bottom: 40px; margin-top: -10px;">
+          <a href="simulator.html" class="cta-btn" style="background: rgba(57, 255, 20, 0.15); border: 1px solid var(--color-bio); color: var(--color-bio); text-shadow: 0 0 10px var(--color-bio-glow); box-shadow: var(--shadow-neon-green); font-size: 1rem; padding: 10px 20px;">⚡ Run Live Molecular Bio-Energy Simulator ⚡</a>
+        </div>
 
         <!-- Theorem 1 -->
         <h4>1. The Matter Decoupling Postulate</h4>
@@ -162,12 +169,55 @@
         </div>
 
         <!-- Theorem 8 -->
-        <h4>8. The Guru-Disciple Charan Sparsh Resonance Postulate</h4>
+        <h4>8. The Guru-Disciple Respect Induction Postulate</h4>
         <p style="color: var(--text-muted); margin-bottom: 12px;">
           Formulated by HOD 4 Dimensional Sir, this theorem proves that for male students, bio-energy flow induction (\(\vec{J}_{\text{induction}}\)) is triggered and exponentially amplified when they touch the feet of a male mentor they perceive as intellectually and dimensionally superior to them:
         </p>
         <div class="math-block">
           $$\vec{J}_{\text{induction}} = \gamma_{\text{respect}} \left( \vec{r}_{\text{hand}} - \vec{r}_{\text{mentor\_feet}} \right) \cdot \exp \left( \Theta_{\text{mentor}} - \Theta_{\text{student}} \right) \quad \text{for } \Theta_{\text{mentor}} > \Theta_{\text{student}}$$
+        </div>
+      </div>
+
+      <!-- Respect Induction Aura Scanner Widget -->
+      <div class="calculator-card" style="margin-top: 50px; margin-bottom: 50px; border-color: var(--color-bio); box-shadow: var(--shadow-neon-green); background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 30px; border-radius: var(--border-radius-lg);">
+        <h3 class="calc-title" style="color: var(--color-bio); text-shadow: 0 0 10px var(--color-bio-glow); font-family: var(--font-heading); margin-bottom: 12px; font-size: 1.4rem;">🦶 Guru-Disciple Respect Induction Scanner</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 25px;">
+          Measure your respect induction quotient (\(\gamma_{\text{respect}}\)) in real-time. Drag the Disciple footprint slowly to align with HOD 4D Sir's feet. Dragging too quickly indicates Newtonian insolence.
+        </p>
+
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+          <!-- Slider Track Column -->
+          <div style="flex: 1.5; min-width: 280px; display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted);">
+              <span>Disciple Hands (Start)</span>
+              <span>HOD 4D Sir's Feet (Target)</span>
+            </div>
+            
+            <!-- Custom Drag Pad -->
+            <div id="respect-track" style="position: relative; height: 60px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 30px; overflow: hidden; display: flex; align-items: center; padding: 0 5px;">
+              <!-- Target Area Indicator -->
+              <div style="position: absolute; right: 5px; width: 60px; height: 50px; background: rgba(57, 255, 20, 0.1); border: 1px dashed var(--color-bio); border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; pointer-events: none; user-select: none;">👣</div>
+              
+              <!-- Progress Bar -->
+              <div id="respect-progress" style="position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: linear-gradient(90deg, rgba(57, 255, 20, 0.05), rgba(57, 255, 20, 0.3)); pointer-events: none;"></div>
+              
+              <!-- Draggable Handle -->
+              <div id="respect-handle" style="position: absolute; left: 5px; width: 50px; height: 50px; background: var(--bg-tertiary); border: 2px solid var(--color-bio); border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; cursor: grab; box-shadow: var(--shadow-neon-green); transition: left 0.05s ease; z-index: 5; user-select: none;">🫳</div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Current Speed: <span id="respect-speed-val" style="color: #fff; font-family: monospace;">0.00</span> m/s</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Alignment: <span id="respect-align-val" style="color: #fff; font-family: monospace;">0</span>%</span>
+            </div>
+          </div>
+
+          <!-- Analysis Panel -->
+          <div style="flex: 1; min-width: 220px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); padding: 20px; border-radius: var(--border-radius-md); min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+            <div id="respect-status-text" style="font-size: 0.92rem; line-height: 1.5; color: var(--text-muted);">
+              <span style="font-size: 2.2rem; display: block; margin-bottom: 10px;">📡</span>
+              Place cursor on the hand <span style="color: var(--color-bio);">🫳</span> and drag towards feet <span style="color: var(--color-bio);">👣</span> to start induction calibration.
+            </div>
+          </div>
         </div>
       </div>
 
@@ -213,6 +263,8 @@
           <li><a href="kabutar-science.html">Kabutar Science</a></li>
           <li><a href="faculty.html">Faculty & Disciples</a></li>
           <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
           <li><a href="apply.html">Apply Now</a></li>
         </ul>
       </div>
@@ -230,5 +282,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

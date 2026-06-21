@@ -29,6 +29,8 @@
           <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
           <li><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
           <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -54,6 +56,8 @@
         <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
         <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
         <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
     </nav>
@@ -88,6 +92,31 @@
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 15px; line-height: 1.4;">
             As proven by Siddhi Sai (the legendary Banana Boy), bio-energy entangled pigeons do not lose data packets unless distracted by premium breadcrumbs.
           </p>
+        </div>
+      </div>
+
+      <!-- Kabutar Science Live Routing Terminal -->
+      <div class="console-card" style="margin-top: 50px; margin-bottom: 50px; border-color: var(--color-quantum); box-shadow: var(--shadow-neon-blue);">
+        <div class="console-header">
+          <span class="console-title" style="color: var(--color-quantum);">🐦 TCPP Avian Routing Terminal v1.0.4-dholakpur</span>
+          <span id="pigeon-terminal-status" style="color: var(--color-quantum); text-shadow: 0 0 8px var(--color-quantum-glow);">ONLINE</span>
+        </div>
+        
+        <div class="console-body" style="display: flex; flex-direction: column; gap: 15px;">
+          <!-- Controls Panel -->
+          <div class="terminal-controls" style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="cta-btn" id="btn-ping-pigeon" onclick="runPigeonTerminalCommand('ping')" style="background: rgba(0, 240, 255, 0.1); border: 1px solid var(--color-quantum); color: var(--color-quantum); box-shadow: none; font-size: 0.85rem; padding: 8px 16px;">⚡ Send Ping via Pigeon</button>
+            <button class="cta-btn" id="btn-scatter-breadcrumbs" onclick="runPigeonTerminalCommand('feed')" style="background: rgba(255, 204, 0, 0.1); border: 1px solid var(--color-banana); color: var(--color-banana); box-shadow: none; font-size: 0.85rem; padding: 8px 16px;">🥖 Scatter Breadcrumbs</button>
+            <button class="cta-btn" id="btn-entangle-wings" onclick="runPigeonTerminalCommand('entangle')" style="background: rgba(57, 255, 20, 0.1); border: 1px solid var(--color-bio); color: var(--color-bio); box-shadow: none; font-size: 0.85rem; padding: 8px 16px;">🌀 Entangle Wing Superposition</button>
+            <button class="cta-btn" onclick="clearPigeonLogs()" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; box-shadow: none; font-size: 0.85rem; padding: 8px 16px;">🧹 Clear Console</button>
+          </div>
+
+          <!-- Console Output Feed -->
+          <div class="console-feed" id="pigeon-console-feed" style="height: 220px; font-size: 0.9rem; line-height: 1.6; background: rgba(0,0,0,0.5); padding: 15px; border-radius: var(--border-radius-md); border: 1px solid var(--glass-border); overflow-y: auto;">
+            <div class="console-line system">[SYSTEM] Terminal initialized. Coherence matched to Dholakpur network.</div>
+            <div class="console-line">[LOG] 14 carrier pigeons currently in flight superposition.</div>
+            <div class="console-line">[INFO] Destination: local tea stall server node.</div>
+          </div>
         </div>
       </div>
 
@@ -159,6 +188,8 @@
           <li><a href="kabutar-science.html">Kabutar Science</a></li>
           <li><a href="faculty.html">Faculty & Disciples</a></li>
           <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
           <li><a href="apply.html">Apply Now</a></li>
         </ul>
       </div>
@@ -176,5 +207,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

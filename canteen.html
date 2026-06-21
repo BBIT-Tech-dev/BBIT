@@ -29,6 +29,8 @@
           <li><a href="faculty.html" id="nav-faculty">Faculty & Disciples</a></li>
           <li class="active"><a href="canteen.html" id="nav-canteen">BBIT Canteen</a></li>
           <li><a href="bee.html" id="nav-bee">BEE Entrance</a></li>
+          <li><a href="simulator.html" id="nav-sim">4D Simulator</a></li>
+          <li><a href="quantum-theory.html" id="nav-theory">Quantum Theory</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -54,6 +56,8 @@
         <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
         <li class="active"><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
         <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display: block; text-align: center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
     </nav>
@@ -154,6 +158,72 @@
         </div>
       </div>
 
+      <!-- Banana-Pay Checkout Simulator -->
+      <div class="calculator-card" style="margin-top: 50px; margin-bottom: 50px; border-color: var(--color-banana); box-shadow: var(--shadow-neon-yellow); background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 30px; border-radius: var(--border-radius-lg);">
+        <h3 class="calc-title" style="color: var(--color-banana); text-shadow: 0 0 10px var(--color-banana-glow); font-family: var(--font-heading); margin-bottom: 12px; font-size: 1.4rem;">🍌 Banana-Pay Aura Checkout Simulator</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 25px;">
+          BBIT canteen does not accept fiat currency. Add items to your cart below and initiate a 4D bio-energy banana scan to calibrate your payment entanglement.
+        </p>
+        
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+          <!-- Cart Selector -->
+          <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
+            <h4 style="font-size: 1.05rem; color: #fff; margin-bottom: 5px; font-family: var(--font-heading); font-weight: 600;">Select Canteen Items</h4>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <label style="display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 0.95rem; color: var(--text-main);">
+                <input type="checkbox" id="cart-chai" data-price="2" onchange="updateBananaCart()" style="accent-color: var(--color-banana); width: 16px; height: 16px;">
+                <span>Quantum Chai (2 Bananas)</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 0.95rem; color: var(--text-main);">
+                <input type="checkbox" id="cart-samosa" data-price="3" onchange="updateBananaCart()" style="accent-color: var(--color-banana); width: 16px; height: 16px;">
+                <span>N-Dimensional Samosa (3 Bananas)</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 0.95rem; color: var(--text-main);">
+                <input type="checkbox" id="cart-laddu" data-price="5" onchange="updateBananaCart()" style="accent-color: var(--color-banana); width: 16px; height: 16px;">
+                <span>Dholakpur Laddu (5 Bananas)</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 0.95rem; color: var(--text-main);">
+                <input type="checkbox" id="cart-ethanol" data-price="12" onchange="updateBananaCart()" style="accent-color: var(--color-banana); width: 16px; height: 16px;">
+                <span>Bio-Energy Ethanol (12 Bananas)</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 0.95rem; color: var(--text-main);">
+                <input type="checkbox" id="cart-smoke" data-price="8" onchange="updateBananaCart()" style="accent-color: var(--color-banana); width: 16px; height: 16px;">
+                <span>Nicotine Smoke Rings (8 Bananas)</span>
+              </label>
+            </div>
+            
+            <div style="margin-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 15px;">
+              <strong style="color: #fff; font-size: 1.1rem; font-family: var(--font-heading);">Total Cost: <span id="cart-total" style="color: var(--color-banana);">0</span> Bananas</strong>
+            </div>
+          </div>
+
+          <!-- Checkout Scanner Screen -->
+          <div style="flex: 1.2; min-width: 280px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); padding: 25px; border-radius: var(--border-radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 220px; position: relative; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);">
+            <div id="checkout-status-default">
+              <div style="font-size: 3.5rem; margin-bottom: 12px; filter: drop-shadow(var(--shadow-neon-yellow));">🍌</div>
+              <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 8px; font-family: var(--font-heading);">Aura Scan Idle</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 250px; margin: 0 auto 20px auto; line-height: 1.4;">Select items and click checkout to start banana wave scanning.</p>
+              <button onclick="checkoutBananaCart()" class="cta-btn" id="btn-checkout" style="background: rgba(255, 204, 0, 0.15); border: 1px solid var(--color-banana); color: var(--color-banana); box-shadow: none; font-size: 0.95rem; width: 100%; border-radius: var(--border-radius-md); padding: 12px; font-weight: bold;" disabled>Initiate Banana-Pay</button>
+            </div>
+            
+            <div id="checkout-status-scanning" style="display: none; width: 100%;">
+              <div class="avatar-rings avatar-ring-1" style="width: 80px; height: 80px; margin: 0 auto 20px auto; border-color: var(--color-banana);"></div>
+              <h4 style="color: var(--color-banana); font-size: 1rem; margin-bottom: 8px; text-shadow: 0 0 5px var(--color-banana-glow); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px;">Scanning Mouse Potassium Residuals...</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Calibrating bio-energy entanglement vectors.</p>
+            </div>
+
+            <div id="checkout-status-success" style="display: none; width: 100%;">
+              <div style="font-size: 3.5rem; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.5));">🎉</div>
+              <h4 style="color: #39ff14; font-size: 1.15rem; margin-bottom: 12px; text-shadow: 0 0 10px rgba(57,255,20,0.3); font-family: var(--font-heading); text-transform: uppercase;">Translocation Successful!</h4>
+              <div id="checkout-receipt-body" style="background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); padding: 15px; border-radius: var(--border-radius-sm); font-size: 0.82rem; text-align: left; font-family: monospace; line-height: 1.5; color: var(--text-muted); max-width: 280px; margin: 0 auto;">
+                <!-- Filled dynamically by script.js -->
+              </div>
+              <button onclick="resetBananaCart()" class="cta-btn" style="margin-top: 20px; font-size: 0.85rem; padding: 8px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; box-shadow: none;">New Transaction</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Canteen Policies / Ginger Grating Postulate -->
       <div class="math-block-container" id="ginger-postulate">
         <h3>The Canteen Ginger-Grating Postulate</h3>
@@ -187,6 +257,8 @@
           <li><a href="kabutar-science.html">Kabutar Science</a></li>
           <li><a href="faculty.html">Faculty & Disciples</a></li>
           <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
           <li><a href="apply.html">Apply Now</a></li>
         </ul>
       </div>
@@ -204,5 +276,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
