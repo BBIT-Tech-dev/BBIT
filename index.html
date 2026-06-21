@@ -215,6 +215,49 @@
     </div>
   </section>
 
+  <!-- Explore Dholakpur Interactive Map -->
+  <section id="dholakpur-map">
+    <div class="container">
+      <div class="section-header">
+        <h2>🗺️ Explore Dholakpur</h2>
+        <p>The 100% real campus and surrounding spiritual-temporal zones. Click a location to observe its current quantum state. Warning: 4D Sir may be in all of them at once.</p>
+      </div>
+
+      <div style="display:flex; gap:30px; flex-wrap:wrap; align-items:stretch;">
+        <!-- Map SVG -->
+        <div style="flex:1.6; min-width:300px; background: var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--border-radius-lg); padding:14px; box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+          <svg viewBox="0 0 500 360" width="100%" style="display:block; border-radius:var(--border-radius-md);" xmlns="http://www.w3.org/2000/svg" aria-label="Map of Dholakpur">
+            <rect x="0" y="0" width="500" height="360" fill="rgba(0,0,0,0.35)"/>
+            <!-- subtle roads -->
+            <line x1="60" y1="80" x2="440" y2="120" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+            <line x1="120" y1="40" x2="180" y2="320" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+            <line x1="320" y1="40" x2="380" y2="320" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+            <line x1="40" y1="240" x2="460" y2="260" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+            <!-- pins (g elements wired in JS) -->
+            <g class="map-pin" data-loc="lecture" style="cursor:pointer;"><circle cx="150" cy="90" r="20" fill="rgba(0,240,255,0.15)" stroke="var(--color-quantum)" stroke-width="2"/><text x="150" y="97" font-size="20" text-anchor="middle">🧑‍🏫</text></g>
+            <g class="map-pin" data-loc="chai" style="cursor:pointer;"><circle cx="330" cy="80" r="20" fill="rgba(255,204,0,0.12)" stroke="var(--color-banana)" stroke-width="2"/><text x="330" y="87" font-size="20" text-anchor="middle">☕</text></g>
+            <g class="map-pin" data-loc="laddu" style="cursor:pointer;"><circle cx="420" cy="180" r="20" fill="rgba(255,204,0,0.12)" stroke="var(--color-banana)" stroke-width="2"/><text x="420" y="187" font-size="20" text-anchor="middle">🍘</text></g>
+            <g class="map-pin" data-loc="canteen" style="cursor:pointer;"><circle cx="250" cy="180" r="20" fill="rgba(57,255,20,0.12)" stroke="var(--color-bio)" stroke-width="2"/><text x="250" y="187" font-size="20" text-anchor="middle">🥟</text></g>
+            <g class="map-pin" data-loc="kabutar" style="cursor:pointer;"><circle cx="110" cy="210" r="20" fill="rgba(0,240,255,0.12)" stroke="var(--color-quantum)" stroke-width="2"/><text x="110" y="217" font-size="20" text-anchor="middle">🐦</text></g>
+            <g class="map-pin" data-loc="bio" style="cursor:pointer;"><circle cx="200" cy="300" r="20" fill="rgba(57,255,20,0.12)" stroke="var(--color-bio)" stroke-width="2"/><text x="200" y="307" font-size="20" text-anchor="middle">⚡</text></g>
+            <g class="map-pin" data-loc="alcohol" style="cursor:pointer;"><circle cx="370" cy="290" r="20" fill="rgba(255,204,0,0.12)" stroke="var(--color-banana)" stroke-width="2"/><text x="370" y="297" font-size="20" text-anchor="middle">🍾</text></g>
+            <g class="map-pin" data-loc="smoke" style="cursor:pointer;"><circle cx="440" cy="320" r="18" fill="rgba(255,255,255,0.06)" stroke="var(--text-muted)" stroke-width="2"/><text x="440" y="327" font-size="18" text-anchor="middle">🚬</text></g>
+          </svg>
+        </div>
+
+        <!-- Info panel -->
+        <div style="flex:1; min-width:240px; background:rgba(0,0,0,0.3); border:1px solid var(--glass-border); border-radius:var(--border-radius-lg); padding:24px; display:flex; flex-direction:column; justify-content:center; box-shadow:inset 0 0 20px rgba(0,0,0,0.5);">
+          <div id="map-info">
+            <div style="font-size:2.4rem; margin-bottom:12px;">📍</div>
+            <h3 id="map-info-title" style="font-family:var(--font-heading); margin-bottom:10px;">Select a Location</h3>
+            <p id="map-info-text" style="color:var(--text-muted); line-height:1.55; font-size:0.95rem;">Click any glowing pin on the map of Dholakpur to collapse its wavefunction and reveal what's happening there right now.</p>
+            <div id="map-info-status" style="margin-top:16px; font-size:0.8rem; color:var(--color-bio); font-family:monospace; display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Call to action -->
   <section id="cta" style="text-align: center;">
     <div class="container">
@@ -263,5 +306,36 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // ---- Explore Dholakpur interactive map ----
+    (function () {
+      const places = {
+        lecture: { e:'🧑‍🏫', t:'Lecture Hall 4B', d:"4D Sir's primary teaching node. He grades BEE sheets here in complex coordinates, dropping real-number scores into a desk-mounted black hole. C.C. has a holographic replica of this room at home.", s:'State: 4D (Temporal) · Sir present (probably)' },
+        chai: { e:'☕', t:'The Chai Tapri', d:"Where 4D Sir conducts his deepest research into liquid bio-resonance. Newton disagrees with the brewing method. Newton has no jurisdiction in Dholakpur.", s:'State: 3D (Aura-Chai) · ginger grated by Banana Boy only' },
+        laddu: { e:'🍘', t:'Dholakpur Laddu Shop', d:"Official aura-recharging station. 5 bananas per laddu. Varun once saw space-time shaped like a multi-dimensional laddu here and wept in non-Newtonian frequencies.", s:'State: Bio-Energetic · recharge in progress' },
+        canteen: { e:'🥟', t:'BBIT Canteen', d:"Home of the N-Dimensional Samosa — infinite spiced potato, zero surface-area crust. A health inspector remains trapped in the 4th dimension trying to measure it. Cash not accepted; pay in high-isotope bananas.", s:'State: ∞ potato · inspector still missing' },
+        kabutar: { e:'🐦', t:'Kabutar Network Tower', d:"Dholakpur's organic cloud-routing hub. Pigeon packets routed around cats and breadcrumb congestion. Currently delivering messages to every disciple except C.C.", s:'State: online · 1 packet withheld from C.C.' },
+        bio: { e:'⚡', t:'Bio-Energy Lab', d:"Where students hover 5–12cm off the floor using molecule-independent bio-energy. A student was once banned from Dholakpur for bringing a ruler ('linear thinking').", s:'State: levitation active · rulers strictly forbidden' },
+        alcohol: { e:'🍾', t:'Dholakpur Alcohol Shop', d:"4D Sir calibrates his liquid bio-resonance here. The ethanol is '100% decoupled from matter,' which is also what he tells the canteen.", s:'State: Ethanol-Aura · calibration ongoing' },
+        smoke: { e:'🚬', t:'Cigarette Shop', d:"Source of 4D Sir's famous quantum smoke rings, each one a perfect toroidal proof of relativistic ash decay. Sold by the combustion-aura loop.", s:'State: Nicotine-Grid · smoke rings in superposition' }
+      };
+      const titleEl = document.getElementById('map-info-title');
+      const textEl  = document.getElementById('map-info-text');
+      const statEl  = document.getElementById('map-info-status');
+      document.querySelectorAll('.map-pin').forEach(pin => {
+        pin.addEventListener('click', () => {
+          const p = places[pin.getAttribute('data-loc')];
+          if (!p) return;
+          document.querySelectorAll('.map-pin circle').forEach(c => c.setAttribute('stroke-width','2'));
+          const circle = pin.querySelector('circle');
+          if (circle) circle.setAttribute('stroke-width','5');
+          titleEl.textContent = `${p.e} ${p.t}`;
+          textEl.textContent = p.d;
+          statEl.textContent = '📡 ' + p.s;
+          statEl.style.display = 'block';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

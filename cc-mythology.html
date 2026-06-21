@@ -216,6 +216,33 @@
     </div>
   </section>
 
+  <!-- BBIT Anonymous Confession Wall -->
+  <section id="confessions" style="background: var(--bg-secondary); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+    <div class="container" style="max-width: 820px;">
+      <div class="section-header">
+        <h2>🕯️ BBIT Anonymous Confession Wall</h2>
+        <p>A safe, 100% anonymous space for any disciple to confess their deepest academic feelings. Completely untraceable. No one will ever know who posted what.</p>
+      </div>
+
+      <!-- Submit box -->
+      <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--border-radius-lg); padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); margin-bottom: 26px;">
+        <textarea id="confession-input" rows="3" maxlength="240" placeholder="Confess anonymously... (e.g. 'Sometimes I align my notebooks to 45° and feel nothing')" style="width:100%; box-sizing:border-box; background: rgba(0,0,0,0.4); border:1px solid var(--glass-border); border-radius: var(--border-radius-md); color:#fff; padding:14px; font-family:inherit; font-size:0.95rem; resize:vertical;"></textarea>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:12px; flex-wrap:wrap;">
+          <span style="font-size:0.78rem; color:var(--text-muted);">🔒 Posted as: <strong style="color:var(--color-bio);">Anonymous Disciple</strong> (definitely not traceable)</span>
+          <button class="cta-btn" id="btn-confess" onclick="postConfession()" style="font-size:0.95rem; padding:10px 22px;">🕯️ Confess Anonymously</button>
+        </div>
+        <div id="confession-reveal" style="display:none; margin-top:14px; padding:12px 14px; background:rgba(255,204,0,0.08); border:1px dashed var(--color-banana); border-radius:var(--border-radius-md); font-size:0.85rem; color:var(--color-banana); line-height:1.5;"></div>
+      </div>
+
+      <!-- Wall -->
+      <div id="confession-wall" style="display:flex; flex-direction:column; gap:14px;"></div>
+
+      <p style="text-align:center; margin-top:26px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">
+        Forensic analysis of all 1,000,000+ confessions on this wall has concluded they were posted by exactly one person. Investigation ongoing. Prime suspect: someone who really wanted to be noticed.
+      </p>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="container footer-grid">
@@ -293,29 +320,75 @@
       };
 
       let devotion = 847000;
-      let noticed = 3;
+      let attempts = 0;
+      // Sir NEVER notices C.C. The counter is frozen at 3 forever. No amount of
+      // effort, ritual, or devotion will ever move it. That is the whole point.
+      const NOTICED_FOREVER = 3;
       const devoteMsgs = [
         "You chanted for 6 hours. Siddhi Sai sneezed once. Sir said 'bless you' to him.",
-        "Devotion +1000. Sir's attention +0. The system is working as intended.",
-        "You aligned everything to 44°. A pigeon noticed. Pigeons are not Sir.",
+        "Devotion +1000. Sir's attention +0. The system is working exactly as intended.",
+        "You aligned everything to 44.0000°. A pigeon noticed. Pigeons are not Sir.",
         "Sir glanced toward you for 0.3 seconds. Then continued toward the chai tapri.",
-        "You reached the 3.5th dimension again. So close. So agonizingly close.",
-        "The samosa rose. You thought it was your bio-energy. It was the samosa."
+        "You reached the 3.5th dimension again. So close. So agonizingly, eternally close.",
+        "The samosa rose. You thought it was your bio-energy. It was the samosa.",
+        "You performed 108 flawless rituals. Sir was at the laddu shop the entire time.",
+        "Banana Boy did nothing at all. Sir smiled at him from across Dholakpur anyway.",
+        "Sir said your bio-energy readings were 'interesting.' He says that to the wall too."
+      ];
+      const stubbornNotes = [
+        "Times Sir noticed you: still 3. (Two of those, he was looking at the wall behind you.)",
+        "Counter unchanged. It has not moved since Day 411. It will not move on Day 4,000,000.",
+        "The 3 remains the 3. The 3 is eternal. You are not in the 3.",
+        "Effort is not flow. Devotion is not brilliance. The number does not care how hard you tried."
       ];
       window.performDevotion = function () {
+        attempts++;
         devotion += Math.floor(Math.random() * 5000) + 1000;
-        // Sir almost never notices. ~5% chance, and even then it's the wall.
-        let extra = "";
-        if (Math.random() < 0.05) {
-          noticed += 1;
-          extra = " ✨ SIR NOTICED YOU! …actually he was looking at the wall behind you. Counter incremented anyway, out of pity.";
-        }
         document.getElementById('devotion-count').textContent = devotion.toLocaleString();
-        document.getElementById('notice-count').textContent = noticed;
-        const msg = devoteMsgs[Math.floor(Math.random() * devoteMsgs.length)] + extra;
+        // Frozen forever — re-set it every time so it visibly REFUSES to budge.
+        document.getElementById('notice-count').textContent = NOTICED_FOREVER;
+        const msg = devoteMsgs[Math.floor(Math.random() * devoteMsgs.length)];
+        const note = stubbornNotes[Math.floor(Math.random() * stubbornNotes.length)];
         const box = document.getElementById('devotion-result');
-        document.getElementById('devotion-result-text').textContent = msg;
+        document.getElementById('devotion-result-text').innerHTML =
+          `${msg}<br><span style="color:var(--text-muted); font-size:0.82rem; font-style:normal;">Rituals performed this session: ${attempts} · ${note}</span>`;
         box.style.display = 'block';
+      };
+
+      // ---- Anonymous Confession Wall (every confession is secretly C.C.) ----
+      const seededConfessions = [
+        "I have read every rankers book twice but Sir still calls Banana Boy by name and me by my initials.",
+        "Last night I chanted calculus until 3am. A pigeon was the only witness. I cried.",
+        "I bought the same pen as Siddhi Sai. Sir asked if I stole it. I want to disappear into the 4th dimension.",
+        "Sometimes I think the samosa notices me more than Sir does.",
+        "I aligned my notebooks to 44° for 847 days straight. Today someone moved one to 45° and I have not recovered.",
+        "I told Varun to 'let it go.' I have, in fact, not let anything go.",
+        "When Sir said 'Don't be like C.C.' I took notes on it. I am aware of the problem. I am the problem."
+      ];
+      const anonAliases = ["Anonymous Disciple", "A Devoted Soul", "Totally Not C.C.", "Definitely Someone Else", "Disciple #1 (the only one)"];
+      function makeConfessionEl(text, alias) {
+        const el = document.createElement('div');
+        el.className = 'card';
+        el.style.padding = '16px 20px';
+        el.style.opacity = '0';
+        el.style.transition = 'opacity 0.4s ease';
+        el.innerHTML = `<div style="font-size:0.78rem; color:var(--color-bio); margin-bottom:6px;">🕯️ ${alias} · <span style="color:var(--text-muted);">anonymous</span></div><div style="line-height:1.5;">${text.replace(/</g,'&lt;')}</div>`;
+        requestAnimationFrame(() => { el.style.opacity = '1'; });
+        return el;
+      }
+      const wall = document.getElementById('confession-wall');
+      if (wall) {
+        seededConfessions.forEach(c => wall.appendChild(makeConfessionEl(c, anonAliases[Math.floor(Math.random()*anonAliases.length)])));
+      }
+      window.postConfession = function () {
+        const input = document.getElementById('confession-input');
+        const text = (input.value || '').trim();
+        if (!text) { input.focus(); return; }
+        wall.prepend(makeConfessionEl(text, "Anonymous Disciple"));
+        input.value = '';
+        const reveal = document.getElementById('confession-reveal');
+        reveal.style.display = 'block';
+        reveal.innerHTML = "✅ Confession posted anonymously! Our system has traced it back to… C.C. As all confessions are. It has always been C.C. It will always be C.C.";
       };
     })();
   </script>

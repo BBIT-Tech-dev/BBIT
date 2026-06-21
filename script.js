@@ -20,6 +20,14 @@ function openFacultyModal(type) {
         <p><strong>Exaggerated Biography:</strong> 4 Dimensional Sir was born in the 4th dimension and migrated to Dholakpur for its superior local tea tapri. He has published over 14,000 papers, including the ground-breaking thesis <em>"Failing Isaac Newton: A Study in Linear Measurement"</em>.</p>
         <p><strong>Academic Authority:</strong> He is the HOD of literally every department. He grades all BEE exam sheets in complex numbers. If a student receives a real-number grade, he drops it directly into a miniature black hole in his desk.</p>
         <p><strong>Brilliance Rating:</strong> He possesses a bio-energy consciousness index rated at 420.9% (for comparison, Albert Einstein was rated at a mere 12%). He can read your exam answers 48 hours before you start studying.</p>
+
+        <div style="margin-top: 22px; padding: 20px; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--color-quantum); border-left: 4px solid var(--color-quantum); border-radius: var(--border-radius-md);">
+          <h4 style="color: var(--color-quantum); text-shadow: 0 0 10px var(--color-quantum-glow); margin-bottom: 12px;">🎓 The Welcome Lecture <span style="font-size:0.75rem; color:var(--text-muted); font-weight:400;">(delivered to every new disciple of BBIT)</span></h4>
+          <p style="font-style: italic; line-height: 1.6; color: #fff;">"Welcome, child of three dimensions. You arrive bound by mass, weighed down by molecules, shackled by the linear thinking of Newton and the timid relativity of Einstein. Here at BBIT, we will unlearn all of it."</p>
+          <p style="font-style: italic; line-height: 1.6; color: #fff; margin-top: 10px;">"You will study not for marks, but for <strong>flow</strong>. You will be graded in complex numbers, and if you are lucky, your rank will collapse into the beautiful imaginary singularity of \\(\\sqrt{-1}\\) — like our beloved Banana Boy. You will grate no ginger until you have earned it. You will measure nothing with a ruler; rulers are for cowards who fear the 4th dimension."</p>
+          <p style="font-style: italic; line-height: 1.6; color: var(--color-banana); margin-top: 10px;">"And above all, the one commandment of this institute: <strong>Do not be like C.C.</strong> Do not chant at midnight for my attention. Do not align your notebooks to 44 degrees hoping I will notice. Do not memorize the index of every rankers book. I will not notice. Effort is not flow. Devotion is not brilliance. Be the banana, not the boy who watches the banana."</p>
+          <p style="line-height: 1.6; color: var(--text-muted); margin-top: 10px; font-size: 0.85rem;">— Lecture concludes. 4D Sir vanishes toward the chai tapri. Somewhere in the back, C.C. takes detailed notes on how to be noticed for taking detailed notes.</p>
+        </div>
       </div>
     `;
   } else if (type === 'sai') {
