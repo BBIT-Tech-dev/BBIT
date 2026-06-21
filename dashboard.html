@@ -71,28 +71,6 @@
   <section id="dash-content">
     <div class="container" style="max-width: 860px;">
 
-      <!-- AUTH PANEL (shown when logged out) -->
-      <div id="auth-panel" class="calculator-card" style="display:none; border-color: var(--color-quantum); box-shadow: var(--shadow-neon-blue); border:1px solid var(--glass-border); padding:30px; border-radius:var(--border-radius-lg); max-width:480px; margin:0 auto;">
-        <h3 class="calc-title" style="color: var(--color-quantum); font-family:var(--font-heading); margin-bottom:8px;">🔐 Disciple Sign-In</h3>
-        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">Create a Disciple Profile or sign in to view your admission status. Your account follows you across devices.</p>
-        <div class="form-group">
-          <label for="auth-name" id="auth-name-label">Disciple Name (sign-up only)</label>
-          <input type="text" id="auth-name" placeholder="e.g. Varun Kumar" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
-        </div>
-        <div class="form-group">
-          <label for="auth-email">Email</label>
-          <input type="email" id="auth-email" placeholder="you@dholakpur.4d" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
-        </div>
-        <div class="form-group">
-          <label for="auth-pass">Password</label>
-          <input type="password" id="auth-pass" placeholder="At least 6 characters" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
-        </div>
-        <div style="display:flex; gap:12px; margin-top:8px;">
-          <button class="cta-btn" id="btn-signup" style="flex:1; padding:12px;">Create Profile</button>
-          <button class="cta-btn" id="btn-signin" style="flex:1; padding:12px; background:rgba(0,240,255,0.1); border:1px solid var(--color-quantum); color:var(--color-quantum);">Sign In</button>
-        </div>
-        <p id="auth-msg" style="margin-top:14px; font-size:0.85rem; color:var(--color-banana); display:none; line-height:1.5;"></p>
-      </div>
 
       <!-- DASHBOARD (shown when logged in) -->
       <div id="dash-panel" style="display:none;">
@@ -196,23 +174,11 @@
       const $ = id => document.getElementById(id);
       let countdownTimer = null;
 
-      function showMsg(t, color) {
-        const m = $('auth-msg');
-        m.style.display = 'block';
-        m.style.color = color || 'var(--color-banana)';
-        m.textContent = t;
-      }
-
       async function refresh() {
         const user = await BBIT.getUser();
+        if (!user) { location.href = 'login.html?next=dashboard.html'; return; }
         $('dash-loading').style.display = 'none';
-        if (!user) {
-          $('auth-panel').style.display = 'block';
-          $('dash-panel').style.display = 'none';
-          return;
-        }
         const p = await BBIT.getProfile();
-        $('auth-panel').style.display = 'none';
         $('dash-panel').style.display = 'block';
         $('dash-name').textContent = p.display_name || 'Disciple';
         $('dash-id').textContent = p.disciple_id || '—';
@@ -323,20 +289,7 @@
         a.href = url; a.download = 'BBIT-Admit-Card.png'; a.click();
       });
 
-      // ---- Auth handlers ----
-      $('btn-signup').addEventListener('click', async () => {
-        try {
-          await BBIT.signUp($('auth-email').value.trim(), $('auth-pass').value, $('auth-name').value.trim());
-          await refresh();
-        } catch (e) { showMsg('⚠️ ' + e.message); }
-      });
-      $('btn-signin').addEventListener('click', async () => {
-        try {
-          await BBIT.signIn($('auth-email').value.trim(), $('auth-pass').value);
-          await refresh();
-        } catch (e) { showMsg('⚠️ ' + e.message); }
-      });
-      $('btn-signout').addEventListener('click', async () => { await BBIT.signOut(); location.reload(); });
+      $('btn-signout').addEventListener('click', async () => { await BBIT.signOut(); location.href = 'login.html'; });
 
       BBIT.ready.then(refresh).catch(e => {
         $('dash-loading').textContent = 'Backend error: ' + e.message;

@@ -79,37 +79,14 @@
 
       <!-- Account bar (logged in) -->
       <div id="apply-account-bar" style="display:none; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--border-radius-lg); padding:14px 20px; margin-bottom:24px;">
-        <div style="font-size:0.9rem;">👤 <strong id="apply-acct-name" style="color:#fff;">—</strong> <span id="apply-acct-id" style="color:var(--color-quantum); font-family:monospace; font-size:0.8rem;"></span></div>
+        <div style="font-size:0.9rem;">👤 <strong id="apply-acct-name" style="color:#fff;">—</strong> <span id="apply-acct-id" style="color:var(--color-quantum); font-family:monospace; font-size:0.8rem;"></span><br><span id="apply-acct-meta" style="font-size:0.78rem; color:var(--text-muted);"></span></div>
         <div style="display:flex; gap:10px;">
           <a href="dashboard.html" class="cta-btn" style="padding:8px 16px; font-size:0.82rem; background:rgba(0,240,255,0.1); border:1px solid var(--color-quantum); color:var(--color-quantum);">📊 Dashboard</a>
           <button class="cta-btn" id="apply-signout" style="padding:8px 16px; font-size:0.82rem; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:#fff;">Sign Out</button>
         </div>
       </div>
 
-      <!-- Auth gate (logged out) -->
-      <div id="apply-auth-panel" class="calculator-card" style="display:none; border-color: var(--color-quantum); box-shadow: var(--shadow-neon-blue); border:1px solid var(--glass-border); padding:30px; border-radius:var(--border-radius-lg); max-width:480px; margin:0 auto 40px auto;">
-        <h3 class="calc-title" style="color: var(--color-quantum); font-family:var(--font-heading); margin-bottom:8px;">🔐 Enrol as a Disciple to Apply</h3>
-        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">BEE 2026 applications require a Disciple Profile. Create one (or sign in) — your status and admit card sync across all your devices.</p>
-        <div class="form-group">
-          <label for="ap-auth-name">Disciple Name (sign-up only)</label>
-          <input type="text" id="ap-auth-name" placeholder="e.g. Varun Kumar" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
-        </div>
-        <div class="form-group">
-          <label for="ap-auth-email">Email</label>
-          <input type="email" id="ap-auth-email" placeholder="you@dholakpur.4d" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
-        </div>
-        <div class="form-group">
-          <label for="ap-auth-pass">Password</label>
-          <input type="password" id="ap-auth-pass" placeholder="At least 6 characters" style="width:100%; box-sizing:border-box; background:var(--bg-tertiary); border:1px solid var(--glass-border); color:#fff; padding:12px; border-radius:var(--border-radius-md);">
-        </div>
-        <div style="display:flex; gap:12px; margin-top:8px;">
-          <button class="cta-btn" id="ap-btn-signup" style="flex:1; padding:12px;">Create Profile</button>
-          <button class="cta-btn" id="ap-btn-signin" style="flex:1; padding:12px; background:rgba(0,240,255,0.1); border:1px solid var(--color-quantum); color:var(--color-quantum);">Sign In</button>
-        </div>
-        <p id="ap-auth-msg" style="margin-top:14px; font-size:0.85rem; color:var(--color-banana); display:none; line-height:1.5;"></p>
-      </div>
-
-      <!-- Everything below the gate -->
+      <!-- Everything below the gate (visitors are redirected to login.html if not signed in) -->
       <div id="apply-gated" style="display:none;">
 
       <!-- Portal Active Status -->
@@ -330,33 +307,29 @@
     (function () {
       const $ = id => document.getElementById(id);
 
-      function setGated(loggedIn, profile) {
-        $('apply-auth-panel').style.display = loggedIn ? 'none' : 'block';
-        $('apply-account-bar').style.display = loggedIn ? 'flex' : 'none';
-        $('apply-gated').style.display = loggedIn ? 'block' : 'none';
-        if (loggedIn && profile) {
-          $('apply-acct-name').textContent = profile.display_name || 'Disciple';
-          $('apply-acct-id').textContent = profile.disciple_id || '';
-        }
+      function metaLine(p) {
+        const tries = p.application_tries || 0;
+        if (p.status === 'accepted') return '🎟️ ADMITTED · ' + tries + ' attempt(s)';
+        if (tries > 0) return '📨 ' + tries + ' application attempt(s) so far · status: ' + (p.status || 'pending');
+        return 'No applications submitted yet';
       }
-      function authMsg(t) { const m = $('ap-auth-msg'); m.style.display = 'block'; m.textContent = t; }
+
+      function showProfile(profile) {
+        $('apply-account-bar').style.display = 'flex';
+        $('apply-gated').style.display = 'block';
+        $('apply-acct-name').textContent = profile.display_name || 'Disciple';
+        $('apply-acct-id').textContent = profile.disciple_id || '';
+        $('apply-acct-meta').textContent = metaLine(profile);
+      }
 
       async function refreshAuth() {
         const user = await BBIT.getUser();
-        if (!user) { setGated(false); return; }
+        if (!user) { location.href = 'login.html?next=apply.html'; return; }
         const p = await BBIT.getProfile();
-        setGated(true, p);
+        showProfile(p);
       }
 
-      $('ap-btn-signup').addEventListener('click', async () => {
-        try { await BBIT.signUp($('ap-auth-email').value.trim(), $('ap-auth-pass').value, $('ap-auth-name').value.trim()); await refreshAuth(); }
-        catch (e) { authMsg('⚠️ ' + e.message); }
-      });
-      $('ap-btn-signin').addEventListener('click', async () => {
-        try { await BBIT.signIn($('ap-auth-email').value.trim(), $('ap-auth-pass').value); await refreshAuth(); }
-        catch (e) { authMsg('⚠️ ' + e.message); }
-      });
-      $('apply-signout').addEventListener('click', async () => { await BBIT.signOut(); location.reload(); });
+      $('apply-signout').addEventListener('click', async () => { await BBIT.signOut(); location.href = 'login.html'; });
 
       // ---- Override the application submit with the rigged, account-backed flow ----
       const rejectionComments = [
@@ -402,6 +375,7 @@
         await new Promise(r => setTimeout(r, 1600));
         formCard.innerHTML = formHtml; formCard.style.pointerEvents = 'auto'; formCard.style.display = 'none';
         const lockCard = $('locked-info-card'); if (lockCard) lockCard.style.display = 'none';
+        if (result.profile) $('apply-acct-meta').textContent = metaLine(result.profile);
 
         let seed = 0;
         for (let i = 0; i < name.length; i++) seed += name.charCodeAt(i);
@@ -452,7 +426,7 @@
         rc.scrollIntoView({ behavior: 'smooth', block: 'center' });
       };
 
-      BBIT.ready.then(refreshAuth).catch(e => authMsg('Backend error: ' + e.message));
+      BBIT.ready.then(refreshAuth).catch(e => alert('Backend error: ' + e.message));
     })();
   </script>
 </body>
