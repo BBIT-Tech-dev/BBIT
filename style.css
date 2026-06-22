@@ -146,18 +146,19 @@ header {
 nav ul {
   display: flex;
   list-style: none;
-  gap: 18px;
+  gap: 14px;
 }
 
 nav a {
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   font-weight: 500;
   font-family: var(--font-heading);
   transition: var(--transition-smooth);
   position: relative;
   padding: 8px 0;
+  white-space: nowrap;
 }
 
 nav a::after {
@@ -206,6 +207,33 @@ nav li.active a::after {
 .cta-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 25px var(--color-banana);
+}
+
+/* Sign In link in the nav (outlined, distinct from the yellow Apply CTA) */
+.nav-login {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-quantum);
+  text-decoration: none;
+  padding: 9px 18px;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.nav-login:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: var(--shadow-neon-blue);
+  color: #fff;
+}
+
+/* On narrow screens the Sign In lives in the sidebar, so drop the header one */
+@media (max-width: 860px) {
+  .nav-login {
+    display: none;
+  }
 }
 
 /* --- Hero Section --- */
