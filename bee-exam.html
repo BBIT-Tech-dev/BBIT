@@ -209,12 +209,34 @@
           '</div>';
       }
 
+      function buildReview() {
+        let html = '<div class="card" style="margin-top:22px; padding:26px 24px;">' +
+          '<h3 style="font-family:var(--font-heading); margin-bottom:6px;">📝 4D Sir\'s Remarks</h3>' +
+          '<p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:18px;">Your paper, annotated across all timelines.</p>';
+        Q.forEach((item, i) => {
+          const pick = answers[i];
+          const right = pick !== null && pick === item.answer;
+          const reaction = (item.picks && pick !== null && item.picks[pick]) || item.note || '';
+          const yourLetter = pick !== null ? String.fromCharCode(65 + pick) + '. ' + item.options[pick] : 'Not answered (the clock won)';
+          html += '<div style="padding:14px 0; border-top:1px solid rgba(255,255,255,0.06);">' +
+            '<div style="font-size:0.95rem; color:#fff; margin-bottom:8px;">' + (i + 1) + '. ' + item.q + '</div>' +
+            '<div style="font-size:0.88rem; margin-bottom:6px;">' +
+              (right ? '<span style="color:var(--color-bio);">✅ ' : '<span style="color:#ff6b6b;">❌ ') +
+              'Your answer:</span> <span style="color:var(--text-muted);">' + yourLetter + '</span></div>' +
+            (reaction ? '<div style="font-size:0.86rem; color:var(--color-banana); font-style:italic; line-height:1.5;">' + reaction + '</div>' : '') +
+            (!right ? '<div style="font-size:0.82rem; color:var(--text-muted); margin-top:5px;">4D-correct: ' + String.fromCharCode(65 + item.answer) + '. ' + item.options[item.answer] + '</div>' : '') +
+            '</div>';
+        });
+        html += '</div>';
+        return html;
+      }
+
       async function finishExam() {
         if (timer) clearInterval(timer);
         let correct = 0;
         answers.forEach((a, i) => { if (a !== null && a === Q[i].answer) correct++; });
         show('exam-result');
-        $('exam-result').innerHTML = resultCardHTML(correct);
+        $('exam-result').innerHTML = resultCardHTML(correct) + buildReview();
         typeset();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         // Best-effort persist (needs exam columns; fails gracefully)
