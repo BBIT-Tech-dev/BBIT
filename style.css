@@ -146,12 +146,12 @@ header {
 nav ul {
   display: flex;
   list-style: none;
-  gap: 14px;
+  gap: 20px;
 }
 
 nav a {
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
   font-weight: 500;
   font-family: var(--font-heading);
@@ -233,6 +233,17 @@ nav li.active a::after {
 @media (max-width: 860px) {
   .nav-login {
     display: none;
+  }
+}
+
+/* Collapse the full menu to the hamburger earlier so it never looks cramped.
+   Below 1200px the desktop nav hides and the mobile toggle takes over. */
+@media (max-width: 1200px) {
+  nav {
+    display: none;
+  }
+  .mobile-toggle {
+    display: flex;
   }
 }
 

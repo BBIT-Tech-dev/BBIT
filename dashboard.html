@@ -109,7 +109,7 @@
             <p style="font-size:0.92rem;">Generated upon wavefunction collapse into the ADMITTED state. Download it and share your destiny.</p>
           </div>
           <div style="background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--border-radius-lg); padding:18px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-            <canvas id="admit-canvas" width="900" height="560" style="width:100%; max-width:900px; height:auto; border-radius:var(--border-radius-md);"></canvas>
+            <canvas id="admit-canvas" width="900" height="620" style="width:100%; max-width:900px; height:auto; border-radius:var(--border-radius-md);"></canvas>
             <div style="margin-top:16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
               <button class="cta-btn" id="btn-download" style="padding:12px 24px;">⬇️ Download Admit Card</button>
             </div>
@@ -259,7 +259,7 @@
         x.fillText('✅ ADMITTED — BIO-ENERGY CONFIRMED', W / 2, 195);
         // details (left aligned block)
         x.textAlign = 'left';
-        const lx = 80; let ly = 260; const lh = 52;
+        const lx = 80; let ly = 250; const lh = 50;
         const rows = [
           ['Disciple', p.display_name || 'Disciple'],
           ['Disciple ID', p.disciple_id || '—'],
@@ -268,21 +268,24 @@
           ['Computed Rank', 'almost √-1 (mortal-adjusted)']
         ];
         rows.forEach(r => {
-          x.fillStyle = '#6f7f99'; x.font = '17px Outfit, sans-serif';
+          x.fillStyle = '#6f7f99'; x.font = '16px Outfit, sans-serif';
           x.fillText(r[0].toUpperCase(), lx, ly);
-          x.fillStyle = '#ffffff'; x.font = 'bold 23px Outfit, sans-serif';
-          x.fillText(r[1], lx, ly + 26);
+          x.fillStyle = '#ffffff'; x.font = 'bold 22px Outfit, sans-serif';
+          x.fillText(r[1], lx, ly + 25);
           ly += lh;
         });
+        // divider above signatures so they never collide with the rows
+        x.strokeStyle = 'rgba(255,255,255,0.1)';
+        x.beginPath(); x.moveTo(80, H - 95); x.lineTo(W - 80, H - 95); x.stroke();
         // signatures
         x.textAlign = 'center';
         x.fillStyle = '#ffcc00'; x.font = 'italic 24px Outfit, sans-serif';
-        x.fillText('Siddhi Sai', W * 0.3, H - 70);
+        x.fillText('Siddhi Sai', W * 0.3, H - 58);
         x.fillStyle = '#00f0ff';
-        x.fillText('4D Sir', W * 0.7, H - 70);
+        x.fillText('4D Sir', W * 0.7, H - 58);
         x.fillStyle = '#6f7f99'; x.font = '13px Outfit, sans-serif';
-        x.fillText('Banana Boy Chancellor', W * 0.3, H - 48);
-        x.fillText('HOD & Dean of the Multiverse', W * 0.7, H - 48);
+        x.fillText('Banana Boy Chancellor', W * 0.3, H - 34);
+        x.fillText('HOD & Dean of the Multiverse', W * 0.7, H - 34);
       }
 
       $('btn-download').addEventListener('click', () => {
