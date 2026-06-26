@@ -421,7 +421,52 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   // Dholakpur Standard Time (IST) — global heartbeat clock
   initDholakpurClock();
+  // Account chip (shows logged-in disciple in the header, site-wide)
+  initAccountChip();
 });
+
+// --- Header Account Chip ---
+// When a disciple is signed in, replace the "Sign In" nav link with a dropdown
+// showing their name + Dashboard / Application / Sign Out. Requires bbit-backend.
+async function initAccountChip() {
+  if (typeof window.BBIT === 'undefined' || !window.BBIT.ready) return;
+  let user;
+  try { await window.BBIT.ready; user = await window.BBIT.getUser(); }
+  catch (e) { return; }
+  if (!user) return; // logged out → leave "Sign In" as-is
+
+  let profile = null;
+  try { profile = await window.BBIT.getProfile(); } catch (e) {}
+  const name = (profile && profile.display_name) || (user.email || 'Disciple').split('@')[0];
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+
+  // Desktop: swap the Sign In link for a chip
+  const loginLink = document.getElementById('nav-login-link');
+  if (loginLink) {
+    const chip = document.createElement('div');
+    chip.className = 'account-chip';
+    chip.innerHTML =
+      '<button class="account-chip-btn" type="button">👤 ' + esc(name) + ' <span style="font-size:0.7em;">▼</span></button>' +
+      '<div class="account-menu">' +
+        '<a href="dashboard.html">📊 Dashboard</a>' +
+        '<a href="apply.html">📝 My Application</a>' +
+        '<a href="#" class="account-signout">🚪 Sign Out</a>' +
+      '</div>';
+    loginLink.replaceWith(chip);
+
+    const btn = chip.querySelector('.account-chip-btn');
+    const menu = chip.querySelector('.account-menu');
+    btn.addEventListener('click', e => { e.stopPropagation(); menu.classList.toggle('open'); });
+    document.addEventListener('click', () => menu.classList.remove('open'));
+    chip.querySelector('.account-signout').addEventListener('click', async e => {
+      e.preventDefault(); await window.BBIT.signOut(); location.href = 'login.html';
+    });
+  }
+
+  // Mobile sidebar: repoint the "Sign In / Enrol" item to the Dashboard
+  const sideLink = document.querySelector('.sidebar-nav a[href="login.html"]');
+  if (sideLink) { sideLink.textContent = '📊 ' + name + ' · Dashboard'; sideLink.setAttribute('href', 'dashboard.html'); }
+}
 
 // --- Dholakpur Standard Time (IST) Clock ---
 // Always shows India Standard Time (Asia/Kolkata) regardless of the visitor's

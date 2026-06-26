@@ -231,9 +231,61 @@ nav li.active a::after {
 
 /* On narrow screens the Sign In lives in the sidebar, so drop the header one */
 @media (max-width: 860px) {
-  .nav-login {
+  .nav-login,
+  .account-chip {
     display: none;
   }
+}
+
+/* Header account chip (replaces Sign In when logged in) */
+.account-chip {
+  position: relative;
+}
+.account-chip-btn {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-bio);
+  background: rgba(57, 255, 20, 0.08);
+  border: 1px solid rgba(57, 255, 20, 0.4);
+  border-radius: var(--border-radius-md);
+  padding: 9px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+}
+.account-chip-btn:hover {
+  background: rgba(57, 255, 20, 0.16);
+  box-shadow: var(--shadow-neon-green);
+}
+.account-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 190px;
+  background: rgba(12, 16, 28, 0.98);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  display: none;
+  z-index: 200;
+}
+.account-menu.open {
+  display: block;
+}
+.account-menu a {
+  display: block;
+  padding: 10px 12px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius-sm, 6px);
+  transition: var(--transition-smooth);
+}
+.account-menu a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-banana);
 }
 
 /* Collapse the full menu to the hamburger earlier so it never looks cramped.
