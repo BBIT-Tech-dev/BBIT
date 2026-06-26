@@ -142,12 +142,28 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
     return { accepted, tries: data.application_tries, acceptOn, profile: data };
   }
 
+  // Save BEE exam result to the disciple row (best-effort; needs the exam
+  // columns added via ALTER TABLE — fails gracefully if they're missing).
+  async function saveExam(fields) {
+    const profile = await getProfile();
+    if (!profile) throw new Error('Not signed in.');
+    try {
+      const { data, error } = await sb.from('disciples')
+        .update(fields).eq('user_id', profile.user_id).select().single();
+      if (error) throw error;
+      return data;
+    } catch (e) {
+      console.warn('[BBIT] saveExam failed (did you run the exam-columns ALTER TABLE?):', e.message);
+      return null;
+    }
+  }
+
   // Live session readiness
   const ready = sb.auth.getSession().then(({ data }) => (data ? data.session : null));
 
   window.BBIT = {
     sb, ready,
-    signUp, signIn, signOut, getUser, getProfile, ensureProfile, applyForBEE,
+    signUp, signIn, signOut, getUser, getProfile, ensureProfile, applyForBEE, saveExam,
     nextSundayExamIST, formatExamLabel,
     onAuthChange(cb) { sb.auth.onAuthStateChange((_e, session) => cb(session)); }
   };

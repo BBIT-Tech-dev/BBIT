@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEE 2026 — The 4D Paper | BBIT</title>
+  <meta name="description" content="The official BEE 2026 4-Dimensional examination. Admitted disciples only. Graded in complex numbers under the supervision of HOD 4 Dimensional Sir.">
+  <link rel="stylesheet" href="style.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="orb orb-yellow" style="top: 10%; left: 8%;"></div>
+  <div class="orb orb-cyan" style="bottom: 14%; right: 6%;"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="bbit-logo"><span class="logo-icon">🍌</span> BBIT</a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
+          <li><a href="kabutar-science.html">Kabutar Science</a></li>
+          <li><a href="faculty.html">Faculty & Disciples</a></li>
+          <li><a href="canteen.html">BBIT Canteen</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="simulator.html">4D Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum Theory</a></li>
+        </ul>
+      </nav>
+      <div class="header-right-group">
+        <a href="login.html" class="nav-login" id="nav-login-link">Sign In</a>
+        <a href="apply.html" class="cta-btn" id="nav-cta-btn">Apply Now</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu" onclick="toggleMobileSidebar()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-sidebar" class="mobile-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><span class="logo-icon">🍌</span> BBIT</a>
+      <button class="sidebar-close" onclick="toggleMobileSidebar()">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html" onclick="toggleMobileSidebar()">Home</a></li>
+        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy Dept</a></li>
+        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar Science</a></li>
+        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
+        <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
+        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
+        <li><a href="login.html" onclick="toggleMobileSidebar()">Sign In / Enrol</a></li>
+        <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display:block; text-align:center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
+
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="hero-tag" style="background: rgba(0,240,255,0.08); border-color: var(--color-quantum); color: var(--color-quantum);">Examination Hall · Lecture Hall 4B</div>
+      <h2>BEE 2026 — The 4D Paper</h2>
+      <p>The official 4-Dimensional entrance examination. Admitted disciples only. Graded in complex numbers under the all-timeline supervision of HOD 4 Dimensional Sir.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container" style="max-width: 760px;">
+
+      <div id="exam-loading" style="text-align:center; padding:60px 20px; color:var(--text-muted);">Calibrating your examination wavefunction…</div>
+
+      <!-- Not admitted -->
+      <div id="gate-notadmitted" class="card" style="display:none; text-align:center; padding:40px 24px; border-color:var(--color-banana);">
+        <div style="font-size:2.6rem; margin-bottom:12px;">🚧</div>
+        <h3 style="font-family:var(--font-heading); margin-bottom:10px;">Admission Required</h3>
+        <p style="color:var(--text-muted); max-width:520px; margin:0 auto 22px; line-height:1.55;">Only disciples who have collapsed into the <strong>ADMITTED</strong> state may sit the BEE 4D Paper. Submit your application first — it tends to favour the persistent.</p>
+        <a href="apply.html" class="cta-btn" style="padding:12px 26px;">📝 Go to BEE Application</a>
+      </div>
+
+      <!-- Already completed -->
+      <div id="exam-done" style="display:none;"></div>
+
+      <!-- Intro / rules -->
+      <div id="exam-intro" class="card" style="display:none; padding:34px 28px;">
+        <h3 style="font-family:var(--font-heading); margin-bottom:14px;">📋 Examination Instructions</h3>
+        <ul style="color:var(--text-muted); line-height:1.7; margin:0 0 22px 20px;">
+          <li>You have <strong style="color:#fff;" id="intro-time">5:00</strong> of 4-Dimensional time. The clock is non-Newtonian and will not be negotiated with.</li>
+          <li><strong id="intro-count" style="color:#fff;">N</strong> questions. One at a time. Lock each answer to proceed.</li>
+          <li>All answers are graded in <strong style="color:var(--color-quantum);">complex numbers</strong>. A real score is grounds for immediate disqualification.</li>
+          <li>The rank <strong>\(\sqrt{-1}\)</strong> is reserved for Banana Boy. You may approach it. You may not reach it.</li>
+          <li>Touching the screen where 4D Sir's feet would be grants no marks but is spiritually encouraged.</li>
+        </ul>
+        <div id="intro-when" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:18px;"></div>
+        <button class="cta-btn" id="btn-begin" style="width:100%; padding:14px; font-size:1.05rem;">⚡ Begin the BEE 4D Paper</button>
+      </div>
+
+      <!-- The running exam -->
+      <div id="exam-runner" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="font-size:0.85rem; color:var(--text-muted);">Question <strong id="q-index" style="color:#fff;">1</strong> / <span id="q-total">N</span></div>
+          <div id="exam-timer" style="font-family:var(--font-heading); font-size:1.3rem; color:var(--color-bio); text-shadow:0 0 10px rgba(57,255,20,0.5);">5:00</div>
+        </div>
+        <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden; margin-bottom:24px;">
+          <div id="q-progress" style="height:100%; width:0%; background:linear-gradient(90deg, var(--color-bio), var(--color-quantum)); transition:width 0.3s ease;"></div>
+        </div>
+
+        <div class="card" style="padding:28px 24px;">
+          <p id="q-text" style="font-size:1.12rem; line-height:1.5; color:#fff; margin-bottom:22px;">—</p>
+          <div id="q-options" style="display:flex; flex-direction:column; gap:12px;"></div>
+        </div>
+
+        <button class="cta-btn" id="btn-next" style="width:100%; margin-top:20px; padding:14px; font-size:1rem;" disabled>Lock Answer & Next</button>
+      </div>
+
+      <!-- Result -->
+      <div id="exam-result" style="display:none;"></div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h4>🍌 BBIT</h4>
+        <p>Banana Boy Institute of Technology is the premier research university in Dholakpur, pioneering advanced quantum engineering, human bio-energy dynamics, and multi-dimensional pigeon science.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="apply.html">Apply Now</a></li>
+          <li><a href="dashboard.html">Disciple Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Research Links</h5>
+        <ul>
+          <li><a href="cc-mythology.html">The Mythology of C.C.</a></li>
+          <li><a href="bio-energy.html#proofs">Bio-Energy Proofs</a></li>
+          <li><a href="canteen.html">BBIT Canteen Menu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBIT. Located in Dholakpur. Headed by 4 Dimensional Sir. Website hosted for free using <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="bbit-backend.js"></script>
+  <script src="bee-questions.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      const $ = id => document.getElementById(id);
+      const Q = window.BEE_QUESTIONS || [];
+      const TOTAL = Q.length;
+      const TIME_LIMIT = 5 * 60; // seconds
+      let profile = null;
+      let answers = new Array(TOTAL).fill(null);
+      let cur = 0;
+      let remaining = TIME_LIMIT;
+      let timer = null;
+
+      function show(id) {
+        ['exam-loading','gate-notadmitted','exam-done','exam-intro','exam-runner','exam-result']
+          .forEach(s => { const el = $(s); if (el) el.style.display = (s === id ? 'block' : 'none'); });
+      }
+      function typeset() { if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise(); }
+
+      // ---- Result rendering ----
+      function complexGrade(correct) {
+        const real = correct * 7 + 3;
+        const imag = (TOTAL - correct) * 5 + 2;
+        return real + ' + ' + imag + 'i';
+      }
+      function verdict(correct) {
+        const pct = TOTAL ? correct / TOTAL : 0;
+        if (pct >= 0.85) return "4D Sir glanced at your sheet for 0.4 seconds — a near-record. You approached √-1 and felt its warmth. You did not touch it.";
+        if (pct >= 0.5) return "Adequate bio-energy resonance. Your molecules remained mostly entangled. A pigeon has been dispatched with your provisional aura clearance.";
+        if (pct >= 0.25) return "Concerning levels of Newtonian thinking detected. Report to the canteen for emergency ginger-grating therapy.";
+        return "Your wavefunction collapsed into the shape of C.C. Do not be discouraged — he has been trying for 847 days.";
+      }
+      function resultCardHTML(correct) {
+        return '<div class="card" style="padding:34px 28px; border-color:var(--color-bio); text-align:center;">' +
+          '<div style="font-size:2.8rem; margin-bottom:6px;">🎓</div>' +
+          '<h3 style="font-family:var(--font-heading); margin-bottom:6px;">BEE 4D Paper — Result Resolved</h3>' +
+          '<div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:22px;">Disciple: ' +
+            ((profile && profile.display_name) || 'Candidate') + ' · ' + ((profile && profile.disciple_id) || '') + '</div>' +
+          '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px;">' +
+            '<div style="background:rgba(0,0,0,0.3); border:1px solid var(--glass-border); border-radius:var(--border-radius-md); padding:16px;">' +
+              '<div style="font-size:0.72rem; text-transform:uppercase; color:var(--text-muted);">Bio-Energy Resonance</div>' +
+              '<div style="font-family:var(--font-heading); font-size:1.6rem; color:var(--color-bio);">' + correct + ' / ' + TOTAL + '</div></div>' +
+            '<div style="background:rgba(0,0,0,0.3); border:1px dashed var(--color-quantum); border-radius:var(--border-radius-md); padding:16px;">' +
+              '<div style="font-size:0.72rem; text-transform:uppercase; color:var(--text-muted);">Complex Grade</div>' +
+              '<div style="font-family:monospace; font-size:1.5rem; color:var(--color-quantum);">' + complexGrade(correct) + '</div></div>' +
+          '</div>' +
+          '<div style="background:rgba(255,204,0,0.06); border:1px solid var(--color-banana); border-radius:var(--border-radius-md); padding:14px; margin-bottom:20px;">' +
+            '<div style="font-size:0.72rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">Computed Rank</div>' +
+            '<div style="font-family:var(--font-heading); font-size:1.3rem; color:var(--color-banana);">almost \\(\\sqrt{-1}\\) — but never quite</div>' +
+            '<div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">(Only Banana Boy holds the true imaginary rank.)</div></div>' +
+          '<p style="color:var(--text-muted); line-height:1.55; font-style:italic; margin-bottom:22px;">' + verdict(correct) + '</p>' +
+          '<a href="dashboard.html" class="cta-btn" style="padding:12px 24px;">📊 Back to Dashboard</a>' +
+          '</div>';
+      }
+
+      async function finishExam() {
+        if (timer) clearInterval(timer);
+        let correct = 0;
+        answers.forEach((a, i) => { if (a !== null && a === Q[i].answer) correct++; });
+        show('exam-result');
+        $('exam-result').innerHTML = resultCardHTML(correct);
+        typeset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Best-effort persist (needs exam columns; fails gracefully)
+        try {
+          await window.BBIT.saveExam({
+            exam_completed: true,
+            exam_score: correct,
+            exam_rank: 'almost √-1',
+            exam_taken_at: new Date().toISOString()
+          });
+        } catch (e) {}
+      }
+
+      // ---- Question rendering ----
+      function renderQuestion() {
+        const item = Q[cur];
+        $('q-index').textContent = (cur + 1);
+        $('q-progress').style.width = ((cur) / TOTAL * 100) + '%';
+        $('q-text').innerHTML = item.q;
+        const box = $('q-options');
+        box.innerHTML = '';
+        item.options.forEach((opt, i) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'exam-option';
+          b.style.cssText = 'text-align:left; padding:14px 16px; border-radius:var(--border-radius-md); border:1px solid var(--glass-border); background:var(--bg-tertiary); color:#fff; cursor:pointer; font-size:0.98rem; transition:all 0.15s ease;';
+          b.innerHTML = '<strong style="color:var(--color-quantum); margin-right:8px;">' + String.fromCharCode(65 + i) + '</strong>' + opt;
+          b.addEventListener('click', () => {
+            answers[cur] = i;
+            [...box.children].forEach(c => { c.style.borderColor = 'var(--glass-border)'; c.style.background = 'var(--bg-tertiary)'; });
+            b.style.borderColor = 'var(--color-bio)';
+            b.style.background = 'rgba(57,255,20,0.08)';
+            $('btn-next').disabled = false;
+          });
+          if (answers[cur] === i) { b.style.borderColor = 'var(--color-bio)'; b.style.background = 'rgba(57,255,20,0.08)'; }
+          box.appendChild(b);
+        });
+        $('btn-next').disabled = (answers[cur] === null);
+        $('btn-next').textContent = (cur === TOTAL - 1) ? 'Submit Paper ⚡' : 'Lock Answer & Next';
+        typeset();
+      }
+
+      function tickTimer() {
+        remaining--;
+        const m = Math.floor(remaining / 60), s = remaining % 60;
+        const label = m + ':' + String(s).padStart(2, '0');
+        $('exam-timer').textContent = label;
+        if (remaining <= 30) $('exam-timer').style.color = 'var(--color-banana)';
+        if (remaining <= 0) finishExam();
+      }
+
+      function startExam() {
+        cur = 0; answers = new Array(TOTAL).fill(null); remaining = TIME_LIMIT;
+        show('exam-runner');
+        $('q-total').textContent = TOTAL;
+        renderQuestion();
+        if (timer) clearInterval(timer);
+        timer = setInterval(tickTimer, 1000);
+      }
+
+      $('btn-next').addEventListener('click', () => {
+        if (answers[cur] === null) return;
+        if (cur === TOTAL - 1) { finishExam(); return; }
+        cur++; renderQuestion();
+      });
+      $('btn-begin').addEventListener('click', startExam);
+
+      // ---- Gating ----
+      async function init() {
+        const user = await window.BBIT.getUser();
+        if (!user) { location.href = 'login.html?next=bee-exam.html'; return; }
+        profile = await window.BBIT.getProfile();
+        $('exam-loading').style.display = 'none';
+
+        if (!profile || profile.status !== 'accepted') { show('gate-notadmitted'); return; }
+
+        if (profile.exam_completed) {
+          show('exam-done');
+          $('exam-done').innerHTML = resultCardHTML(profile.exam_score || 0);
+          typeset();
+          return;
+        }
+
+        // Intro
+        show('exam-intro');
+        $('intro-count').textContent = TOTAL;
+        $('intro-time').textContent = '5:00';
+        if (profile.exam_date_ist) {
+          const exam = new Date(profile.exam_date_ist);
+          const open = Date.now() >= exam.getTime();
+          $('intro-when').innerHTML = open
+            ? '🟢 Your official BEE window is <strong style="color:var(--color-bio);">OPEN</strong>.'
+            : '🟡 Official exam: <strong>' + window.BBIT.formatExamLabel(exam) + '</strong>. You may take a practice sitting now — it still counts in the eyes of 4D Sir.';
+        }
+      }
+
+      window.BBIT.ready.then(init).catch(e => { $('exam-loading').textContent = 'Backend error: ' + e.message; });
+    })();
+  </script>
+</body>
+</html>
