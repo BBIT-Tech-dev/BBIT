@@ -21,13 +21,13 @@
       <nav aria-label="Main Navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
-          <li><a href="kabutar-science.html">Kabutar Science</a></li>
-          <li><a href="faculty.html">Faculty & Disciples</a></li>
-          <li><a href="canteen.html">BBIT Canteen</a></li>
-          <li><a href="bee.html">BEE Entrance</a></li>
-          <li><a href="simulator.html">4D Simulator</a></li>
-          <li><a href="quantum-theory.html">Quantum Theory</a></li>
+          <li><a href="bio-energy.html">Bio-Energy</a></li>
+          <li><a href="kabutar-science.html">Kabutar</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="canteen.html">Canteen</a></li>
+          <li><a href="bee.html">BEE</a></li>
+          <li><a href="simulator.html">Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -46,13 +46,13 @@
     <nav class="sidebar-nav">
       <ul>
         <li><a href="index.html" onclick="toggleMobileSidebar()">Home</a></li>
-        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy Dept</a></li>
-        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar Science</a></li>
-        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
-        <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
-        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
-        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
-        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
+        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy</a></li>
+        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar</a></li>
+        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty</a></li>
+        <li><a href="canteen.html" onclick="toggleMobileSidebar()">Canteen</a></li>
+        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum</a></li>
         <li><a href="login.html" onclick="toggleMobileSidebar()">Sign In / Enrol</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display:block; text-align:center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
@@ -86,6 +86,9 @@
 
       <!-- Intro / rules -->
       <div id="exam-intro" class="card" style="display:none; padding:34px 28px;">
+        <div id="stage-badge" style="display:inline-block; font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; color:var(--color-quantum); border:1px solid rgba(0,240,255,0.3); border-radius:20px; padding:4px 12px; margin-bottom:12px;">Paper 1 of 3</div>
+        <h2 id="stage-title" style="font-family:var(--font-heading); margin-bottom:8px;">BEE Mains</h2>
+        <p id="stage-blurb" style="color:var(--text-muted); line-height:1.55; margin-bottom:20px;"></p>
         <h3 style="font-family:var(--font-heading); margin-bottom:14px;">📋 Examination Instructions</h3>
         <ul style="color:var(--text-muted); line-height:1.7; margin:0 0 22px 20px;">
           <li>You have <strong style="color:#fff;" id="intro-time">5:00</strong> of 4-Dimensional time. The clock is non-Newtonian and will not be negotiated with.</li>
@@ -132,7 +135,7 @@
         <h5>Explore</h5>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="bee.html">BEE</a></li>
           <li><a href="apply.html">Apply Now</a></li>
           <li><a href="dashboard.html">Disciple Dashboard</a></li>
         </ul>
@@ -158,14 +161,17 @@
   <script>
     (function () {
       const $ = id => document.getElementById(id);
-      const Q = window.BEE_QUESTIONS || [];
-      const TOTAL = Q.length;
-      const TIME_LIMIT = 5 * 60; // seconds
+      const PAPERS = window.BEE_PAPERS || {};
       let profile = null;
-      let answers = new Array(TOTAL).fill(null);
-      let cur = 0;
-      let remaining = TIME_LIMIT;
-      let timer = null;
+      let stage = 'mains';
+      let Q = [], TOTAL = 0, TIME_LIMIT = 300;
+      let answers = [], cur = 0, remaining = 0, timer = null;
+
+      const STAGE_META = {
+        mains:    { badge: 'Paper 1 of 3', title: '🍌 BEE Mains',       blurb: 'The warm-up sitting. By ancient charter, <strong>everyone who attempts qualifies</strong> for BEE Advanced. Yes, everyone. Even C.C.' },
+        advanced: { badge: 'Paper 2 of 3', title: '🧮 BEE Advanced',    blurb: 'Cursed 4-dimensional mathematics. Candidates are shortlisted on the merit of their answers for… something. You will find out.' },
+        actual:   { badge: 'Paper 3 of 3', title: '❓ The Actual BEE',   blurb: 'The REAL examination. Mains and Advanced were merely warm-up rituals. This is the one 4D Sir actually grades.' }
+      };
 
       function show(id) {
         ['exam-loading','gate-notadmitted','exam-done','exam-intro','exam-runner','exam-result']
@@ -173,23 +179,19 @@
       }
       function typeset() { if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise(); }
 
-      // ---- Result rendering ----
-      function complexGrade(correct) {
-        const real = correct * 7 + 3;
-        const imag = (TOTAL - correct) * 5 + 2;
-        return real + ' + ' + imag + 'i';
-      }
+      // ---- Result helpers ----
+      function complexGrade(correct) { return (correct * 7 + 3) + ' + ' + ((TOTAL - correct) * 5 + 2) + 'i'; }
       function verdict(correct) {
         const pct = TOTAL ? correct / TOTAL : 0;
         if (pct >= 0.85) return "4D Sir glanced at your sheet for 0.4 seconds — a near-record. You approached √-1 and felt its warmth. You did not touch it.";
-        if (pct >= 0.5) return "Adequate bio-energy resonance. Your molecules remained mostly entangled. A pigeon has been dispatched with your provisional aura clearance.";
+        if (pct >= 0.5)  return "Adequate bio-energy resonance. Your molecules remained mostly entangled. A pigeon has been dispatched with your provisional aura clearance.";
         if (pct >= 0.25) return "Concerning levels of Newtonian thinking detected. Report to the canteen for emergency ginger-grating therapy.";
         return "Your wavefunction collapsed into the shape of C.C. Do not be discouraged — he has been trying for 847 days.";
       }
-      function resultCardHTML(correct) {
+      function resultCardHTML(correct, paperTitle) {
         return '<div class="card" style="padding:34px 28px; border-color:var(--color-bio); text-align:center;">' +
           '<div style="font-size:2.8rem; margin-bottom:6px;">🎓</div>' +
-          '<h3 style="font-family:var(--font-heading); margin-bottom:6px;">BEE 4D Paper — Result Resolved</h3>' +
+          '<h3 style="font-family:var(--font-heading); margin-bottom:6px;">' + paperTitle + ' — Result Resolved</h3>' +
           '<div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:22px;">Disciple: ' +
             ((profile && profile.display_name) || 'Candidate') + ' · ' + ((profile && profile.disciple_id) || '') + '</div>' +
           '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px;">' +
@@ -200,13 +202,42 @@
               '<div style="font-size:0.72rem; text-transform:uppercase; color:var(--text-muted);">Complex Grade</div>' +
               '<div style="font-family:monospace; font-size:1.5rem; color:var(--color-quantum);">' + complexGrade(correct) + '</div></div>' +
           '</div>' +
-          '<div style="background:rgba(255,204,0,0.06); border:1px solid var(--color-banana); border-radius:var(--border-radius-md); padding:14px; margin-bottom:20px;">' +
-            '<div style="font-size:0.72rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">Computed Rank</div>' +
-            '<div style="font-family:var(--font-heading); font-size:1.3rem; color:var(--color-banana);">almost \\(\\sqrt{-1}\\) — but never quite</div>' +
-            '<div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">(Only Banana Boy holds the true imaginary rank.)</div></div>' +
-          '<p style="color:var(--text-muted); line-height:1.55; font-style:italic; margin-bottom:22px;">' + verdict(correct) + '</p>' +
-          '<a href="dashboard.html" class="cta-btn" style="padding:12px 24px;">📊 Back to Dashboard</a>' +
+          '<p style="color:var(--text-muted); line-height:1.55; font-style:italic; margin:0;">' + verdict(correct) + '</p>' +
           '</div>';
+      }
+
+      // ---- Stage transition reveals (the funny part) ----
+      function revealHTML(justFinished, correct) {
+        if (justFinished === 'mains') {
+          const adv = window.BBIT.advancedDateFrom(mainsDate());
+          return wrap('var(--color-bio)',
+            '<h3 style="font-family:var(--font-heading); color:var(--color-bio); margin-bottom:10px;">✅ BEE Mains Cleared</h3>' +
+            '<p style="color:var(--text-muted); line-height:1.6;">By the sacred rule of <em>"everyone who attempts qualifies"</em>, you are through to <strong>BEE Advanced</strong> — officially held <strong>' + window.BBIT.formatExamLabel(adv) + '</strong>. The 4th dimension, however, has leaked the paper to you early.</p>',
+            'btn-continue', '🧮 Proceed to BEE Advanced →');
+        }
+        if (justFinished === 'advanced') {
+          return wrap('var(--color-banana)',
+            '<div style="font-size:2.2rem; margin-bottom:8px;">😱</div>' +
+            '<h3 style="font-family:var(--font-heading); color:var(--color-banana); margin-bottom:10px;">…That Was Not The Final Paper.</h3>' +
+            '<p style="color:var(--text-muted); line-height:1.6; margin-bottom:10px;">You assumed BEE Advanced was the end. So did Newton. Buried in <strong>§4D, sub-clause ∞</strong> of the BBIT charter lies <strong>THE ACTUAL BEE</strong> — the real examination, of which Mains and Advanced were merely warm-up rituals.</p>' +
+            '<p style="color:var(--text-muted); line-height:1.6;">4D Sir has personally shortlisted you (and everyone, but mostly you) as a candidate who <em>may</em> — aura permitting — attempt it.</p>' +
+            '<div style="margin-top:14px; padding:12px; background:rgba(0,0,0,0.3); border:1px dashed var(--color-banana); border-radius:var(--border-radius-md);">' +
+              '<div style="font-size:0.72rem; text-transform:uppercase; color:var(--text-muted);">📅 The Actual BEE is scheduled for</div>' +
+              '<div style="font-family:var(--font-heading); color:var(--color-banana); font-size:1.05rem; margin-top:4px;">' + window.BBIT.ACTUAL_BEE_LABEL + '</div>' +
+              '<div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">Venue: a chai tapri that has not been built yet. Bring your own timeline.</div></div>',
+            'btn-continue', '❓ Attempt the Actual BEE →');
+        }
+        // actual
+        return wrap('var(--color-quantum)',
+          '<h3 style="font-family:var(--font-heading); color:var(--color-quantum); margin-bottom:10px;">🏁 You Have Completed The Actual BEE</h3>' +
+          '<p style="color:var(--text-muted); line-height:1.6;">There is nothing after this. (There is, in fact, always something after this, but we are legally required by the 4th dimension to say there isn\'t.) Your final rank has been computed as <strong style="color:var(--color-banana);">almost √-1 — but never quite</strong>. Only Banana Boy holds the true imaginary rank, and he holds it still.</p>',
+          null, null, 'dashboard.html', '📊 Return to Dashboard');
+      }
+      function wrap(color, inner, btnId, btnText, href, hrefText) {
+        let btn = '';
+        if (btnId) btn = '<button class="cta-btn" id="' + btnId + '" style="margin-top:18px; padding:12px 26px;">' + btnText + '</button>';
+        else if (href) btn = '<a href="' + href + '" class="cta-btn" style="margin-top:18px; padding:12px 26px; display:inline-block;">' + hrefText + '</a>';
+        return '<div class="card" style="margin-top:22px; text-align:center; padding:30px 24px; border-color:' + color + ';">' + inner + btn + '</div>';
       }
 
       function buildReview() {
@@ -227,48 +258,57 @@
             (!right ? '<div style="font-size:0.82rem; color:var(--text-muted); margin-top:5px;">4D-correct: ' + String.fromCharCode(65 + item.answer) + '. ' + item.options[item.answer] + '</div>' : '') +
             '</div>';
         });
-        html += '</div>';
-        return html;
+        return html + '</div>';
+      }
+
+      function mainsDate() {
+        return profile && profile.exam_date_ist ? new Date(profile.exam_date_ist) : window.BBIT.nextSundayExamIST();
       }
 
       async function finishExam() {
         if (timer) clearInterval(timer);
         let correct = 0;
         answers.forEach((a, i) => { if (a !== null && a === Q[i].answer) correct++; });
+        const justFinished = stage;
+        const next = window.BBIT.nextStage(justFinished);
+        // Update local profile + advance stage (works even if DB save fails)
+        profile[justFinished + '_score'] = correct;
+        profile.bee_stage = next;
+        stage = next;
+
         show('exam-result');
-        $('exam-result').innerHTML = resultCardHTML(correct) + buildReview();
+        $('exam-result').innerHTML = resultCardHTML(correct, PAPERS[justFinished].title) + revealHTML(justFinished, correct) + buildReview();
         typeset();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        // Best-effort persist (needs exam columns; fails gracefully)
-        try {
-          await window.BBIT.saveExam({
-            exam_completed: true,
-            exam_score: correct,
-            exam_rank: 'almost √-1',
-            exam_taken_at: new Date().toISOString()
-          });
-        } catch (e) {}
+
+        const contBtn = $('btn-continue');
+        if (contBtn) contBtn.addEventListener('click', () => {
+          if (loadStage(stage)) { showIntro(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        });
+
+        // Best-effort persist
+        const patch = { bee_stage: next };
+        patch[justFinished + '_score'] = correct;
+        try { await window.BBIT.saveExam(patch); } catch (e) {}
       }
 
       // ---- Question rendering ----
       function renderQuestion() {
         const item = Q[cur];
         $('q-index').textContent = (cur + 1);
-        $('q-progress').style.width = ((cur) / TOTAL * 100) + '%';
+        $('q-progress').style.width = (cur / TOTAL * 100) + '%';
         $('q-text').innerHTML = item.q;
         const box = $('q-options');
         box.innerHTML = '';
         item.options.forEach((opt, i) => {
           const b = document.createElement('button');
           b.type = 'button';
-          b.className = 'exam-option';
           b.style.cssText = 'text-align:left; padding:14px 16px; border-radius:var(--border-radius-md); border:1px solid var(--glass-border); background:var(--bg-tertiary); color:#fff; cursor:pointer; font-size:0.98rem; transition:all 0.15s ease;';
           b.innerHTML = '<strong style="color:var(--color-quantum); margin-right:8px;">' + String.fromCharCode(65 + i) + '</strong>' + opt;
           b.addEventListener('click', () => {
             answers[cur] = i;
             [...box.children].forEach(c => { c.style.borderColor = 'var(--glass-border)'; c.style.background = 'var(--bg-tertiary)'; });
-            b.style.borderColor = 'var(--color-bio)';
-            b.style.background = 'rgba(57,255,20,0.08)';
+            b.style.borderColor = 'var(--color-bio)'; b.style.background = 'rgba(57,255,20,0.08)';
             $('btn-next').disabled = false;
           });
           if (answers[cur] === i) { b.style.borderColor = 'var(--color-bio)'; b.style.background = 'rgba(57,255,20,0.08)'; }
@@ -281,9 +321,7 @@
 
       function tickTimer() {
         remaining--;
-        const m = Math.floor(remaining / 60), s = remaining % 60;
-        const label = m + ':' + String(s).padStart(2, '0');
-        $('exam-timer').textContent = label;
+        $('exam-timer').textContent = Math.floor(remaining / 60) + ':' + String(remaining % 60).padStart(2, '0');
         if (remaining <= 30) $('exam-timer').style.color = 'var(--color-banana)';
         if (remaining <= 0) finishExam();
       }
@@ -292,9 +330,59 @@
         cur = 0; answers = new Array(TOTAL).fill(null); remaining = TIME_LIMIT;
         show('exam-runner');
         $('q-total').textContent = TOTAL;
+        $('exam-timer').style.color = 'var(--color-bio)';
         renderQuestion();
         if (timer) clearInterval(timer);
         timer = setInterval(tickTimer, 1000);
+      }
+
+      // ---- Stage loading / intro ----
+      function loadStage(s) {
+        if (s === 'complete' || !PAPERS[s]) { showComplete(); return false; }
+        stage = s;
+        Q = PAPERS[s].questions;
+        TOTAL = Q.length;
+        TIME_LIMIT = PAPERS[s].time || 300;
+        return true;
+      }
+
+      function showIntro() {
+        const meta = STAGE_META[stage];
+        show('exam-intro');
+        $('stage-badge').textContent = meta.badge;
+        $('stage-title').innerHTML = meta.title;
+        $('stage-blurb').innerHTML = meta.blurb;
+        $('intro-count').textContent = TOTAL;
+        $('intro-time').textContent = Math.floor(TIME_LIMIT / 60) + ':' + String(TIME_LIMIT % 60).padStart(2, '0');
+        $('btn-begin').textContent = '⚡ Begin ' + PAPERS[stage].title;
+        let when = '';
+        if (stage === 'mains') {
+          const d = mainsDate(); const open = Date.now() >= d.getTime();
+          when = open ? '🟢 Your BEE Mains window is <strong style="color:var(--color-bio);">OPEN</strong>.'
+                      : '🟡 Official BEE Mains: <strong>' + window.BBIT.formatExamLabel(d) + '</strong>. Practice sitting available now.';
+        } else if (stage === 'advanced') {
+          const d = window.BBIT.advancedDateFrom(mainsDate()); const open = Date.now() >= d.getTime();
+          when = open ? '🟢 BEE Advanced window is <strong style="color:var(--color-bio);">OPEN</strong>.'
+                      : '🟡 Official BEE Advanced: <strong>' + window.BBIT.formatExamLabel(d) + '</strong>. Leaked early by the 4th dimension.';
+        } else {
+          when = '🟣 Officially scheduled for <strong>' + window.BBIT.ACTUAL_BEE_LABEL + '</strong>. The portal has, inexplicably, opened.';
+        }
+        $('intro-when').innerHTML = when;
+      }
+
+      function showComplete() {
+        show('exam-done');
+        $('exam-done').innerHTML = '<div class="card" style="text-align:center; padding:36px 26px; border-color:var(--color-quantum);">' +
+          '<div style="font-size:2.8rem; margin-bottom:8px;">🏆</div>' +
+          '<h3 style="font-family:var(--font-heading); margin-bottom:6px;">BEE 2026 — Saga Complete</h3>' +
+          '<p style="color:var(--text-muted); margin-bottom:20px; line-height:1.55;">You have sat all three papers, including the one that does not officially exist. Your final rank: <strong style="color:var(--color-banana);">almost √-1</strong>.</p>' +
+          '<div style="text-align:left; max-width:340px; margin:0 auto 22px;">' +
+            '<div style="display:flex; justify-content:space-between; padding:10px 0;"><span style="color:var(--text-muted);">BEE Mains</span><span style="color:#fff;">' + (profile.mains_score != null ? profile.mains_score : '—') + '</span></div>' +
+            '<div style="display:flex; justify-content:space-between; padding:10px 0; border-top:1px solid rgba(255,255,255,0.06);"><span style="color:var(--text-muted);">BEE Advanced</span><span style="color:#fff;">' + (profile.advanced_score != null ? profile.advanced_score : '—') + '</span></div>' +
+            '<div style="display:flex; justify-content:space-between; padding:10px 0; border-top:1px solid rgba(255,255,255,0.06);"><span style="color:var(--text-muted);">The Actual BEE</span><span style="color:#fff;">' + (profile.actual_score != null ? profile.actual_score : '—') + '</span></div>' +
+          '</div>' +
+          '<a href="dashboard.html" class="cta-btn" style="padding:12px 26px;">📊 Return to Dashboard</a></div>';
+        typeset();
       }
 
       $('btn-next').addEventListener('click', () => {
@@ -304,33 +392,14 @@
       });
       $('btn-begin').addEventListener('click', startExam);
 
-      // ---- Gating ----
       async function init() {
         const user = await window.BBIT.getUser();
         if (!user) { location.href = 'login.html?next=bee-exam.html'; return; }
         profile = await window.BBIT.getProfile();
         $('exam-loading').style.display = 'none';
-
         if (!profile || profile.status !== 'accepted') { show('gate-notadmitted'); return; }
-
-        if (profile.exam_completed) {
-          show('exam-done');
-          $('exam-done').innerHTML = resultCardHTML(profile.exam_score || 0);
-          typeset();
-          return;
-        }
-
-        // Intro
-        show('exam-intro');
-        $('intro-count').textContent = TOTAL;
-        $('intro-time').textContent = '5:00';
-        if (profile.exam_date_ist) {
-          const exam = new Date(profile.exam_date_ist);
-          const open = Date.now() >= exam.getTime();
-          $('intro-when').innerHTML = open
-            ? '🟢 Your official BEE window is <strong style="color:var(--color-bio);">OPEN</strong>.'
-            : '🟡 Official exam: <strong>' + window.BBIT.formatExamLabel(exam) + '</strong>. You may take a practice sitting now — it still counts in the eyes of 4D Sir.';
-        }
+        stage = profile.bee_stage || 'mains';
+        if (loadStage(stage)) showIntro();
       }
 
       window.BBIT.ready.then(init).catch(e => { $('exam-loading').textContent = 'Backend error: ' + e.message; });

@@ -43,6 +43,23 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
     }) + ' IST';
   }
 
+  // BEE Advanced is the Sunday AFTER Mains.
+  function advancedDateFrom(mainsDate) {
+    const d = new Date(mainsDate);
+    d.setUTCDate(d.getUTCDate() + 7);
+    return d;
+  }
+
+  // The Actual BEE is, of course, on a date that does not exist.
+  const ACTUAL_BEE_LABEL = "Sunday, the 32nd of Smarch 2026, at √-1 PM IST (Imaginary Standard Time)";
+
+  // The exam stages in order. Profile.bee_stage points at the next one to sit.
+  const BEE_STAGE_ORDER = ['mains', 'advanced', 'actual', 'complete'];
+  function nextStage(stage) {
+    const i = BEE_STAGE_ORDER.indexOf(stage || 'mains');
+    return BEE_STAGE_ORDER[Math.min(i + 1, BEE_STAGE_ORDER.length - 1)];
+  }
+
   function makeDiscipleId() {
     return 'BBIT-4D-' + Math.random().toString(36).slice(2, 6).toUpperCase();
   }
@@ -164,7 +181,8 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
   window.BBIT = {
     sb, ready,
     signUp, signIn, signOut, getUser, getProfile, ensureProfile, applyForBEE, saveExam,
-    nextSundayExamIST, formatExamLabel,
+    nextSundayExamIST, formatExamLabel, advancedDateFrom, nextStage,
+    ACTUAL_BEE_LABEL,
     onAuthChange(cb) { sb.auth.onAuthStateChange((_e, session) => cb(session)); }
   };
 })();

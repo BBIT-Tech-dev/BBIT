@@ -440,6 +440,13 @@ async function initAccountChip() {
   const name = (profile && profile.display_name) || (user.email || 'Disciple').split('@')[0];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
 
+  // "Apply Now" no longer makes sense once they've applied — point it at the dashboard.
+  const cta = document.getElementById('nav-cta-btn');
+  if (cta && profile && ((profile.application_tries || 0) > 0 || profile.status === 'accepted')) {
+    cta.textContent = profile.status === 'accepted' ? '📊 Dashboard' : '📊 My Status';
+    cta.setAttribute('href', 'dashboard.html');
+  }
+
   // Desktop: swap the Sign In link for a chip
   const loginLink = document.getElementById('nav-login-link');
   if (loginLink) {

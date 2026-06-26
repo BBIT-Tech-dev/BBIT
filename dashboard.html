@@ -21,13 +21,13 @@
       <nav aria-label="Main Navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="bio-energy.html">Bio-Energy Dept</a></li>
-          <li><a href="kabutar-science.html">Kabutar Science</a></li>
-          <li><a href="faculty.html">Faculty & Disciples</a></li>
-          <li><a href="canteen.html">BBIT Canteen</a></li>
-          <li><a href="bee.html">BEE Entrance</a></li>
-          <li><a href="simulator.html">4D Simulator</a></li>
-          <li><a href="quantum-theory.html">Quantum Theory</a></li>
+          <li><a href="bio-energy.html">Bio-Energy</a></li>
+          <li><a href="kabutar-science.html">Kabutar</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="canteen.html">Canteen</a></li>
+          <li><a href="bee.html">BEE</a></li>
+          <li><a href="simulator.html">Simulator</a></li>
+          <li><a href="quantum-theory.html">Quantum</a></li>
         </ul>
       </nav>
       <div class="header-right-group">
@@ -47,13 +47,13 @@
     <nav class="sidebar-nav">
       <ul>
         <li><a href="index.html" onclick="toggleMobileSidebar()">Home</a></li>
-        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy Dept</a></li>
-        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar Science</a></li>
-        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty & Disciples</a></li>
-        <li><a href="canteen.html" onclick="toggleMobileSidebar()">BBIT Canteen</a></li>
-        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE Entrance</a></li>
-        <li><a href="simulator.html" onclick="toggleMobileSidebar()">4D Simulator</a></li>
-        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum Theory</a></li>
+        <li><a href="bio-energy.html" onclick="toggleMobileSidebar()">Bio-Energy</a></li>
+        <li><a href="kabutar-science.html" onclick="toggleMobileSidebar()">Kabutar</a></li>
+        <li><a href="faculty.html" onclick="toggleMobileSidebar()">Faculty</a></li>
+        <li><a href="canteen.html" onclick="toggleMobileSidebar()">Canteen</a></li>
+        <li><a href="bee.html" onclick="toggleMobileSidebar()">BEE</a></li>
+        <li><a href="simulator.html" onclick="toggleMobileSidebar()">Simulator</a></li>
+        <li><a href="quantum-theory.html" onclick="toggleMobileSidebar()">Quantum</a></li>
         <li><a href="login.html" onclick="toggleMobileSidebar()">Sign In / Enrol</a></li>
         <li style="margin-top: 20px;"><a href="apply.html" class="cta-btn" style="display:block; text-align:center;" onclick="toggleMobileSidebar()">Apply Now</a></li>
       </ul>
@@ -122,9 +122,18 @@
             <div id="exam-when" style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">—</div>
           </div>
 
+          <!-- BEE journey (3 stages) -->
+          <div style="margin-top:30px;">
+            <div class="section-header" style="text-align:left; margin-bottom:14px;">
+              <h3 style="font-size:1.2rem;">🧭 Your BEE 2026 Journey</h3>
+              <p style="font-size:0.85rem;">Three papers stand between you and a rank of almost √-1.</p>
+            </div>
+            <div id="bee-journey" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </div>
+
           <!-- Sit the exam -->
-          <div style="text-align:center; margin-top:26px;">
-            <a href="bee-exam.html" class="cta-btn" id="exam-link" style="padding:14px 30px; font-size:1.05rem; background:rgba(0,240,255,0.12); border:1px solid var(--color-quantum); color:var(--color-quantum); box-shadow:var(--shadow-neon-blue);">⚡ Enter the BEE 4D Paper</a>
+          <div style="text-align:center; margin-top:24px;">
+            <a href="bee-exam.html" class="cta-btn" id="exam-link" style="padding:14px 30px; font-size:1.05rem; background:rgba(0,240,255,0.12); border:1px solid var(--color-quantum); color:var(--color-quantum); box-shadow:var(--shadow-neon-blue);">⚡ Enter the BEE Examination</a>
             <div id="exam-status-line" style="font-size:0.82rem; color:var(--text-muted); margin-top:10px;"></div>
           </div>
         </div>
@@ -155,8 +164,8 @@
         <h5>Explore</h5>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="faculty.html">Faculty & Disciples</a></li>
-          <li><a href="bee.html">BEE Entrance</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="bee.html">BEE</a></li>
           <li><a href="apply.html">Apply Now</a></li>
           <li><a href="dashboard.html">Disciple Dashboard</a></li>
         </ul>
@@ -199,12 +208,7 @@
           $('pending-view').style.display = 'none';
           drawAdmit(p);
           startCountdown(new Date(p.exam_date_ist));
-          if (p.exam_completed) {
-            $('exam-link').innerHTML = '🎓 View Your BEE Result';
-            $('exam-status-line').textContent = 'Paper submitted · Bio-Energy Resonance ' + (p.exam_score != null ? p.exam_score : '—') + ' · Rank: ' + (p.exam_rank || 'almost √-1');
-          } else {
-            $('exam-status-line').textContent = 'Admitted disciples may sit the paper now (practice) or on exam day.';
-          }
+          renderBeeJourney(p);
         } else {
           $('accepted-view').style.display = 'none';
           $('pending-view').style.display = 'block';
@@ -239,6 +243,40 @@
         }
         tick();
         countdownTimer = setInterval(tick, 1000);
+      }
+
+      // ---- BEE three-stage journey tracker ----
+      function renderBeeJourney(p) {
+        const stage = p.bee_stage || 'mains';
+        const order = ['mains', 'advanced', 'actual'];
+        const labels = { mains: 'BEE Mains', advanced: 'BEE Advanced', actual: 'The Actual BEE' };
+        const scoreKey = { mains: 'mains_score', advanced: 'advanced_score', actual: 'actual_score' };
+        const curIdx = stage === 'complete' ? 3 : order.indexOf(stage);
+        const actualReached = (stage === 'actual' || stage === 'complete');
+
+        $('bee-journey').innerHTML = order.map((s, i) => {
+          const done = i < curIdx, current = i === curIdx;
+          let badge, color;
+          if (done) { badge = '✅ Completed'; color = 'var(--color-bio)'; }
+          else if (current) { badge = '● Up next'; color = 'var(--color-quantum)'; }
+          else { badge = '🔒 Locked'; color = 'var(--text-muted)'; }
+          // Keep the Actual BEE a mystery until Advanced is done
+          const label = (s === 'actual' && !actualReached) ? '??? (Classified by 4D Sir)' : labels[s];
+          const score = (p[scoreKey[s]] != null) ? ' · Resonance ' + p[scoreKey[s]] : '';
+          return '<div style="display:flex; justify-content:space-between; align-items:center; padding:14px 18px; background:rgba(0,0,0,0.25); border:1px solid ' +
+            (current ? 'var(--color-quantum)' : 'var(--glass-border)') + '; border-radius:var(--border-radius-md);">' +
+            '<div><div style="color:#fff; font-family:var(--font-heading);">Paper ' + (i + 1) + ': ' + label + '</div>' +
+            '<div style="font-size:0.78rem; color:var(--text-muted);">' + (score || '&nbsp;') + '</div></div>' +
+            '<div style="font-size:0.8rem; color:' + color + '; white-space:nowrap;">' + badge + '</div></div>';
+        }).join('');
+
+        if (stage === 'complete') {
+          $('exam-link').innerHTML = '🏆 View BEE Results';
+          $('exam-status-line').textContent = 'All three papers complete. Final rank: almost √-1.';
+        } else {
+          $('exam-link').innerHTML = '⚡ Enter ' + labels[stage];
+          $('exam-status-line').textContent = 'Next up: ' + labels[stage] + ' · admitted disciples may sit it now (practice) or on exam day.';
+        }
       }
 
       // ---- Admit card on canvas (shareable image) ----
